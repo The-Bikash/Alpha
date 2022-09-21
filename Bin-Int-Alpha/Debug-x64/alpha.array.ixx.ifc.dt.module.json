@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\alpha.array.ixx",
+        "ProvidedModule": "alpha.array",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

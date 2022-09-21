@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\io.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Io\initializer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Io\io.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Io\string.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Core\typeinfo.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\Application.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\EntryPoint.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\KeyCodes.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\MouseCodes.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\Window.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Events\ApplicationEvent.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Events\Event.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Events\KeyEvent.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Events\MouseEvent.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\GLFW\glfw3.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\GLAD\glad.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\LayerStack.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\Core\Layer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Core\typetraits.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Core\core.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Core\utility.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\Array.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

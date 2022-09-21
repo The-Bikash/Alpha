@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
+        "ProvidedModule": "EntryPoint",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Application",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Application.ixx.ifc.dt"
+            },
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc.dt"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

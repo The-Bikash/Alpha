@@ -1,0 +1,19 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\src\\window.cppm",
+        "ProvidedModule": "",
+        "ImportedModules": [
+            "Window",
+            "io",
+            "core",
+            "glad",
+            "glfw3",
+            "Event",
+            "KeyEvent",
+            "MouseEvent",
+            "ApplicationEvent"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

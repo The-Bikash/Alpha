@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\events\\event.ixx",
+        "ProvidedModule": "Event",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc.dt"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

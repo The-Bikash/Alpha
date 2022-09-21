@@ -1,0 +1,27 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\events\\mouseevent.ixx",
+        "ProvidedModule": "MouseEvent",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+            },
+            {
+                "Name": "MouseCodes",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\MouseCodes.ixx.ifc"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

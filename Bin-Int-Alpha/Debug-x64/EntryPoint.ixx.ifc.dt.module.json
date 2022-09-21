@@ -1,0 +1,11 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
+        "ProvidedModule": "EntryPoint",
+        "ImportedModules": [
+            "Application"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

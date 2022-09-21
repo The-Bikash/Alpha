@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\vendor\\gladff\\glad_api.ixx",
+        "ProvidedModule": "glad_api",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

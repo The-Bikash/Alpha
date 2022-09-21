@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\array1.ixx",
+        "ProvidedModule": "Array1",
+        "ImportedModules": [
+            "core",
+            "initializer",
+            "typetraits"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

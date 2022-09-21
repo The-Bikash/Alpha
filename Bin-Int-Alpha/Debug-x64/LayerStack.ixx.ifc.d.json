@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\layerstack.ixx",
+        "ProvidedModule": "LayerStack",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Layer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Layer.ixx.ifc"
+            },
+            {
+                "Name": "Array",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Array.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

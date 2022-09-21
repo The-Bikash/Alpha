@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\io\\string.ixx",
+        "ProvidedModule": "string",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "io",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "typeinfo",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typeinfo.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

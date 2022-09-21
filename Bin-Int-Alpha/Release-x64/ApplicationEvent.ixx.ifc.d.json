@@ -1,0 +1,27 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\events\\applicationevent.ixx",
+        "ProvidedModule": "ApplicationEvent",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "io",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

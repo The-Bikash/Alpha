@@ -1,0 +1,14 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\linearalgebra\\matrix.ixx",
+        "ProvidedModule": "SquareMatrix",
+        "ImportedModules": [
+            "core",
+            "typeinfo",
+            "typetraits",
+            "initializer"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}
