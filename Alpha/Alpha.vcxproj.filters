@@ -87,8 +87,43 @@
     <ClCompile Include="include\Core\utility.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\DataStructures\Array.ixx">
+    <ClCompile Include="include\DataStructures\LinearContainer.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\LinearAlgebra\Matrix.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\NumberTheory\Rational.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\list.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\algorithm.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Int.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\NumberTheory\Int.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Function\Function.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\stack.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Engine\ImGui\ImGuiLayer.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ImGuiLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vendor\IMGUI\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

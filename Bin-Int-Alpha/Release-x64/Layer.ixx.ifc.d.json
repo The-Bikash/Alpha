@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\layer.ixx",
+        "ProvidedModule": "Layer",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

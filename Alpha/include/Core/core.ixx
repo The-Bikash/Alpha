@@ -7,21 +7,23 @@ module;
 #include <apisetcconv.h>
 
 export module core;
+export constexpr const auto uint32_max = 0xffffffffui32;
+export constexpr const auto uint64_max = 0xffffffffffffffffui64;
 
 #if _DEBUG
 	export constexpr auto const _debug = true;
 #else
 	export constexpr auto const _debug = false;
 #endif
+    export constexpr auto const __specialcompiler = false;
 
 extern "C" {
 #define DECLARE_HANDLE(name) struct name##__{int unused;}; typedef struct name##__ *name
 #define STD_OUTPUT_HANDLE   ((DWORD)-11)
-
     DECLARE_HANDLE(HINSTANCE);
 
     typedef unsigned long DWORD;
-    typedef HINSTANCE HMODULE;
+    export typedef HINSTANCE HMODULE;
     typedef int BOOL;
     typedef wchar_t WCHAR;
     typedef char CHAR;
@@ -106,6 +108,8 @@ _ACRTIMP_ALT FILE* __cdecl __acrt_iob_func(unsigned _Ix);
 #define stderr (__acrt_iob_func(2))
 
 #define WEOF ((wint_t)(0xFFFF))
+
+export FILE* console = __acrt_iob_func(1);
 
 export
 _Success_(return != EOF)
@@ -214,6 +218,14 @@ int __CRTDECL sscanf_s(
 
 //***************************************string************************************************
 export
+_Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(_Count * _Size)
+_ACRTIMP _CRT_JIT_INTRINSIC _CRTALLOCATOR _CRTRESTRICT _CRT_HYBRIDPATCHABLE
+void* __cdecl calloc(
+    _In_ _CRT_GUARDOVERFLOW size_t _Count,
+    _In_ _CRT_GUARDOVERFLOW size_t _Size
+);
+
+export
 _Success_(return != 0) _Check_return_ _Ret_maybenull_ _Post_writable_byte_size_(_Size)
 _ACRTIMP _CRTALLOCATOR _CRTRESTRICT _CRT_HYBRIDPATCHABLE
 void* __cdecl realloc(
@@ -273,6 +285,14 @@ _Post_equal_to_(_Dst)
     );
 
 export
+_NODISCARD _Check_return_
+int __cdecl memcmp(
+    _In_reads_bytes_(_Size) void const* _Buf1,
+    _In_reads_bytes_(_Size) void const* _Buf2,
+    _In_                    size_t      _Size
+);
+
+export
 _Check_return_
 size_t __cdecl strlen(
     _In_z_ char const* _Str
@@ -303,7 +323,17 @@ _VCRTIMP char _CONST_RETURN* __cdecl strstr(
 _CRT_END_C_HEADER
 
 
+extern "C" {
 
+	export char* __cdecl gcvt(
+		double _Value,
+		int    _DigitCount,
+		char* _DstBuf
+	);
+
+	export int __cdecl system(char const* _Command);
+	export void __cdecl exit(int _Code);
+}
 
 namespace alpha {
     export inline void clearconsole() {

@@ -2,7 +2,7 @@
     "Version": "1.1",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\array.ixx",
-        "ProvidedModule": "Array",
+        "ProvidedModule": "LinearContainer",
         "ImportedModules": [
             "core",
             "initializer",

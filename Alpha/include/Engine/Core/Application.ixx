@@ -1,14 +1,17 @@
 export module Application;
 
 import Event;
+import Layer;
 
 export namespace alpha {
 
 	class Application {
 	public:
 		Application();
-		void OnEvent(Event& event)noexcept;
 		virtual ~Application();
+		void OnEvent(Event& event)noexcept;
+		void PushLayer(Layer* layer)noexcept;
+		void PushOverlay(Layer* layer)noexcept;
 		void close();
 		void run();
 

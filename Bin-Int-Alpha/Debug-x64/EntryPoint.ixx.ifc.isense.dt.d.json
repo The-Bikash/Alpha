@@ -16,6 +16,10 @@
             {
                 "Name": "string",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc.dt"
+            },
+            {
+                "Name": "Layer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Layer.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

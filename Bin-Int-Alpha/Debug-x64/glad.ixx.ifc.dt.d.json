@@ -4,7 +4,12 @@
         "Source": "d:\\projects\\alpha\\alpha\\vendor\\glad\\glad.ixx",
         "ProvidedModule": "glad",
         "Includes": [],
-        "ImportedModules": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc.dt"
+            }
+        ],
         "ImportedHeaderUnits": []
     }
 }

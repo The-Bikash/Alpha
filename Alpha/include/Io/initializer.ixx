@@ -1,11 +1,11 @@
 export module initializer;
 
 
-export namespace alpha {
+namespace std {
     template <class _Ty>
     class initializer_list {
     public:
-        using ArrayTy = _Ty;
+        using ArgType = _Ty;
         using _RefTy = const _Ty&;
         using const_reference = const _Ty&;
         using _SizTy = unsigned long long;
@@ -44,10 +44,11 @@ export namespace alpha {
     [[nodiscard]] constexpr const _Ty* end(initializer_list<_Ty> _Ilist) noexcept {
         return _Ilist.end();
     }
-
-    template<class _Ty> using initializer = initializer_list<_Ty>;
 }
 
+export namespace alpha {
+    template<class _Ty> using initializer = std::initializer_list<_Ty>;
+}
 
 
 

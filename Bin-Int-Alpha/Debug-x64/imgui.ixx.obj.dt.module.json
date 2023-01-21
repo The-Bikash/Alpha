@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\vendor\\imgui\\imgui.ixx",
+        "ProvidedModule": "imgui",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

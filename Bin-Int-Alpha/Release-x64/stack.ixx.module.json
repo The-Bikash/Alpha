@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\stack.ixx",
+        "ProvidedModule": "stack",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

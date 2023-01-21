@@ -1,0 +1,51 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\linearalgebra\\matrix.ixx",
+        "ProvidedModule": "Matrix",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "io",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\io.ixx.ifc"
+            },
+            {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc"
+            },
+            {
+                "Name": "typeinfo",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typeinfo.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc"
+            },
+            {
+                "Name": "utility",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\utility.ixx.ifc"
+            },
+            {
+                "Name": "initializer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\initializer.ixx.ifc"
+            },
+            {
+                "Name": "LinearContainer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\LinearContainer.ixx.ifc"
+            },
+            {
+                "Name": "list",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\list.ixx.ifc"
+            },
+            {
+                "Name": "algorithm",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\algorithm.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -4,7 +4,20 @@
         "Source": "d:\\projects\\alpha\\alpha\\include\\io\\string.ixx",
         "ProvidedModule": "string",
         "Includes": [],
-        "ImportedModules": [],
+        "ImportedModules": [
+            {
+                "Name": "io",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\io.ixx.ifc.dt"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc.dt"
+            },
+            {
+                "Name": "typeinfo",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typeinfo.ixx.ifc.dt"
+            }
+        ],
         "ImportedHeaderUnits": []
     }
 }

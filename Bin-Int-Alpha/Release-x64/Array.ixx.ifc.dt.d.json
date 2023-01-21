@@ -2,7 +2,7 @@
     "Version": "1.2",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\array.ixx",
-        "ProvidedModule": "Array",
+        "ProvidedModule": "LinearContainer",
         "Includes": [],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

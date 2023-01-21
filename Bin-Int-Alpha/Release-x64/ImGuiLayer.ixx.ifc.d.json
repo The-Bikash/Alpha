@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\imgui\\imguilayer.ixx",
+        "ProvidedModule": "ImGuiLayer",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+            },
+            {
+                "Name": "Layer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Layer.ixx.ifc"
+            },
+            {
+                "Name": "string",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

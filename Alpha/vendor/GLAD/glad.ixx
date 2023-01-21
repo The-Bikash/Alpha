@@ -1461,8 +1461,8 @@ extern "C"{
         int minor;
     };
 
-    typedef void* (*GLADloadproc)(const char* name);
-	typedef void* (*GLADloadproc)(const char* name);
+    export typedef void* (*GLADloadproc)(const char* name);
+	export typedef void* (*GLADloadproc)(const char* name);
    
 
 typedef void (__stdcall * PFNGLCULLFACEPROC)(GLenum mode);
@@ -3902,4 +3902,5 @@ void* get_proc(const char* namez) {
 	}
 
 }
+
 

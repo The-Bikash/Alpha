@@ -12,9 +12,15 @@ extern "C" {
         char*  _DstBuf
     );
 
-    int __cdecl system(char const* _Command);
-    void __cdecl exit(int _Code);
+
+    __inline int __cdecl printf(
+        char const* const _Format,
+        ...);
+
+    export int __cdecl system(char const* _Command);
+    export void __cdecl exit(int _Code);
 }
+export char newline = '\n';
 
 export namespace alpha {
 
@@ -34,6 +40,7 @@ export namespace alpha {
     inline void _print(char  _Cha)noexcept;
     inline void _prints(char* _Str)noexcept;
     inline void _print(const char* _Str)noexcept;
+    void _print(const bool _var)noexcept;
 
     template<class _Ty> inline constexpr void _print(const _Ty& _Obj)noexcept {
         if constexpr (is_fundamental_v<_Ty>) {
@@ -47,8 +54,10 @@ export namespace alpha {
             else if constexpr (is_same_v<_Ty, unsigned long long>){ Ltos(_Obj, _Buf); _prints(_Buffer);}
 
 
-            else if constexpr (is_same_v<_Ty, float>) { gcvt(_Obj, 24, _Buf); _prints(_Buffer); }
-            else if constexpr (is_same_v<_Ty, double>) { gcvt(_Obj, 24, _Buf); _prints(_Buffer); }
+            /*else if constexpr (is_same_v<_Ty, float>) { gcvt(_Obj, 24, _Buf); _prints(_Buffer); }
+            else if constexpr (is_same_v<_Ty, double>) { gcvt(_Obj, 24, _Buf); _prints(_Buffer); }*/
+            else if constexpr (is_same_v<_Ty, float>) { printf("%f", _Obj); }
+            else if constexpr (is_same_v<_Ty, double>) { printf("%f", _Obj); }
 
 
             else {

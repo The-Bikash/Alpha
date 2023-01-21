@@ -1,15 +1,21 @@
 export module Layer;
 
 import Event;
+import string;
 
-namespace alpha {
+export namespace alpha {
 
-	struct Layer {
+	class Layer {
+	public:
+		inline Layer(const string& _Name) : _Name(_Name){}
 		virtual inline ~Layer() = default;
-		virtual inline void attach() = 0;
-		virtual inline void detach() = 0;
-		virtual inline void update() = 0;
-		virtual inline void levent(Event& event) = 0;
+
+		virtual inline void OnAttach() = 0;
+		virtual inline void OnDetach() = 0;
+		virtual inline void OnUpdate() = 0;
+		virtual inline void OnEvent(Event& event) = 0;
+	protected:
+		string _Name;
 	};
 
 }

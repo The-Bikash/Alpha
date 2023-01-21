@@ -140,7 +140,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <EnableModules>true</EnableModules>
@@ -151,10 +151,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib; ImGui.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/glfw/debug/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/imgui/debug/;$(SolutionDIr)$(ProjectName)/vendor/glfw/debug/</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <EnableModules>true</EnableModules>
@@ -178,10 +178,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib; ImGui.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/glfw/release/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/imgui/release/;$(SolutionDIr)$(ProjectName)/vendor/glfw/release/</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -189,7 +189,10 @@
     <ClCompile Include="include\Core\typeinfo.ixx" />
     <ClCompile Include="include\Core\typetraits.ixx" />
     <ClCompile Include="include\Core\utility.ixx" />
-    <ClCompile Include="include\DataStructures\Array.ixx" />
+    <ClCompile Include="include\DataStructures\algorithm.ixx" />
+    <ClCompile Include="include\DataStructures\LinearContainer.ixx" />
+    <ClCompile Include="include\DataStructures\list.ixx" />
+    <ClCompile Include="include\DataStructures\stack.ixx" />
     <ClCompile Include="include\Engine\Core\Application.ixx" />
     <ClCompile Include="include\Engine\Core\EntryPoint.ixx" />
     <ClCompile Include="include\Engine\Core\KeyCodes.ixx" />
@@ -201,15 +204,25 @@
     <ClCompile Include="include\Engine\Events\Event.ixx" />
     <ClCompile Include="include\Engine\Events\KeyEvent.ixx" />
     <ClCompile Include="include\Engine\Events\MouseEvent.ixx" />
+    <ClCompile Include="include\Engine\ImGui\ImGuiLayer.ixx" />
+    <ClCompile Include="include\Function\Function.ixx" />
     <ClCompile Include="include\Io\initializer.ixx" />
     <ClCompile Include="include\Io\io.ixx" />
     <ClCompile Include="include\Io\string.ixx" />
+    <ClCompile Include="include\LinearAlgebra\Matrix.ixx" />
+    <ClCompile Include="include\NumberTheory\Int.ixx" />
+    <ClCompile Include="include\NumberTheory\Rational.ixx" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Int.cpp" />
     <ClCompile Include="src\io.cpp" />
     <ClCompile Include="src\string.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="vendor\GLAD\glad.ixx" />
     <ClCompile Include="vendor\GLFW\glfw3.ixx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vendor\IMGUI\imgui.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

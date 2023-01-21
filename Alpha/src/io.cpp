@@ -6,8 +6,6 @@ import core;
 
 namespace alpha {
 
-    static auto iqout = __acrt_iob_func(1);
-
     static constexpr const short itos_hlpr1[10] = {
             48,49,50,51,52,53,54,55,56,57
     };
@@ -888,10 +886,13 @@ namespace alpha {
         putchar(_Cha);
     }
     void _prints(char* _Str) noexcept {
-        fputs(_Str, iqout);
+        fputs(_Str, console);
     }
     void _print(const char* _Str)noexcept {
-        fputs(_Str, iqout);
+        fputs(_Str, console);
+    }
+    void _print(const bool _var)noexcept {
+        _var ? fputs("1", console) : fputs("0", console);
     }
 
 }

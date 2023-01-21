@@ -297,32 +297,32 @@ export inline constexpr auto GLFW_DONT_CARE                                = -1;
 
 extern "C" {
 
-typedef void (*GLFWglproc)(void);
-typedef void (*GLFWvkproc)(void);
-typedef struct GLFWmonitor GLFWmonitor;
-typedef struct GLFWwindow GLFWwindow;
-typedef struct GLFWcursor GLFWcursor;
-typedef void (* GLFWerrorfun)(int error_code, const char* description);
-typedef void (* GLFWwindowposfun)(GLFWwindow* _Window, int xpos, int ypos);
-typedef void (* GLFWwindowsizefun)(GLFWwindow* _Window, int width, int height);
-typedef void (* GLFWwindowclosefun)(GLFWwindow* _Window);
-typedef void (* GLFWwindowrefreshfun)(GLFWwindow* _Window);
-typedef void (* GLFWwindowfocusfun)(GLFWwindow* _Window, int focused);
-typedef void (* GLFWwindowiconifyfun)(GLFWwindow* _Window, int iconified);
-typedef void (* GLFWwindowmaximizefun)(GLFWwindow* _Window, int maximized);
-typedef void (* GLFWframebuffersizefun)(GLFWwindow* _Window, int width, int height);
-typedef void (* GLFWwindowcontentscalefun)(GLFWwindow* _Window, float xscale, float yscale);
-typedef void (* GLFWmousebuttonfun)(GLFWwindow* _Window, int button, int action, int mods);
-typedef void (* GLFWcursorposfun)(GLFWwindow* _Window, double xpos, double ypos);
-typedef void (* GLFWcursorenterfun)(GLFWwindow* _Window, int entered);
-typedef void (* GLFWscrollfun)(GLFWwindow* _Window, double xoffset, double yoffset);
-typedef void (* GLFWkeyfun)(GLFWwindow* _Window, int key, int scancode, int action, int mods);
-typedef void (* GLFWcharfun)(GLFWwindow* _Window, unsigned int codepoint);
-typedef void (* GLFWcharmodsfun)(GLFWwindow* _Window, unsigned int codepoint, int mods);
-typedef void (* GLFWdropfun)(GLFWwindow* _Window, int path_count, const char* paths[]);
-typedef void (* GLFWmonitorfun)(GLFWmonitor* monitor, int event);
-typedef void (* GLFWjoystickfun)(int jid, int event);
-typedef struct GLFWvidmode {
+export typedef void (*GLFWglproc)(void);
+export typedef void (*GLFWvkproc)(void);
+export typedef struct GLFWmonitor GLFWmonitor;
+export typedef struct GLFWwindow GLFWwindow;
+export typedef struct GLFWcursor GLFWcursor;
+export typedef void (* GLFWerrorfun)(int error_code, const char* description);
+export typedef void (* GLFWwindowposfun)(GLFWwindow* _Window, int xpos, int ypos);
+export typedef void (* GLFWwindowsizefun)(GLFWwindow* _Window, int width, int height);
+export typedef void (* GLFWwindowclosefun)(GLFWwindow* _Window);
+export typedef void (* GLFWwindowrefreshfun)(GLFWwindow* _Window);
+export typedef void (* GLFWwindowfocusfun)(GLFWwindow* _Window, int focused);
+export typedef void (* GLFWwindowiconifyfun)(GLFWwindow* _Window, int iconified);
+export typedef void (* GLFWwindowmaximizefun)(GLFWwindow* _Window, int maximized);
+export typedef void (* GLFWframebuffersizefun)(GLFWwindow* _Window, int width, int height);
+export typedef void (* GLFWwindowcontentscalefun)(GLFWwindow* _Window, float xscale, float yscale);
+export typedef void (* GLFWmousebuttonfun)(GLFWwindow* _Window, int button, int action, int mods);
+export typedef void (* GLFWcursorposfun)(GLFWwindow* _Window, double xpos, double ypos);
+export typedef void (* GLFWcursorenterfun)(GLFWwindow* _Window, int entered);
+export typedef void (* GLFWscrollfun)(GLFWwindow* _Window, double xoffset, double yoffset);
+export typedef void (* GLFWkeyfun)(GLFWwindow* _Window, int key, int scancode, int action, int mods);
+export typedef void (* GLFWcharfun)(GLFWwindow* _Window, unsigned int codepoint);
+export typedef void (* GLFWcharmodsfun)(GLFWwindow* _Window, unsigned int codepoint, int mods);
+export typedef void (* GLFWdropfun)(GLFWwindow* _Window, int path_count, const char* paths[]);
+export typedef void (* GLFWmonitorfun)(GLFWmonitor* monitor, int event);
+export typedef void (* GLFWjoystickfun)(int jid, int event);
+export typedef struct GLFWvidmode {
     int width;
     int height;
     int redBits;
@@ -330,7 +330,7 @@ typedef struct GLFWvidmode {
     int blueBits;
     int refreshRate;
 } GLFWvidmode;
-typedef struct GLFWgammaramp
+export typedef struct GLFWgammaramp
 {
     /*! An array of value describing the response of the red channel.
      */
@@ -345,7 +345,7 @@ typedef struct GLFWgammaramp
      */
     unsigned int size;
 } GLFWgammaramp;
-typedef struct GLFWimage
+export typedef struct GLFWimage
 {
     /*! The width, in pixels, of this image.
      */
@@ -357,7 +357,7 @@ typedef struct GLFWimage
      */
     unsigned char* pixels;
 } GLFWimage;
-typedef struct GLFWgamepadstate
+export typedef struct GLFWgamepadstate
 {
     /*! The states of each [gamepad button](@ref gamepad_buttons), `GLFW_PRESS`
      *  or `GLFW_RELEASE`.

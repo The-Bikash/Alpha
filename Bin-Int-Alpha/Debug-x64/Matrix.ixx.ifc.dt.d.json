@@ -2,7 +2,7 @@
     "Version": "1.2",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\linearalgebra\\matrix.ixx",
-        "ProvidedModule": "SquareMatrix",
+        "ProvidedModule": "Matrix",
         "Includes": [],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

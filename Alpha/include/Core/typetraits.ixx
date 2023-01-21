@@ -255,15 +255,15 @@ export namespace alpha{
 #endif
 
 	template <class _IntType, enable_if_t<is_integral_v<_IntType>, int> = 0>
-	[[nodiscard]] constexpr byte operator<<(const byte _Arg, const _IntType _Shift) noexcept {
+	[[nodiscard]] constexpr byte operator<<(const byte _Arg3, const _IntType _Shift) noexcept {
 		// every static_cast is intentional
-		return static_cast<byte>(static_cast<unsigned char>(static_cast<unsigned int>(_Arg) << _Shift));
+		return static_cast<byte>(static_cast<unsigned char>(static_cast<unsigned int>(_Arg3) << _Shift));
 	}
 
 	template <class _IntType, enable_if_t<is_integral_v<_IntType>, int> = 0>
-	[[nodiscard]] constexpr byte operator>>(const byte _Arg, const _IntType _Shift) noexcept {
+	[[nodiscard]] constexpr byte operator>>(const byte _Arg3, const _IntType _Shift) noexcept {
 		// every static_cast is intentional
-		return static_cast<byte>(static_cast<unsigned char>(static_cast<unsigned int>(_Arg) >> _Shift));
+		return static_cast<byte>(static_cast<unsigned char>(static_cast<unsigned int>(_Arg3) >> _Shift));
 	}
 
 	[[nodiscard]] constexpr byte operator|(const byte _Left, const byte _Right) noexcept {
@@ -284,19 +284,19 @@ export namespace alpha{
 			static_cast<unsigned char>(static_cast<unsigned int>(_Left) ^ static_cast<unsigned int>(_Right)));
 	}
 
-	[[nodiscard]] constexpr byte operator~(const byte _Arg) noexcept {
+	[[nodiscard]] constexpr byte operator~(const byte _Arg3) noexcept {
 		// every static_cast is intentional
-		return static_cast<byte>(static_cast<unsigned char>(~static_cast<unsigned int>(_Arg)));
+		return static_cast<byte>(static_cast<unsigned char>(~static_cast<unsigned int>(_Arg3)));
 	}
 
 	template <class _IntType, enable_if_t<is_integral_v<_IntType>, int> = 0>
-	constexpr byte& operator<<=(byte& _Arg, const _IntType _Shift) noexcept {
-		return _Arg = _Arg << _Shift;
+	constexpr byte& operator<<=(byte& _Arg3, const _IntType _Shift) noexcept {
+		return _Arg3 = _Arg3 << _Shift;
 	}
 
 	template <class _IntType, enable_if_t<is_integral_v<_IntType>, int> = 0>
-	constexpr byte& operator>>=(byte& _Arg, const _IntType _Shift) noexcept {
-		return _Arg = _Arg >> _Shift;
+	constexpr byte& operator>>=(byte& _Arg3, const _IntType _Shift) noexcept {
+		return _Arg3 = _Arg3 >> _Shift;
 	}
 
 	constexpr byte& operator|=(byte& _Left, const byte _Right) noexcept {
@@ -312,8 +312,8 @@ export namespace alpha{
 	}
 
 	template <class _IntType, enable_if_t<is_integral_v<_IntType>, int> = 0>
-	[[nodiscard]] constexpr _IntType to_integer(const byte _Arg) noexcept {
-		return static_cast<_IntType>(_Arg);
+	[[nodiscard]] constexpr _IntType to_integer(const byte _Arg3) noexcept {
+		return static_cast<_IntType>(_Arg3);
 	}
 
 	using max_align_t = double; // intentional, for historical reasons
@@ -540,13 +540,13 @@ export namespace alpha{
 	const _Ty* addressof(const _Ty&&) = delete;
 
 	template <class _Ptrty>
-	[[nodiscard]] constexpr auto _Unfancy(_Ptrty _Arr) noexcept { // converts from a fancy pointer to a plain pointer
-		return  addressof(*_Arr);
+	[[nodiscard]] constexpr auto _Unfancy(_Ptrty _Ptr) noexcept { // converts from a fancy pointer to a plain pointer
+		return  addressof(*_Ptr);
 	}
 
 	template <class _Ty>
-	[[nodiscard]] constexpr _Ty* _Unfancy(_Ty* _Arr) noexcept { // do nothing for plain pointers
-		return _Arr;
+	[[nodiscard]] constexpr _Ty* _Unfancy(_Ty* _Ptr) noexcept { // do nothing for plain pointers
+		return _Ptr;
 	}
 #endif
 		template <class _Ty, _Ty... _Vals>
@@ -1937,26 +1937,26 @@ export namespace alpha{
 
 		template <class _Ty>
 		[[nodiscard]] constexpr _Ty&& forward(
-			remove_reference_t<_Ty>&_Arg) noexcept { // forward an lvalue as either an lvalue or an rvalue
-			return static_cast<_Ty&&>(_Arg);
+			remove_reference_t<_Ty>&_Arg3) noexcept { // forward an lvalue as either an lvalue or an rvalue
+			return static_cast<_Ty&&>(_Arg3);
 		}
 
 		template <class _Ty>
-		[[nodiscard]] constexpr _Ty&& forward(remove_reference_t<_Ty> && _Arg) noexcept { // forward an rvalue as an rvalue
+		[[nodiscard]] constexpr _Ty&& forward(remove_reference_t<_Ty> && _Arg3) noexcept { // forward an rvalue as an rvalue
 			static_assert(!is_lvalue_reference_v<_Ty>, "bad forward call");
-			return static_cast<_Ty&&>(_Arg);
+			return static_cast<_Ty&&>(_Arg3);
 		}
 
 		template <class _Ty>
-		[[nodiscard]] constexpr remove_reference_t<_Ty>&& move(_Ty && _Arg) noexcept { // forward _Arg as movable
-			return static_cast<remove_reference_t<_Ty>&&>(_Arg);
+		[[nodiscard]] constexpr remove_reference_t<_Ty>&& move(_Ty && _Arg3) noexcept { // forward _Arg as movable
+			return static_cast<remove_reference_t<_Ty>&&>(_Arg3);
 		}
 
 		template <class _Ty>
 		[[nodiscard]] constexpr conditional_t<!is_nothrow_move_constructible_v<_Ty>&& is_copy_constructible_v<_Ty>, const _Ty&,
 			_Ty&&>
-			move_if_noexcept(_Ty & _Arg) noexcept { // forward _Arg as movable, sometimes
-			return  move(_Arg);
+			move_if_noexcept(_Ty & _Arg3) noexcept { // forward _Arg as movable, sometimes
+			return  move(_Arg3);
 		}
 
 		template <class _Ty>
@@ -2409,26 +2409,26 @@ export namespace alpha{
 				int> = 0>
 			constexpr reference_wrapper(_Uty&& _Val) noexcept(noexcept(_Refwrap_ctor_fun<_Ty>( declval<_Uty>()))) {
 				_Ty& _Ref = static_cast<_Uty&&>(_Val);
-				_Arr =  addressof(_Ref);
+				_Ptr =  addressof(_Ref);
 			}
 
 			constexpr operator _Ty& () const noexcept {
-				return *_Arr;
+				return *_Ptr;
 			}
 
 			[[nodiscard]] constexpr _Ty& get() const noexcept {
-				return *_Arr;
+				return *_Ptr;
 			}
 
 		private:
-			_Ty* _Arr{};
+			_Ty* _Ptr{};
 
 		public:
 			template <class... _Types>
 			constexpr auto operator()(_Types&&... _Args) const
-				noexcept(noexcept( invoke(*_Arr, static_cast<_Types&&>(_Args)...))) // strengthened
-				-> decltype( invoke(*_Arr, static_cast<_Types&&>(_Args)...)) {
-				return  invoke(*_Arr, static_cast<_Types&&>(_Args)...);
+				noexcept(noexcept( invoke(*_Ptr, static_cast<_Types&&>(_Args)...))) // strengthened
+				-> decltype( invoke(*_Ptr, static_cast<_Types&&>(_Args)...)) {
+				return  invoke(*_Ptr, static_cast<_Types&&>(_Args)...);
 			}
 		};
 
