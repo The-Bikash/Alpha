@@ -2,7 +2,7 @@
     "Version": "1.2",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\function\\function.ixx",
-        "ProvidedModule": "Function",
+        "ProvidedModule": "",
         "Includes": [],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

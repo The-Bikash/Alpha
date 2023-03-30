@@ -1,83 +1,155 @@
 module;
 module Application;
-
-import io;
 import core;
-import glad;
-import glfw3;
+import io;
 import Window;
+import ImGuiLayer;
 import LayerStack;
 
 namespace alpha {
 
-	struct Application::_ApplicationImpl {
-		struct _ApplicationEventCallBack : public EventCallBack {
-			Application* _App = nullptr;
-			void operator()(Event& _event)override {
-				_App->OnEvent(_event);
+	class Application::ApplicationImpl {
+	public:
+		inline ApplicationImpl()noexcept {
+			_CallBack._App = this;
+			_Window = new Window(1080, 720, "Bikash", _CallBack);
+			_ImGuiLayer = new ImGuiLayer();
+		}
+
+		inline ~ApplicationImpl()noexcept {
+			if (_Window != nullptr || _Running) {
+				_Running = false;
+				delete _Window;
+				_Window = nullptr;
 			}
-		}			_CallBack;
-		Window*		_Window;
-		LayerStack  _LayerStack;
-		bool		_Running;
+		}
+
+		inline void PushLayer(Layer* _Layer)noexcept {
+			_LayerStack.PushLayer(_Layer);
+			_Layer->OnAttach();
+		}
+
+		inline void PushOverlay(Layer* _Layer)noexcept {
+			_LayerStack.PushOverlay(_Layer);
+			_Layer->OnAttach();
+		}
+
+		inline void OnEvent(Event& _Event)noexcept {
+			if (_Event.EventType() == EventTy::WindowClose) {
+				_Running = false;
+			}
+			for (auto it = _LayerStack.end(); it != _LayerStack.begin();) {
+				if (_Event.Handled)
+					break;
+				(*--it)->OnEvent(_Event);
+			}
+			//clearconsole();
+			_print(_Event);
+		}
+
+		inline void Run()noexcept {
+			while (_Running) {
+				Window::SetColour(0.2f, 0.3f, 0.3f, 1.0f);
+
+				for (Layer* layer : _LayerStack)
+					layer->OnUpdate();
+
+				_ImGuiLayer->Begin();
+				for (Layer* _Layer : _LayerStack)
+					_Layer->OnRender();
+				_ImGuiLayer->End();
+
+				_Window->OnUpdate();
+			}
+		}
+
+		inline void Close() {
+			this->~ApplicationImpl();
+		}
+
+		inline unsigned int Width()noexcept {
+			return _Window->Width();
+		}
+
+		inline unsigned int Height()noexcept {
+			return _Window->Height();
+		}
+
+		inline Window& window()noexcept {
+			return *_Window;
+		}
+
+	private:
+		struct MyEventCallBack : public EventCallBack {
+			ApplicationImpl* _App = nullptr;
+			void operator()(Event& _Event)override {
+				_App->OnEvent(_Event);
+			}
+		};
+
+		MyEventCallBack _CallBack;
+		Window* _Window = nullptr;
+		ImGuiLayer* _ImGuiLayer = nullptr;
+		LayerStack _LayerStack;
+		bool _Running = true;
 	};
 
+
+	//******************************************* APPLICATION**********************************************\\
+
+	Application* Application::_Instance = nullptr;
+
+	Application& Application::GetApp() {
+		return *_Instance;
+	}
+
 	Application::Application() {
-		_Impl = new _ApplicationImpl;
-		_Impl->_Window = new Window(640, 480, "Bikash");
-		_Impl->_CallBack._App = this;
-		_Impl->_Window->SetEventCallBack(_Impl->_CallBack);
-		_Impl->_Running = true;
+		if constexpr (_debug) {
+			if (_Instance != nullptr) {
+				alpha::print("\nApplication Already Exists");
+				__debugbreak();
+			}
+		}
+		_Instance = this;
+		_Impl = new ApplicationImpl;
 	}
 
 	Application::~Application() {
-		if (_Impl != nullptr) {
-			_Impl->_Running = false;
-			delete _Impl->_Window;
-			_Impl->_Window = nullptr;
-
-			delete _Impl;
-			_Impl = nullptr;
-		}
+		delete _Impl;
+		_Impl = nullptr;
 	}
 
 	void Application::PushLayer(Layer* _Layer)noexcept {
-		_Impl->_LayerStack.PushLayer(_Layer);
+		_Impl->PushLayer(_Layer);
 	}
+
 	void Application::PushOverlay(Layer* _Layer)noexcept {
-		_Impl->_LayerStack.PushOverlay(_Layer);
+		_Impl->PushOverlay(_Layer);
+	}
+
+	void Application::Close() noexcept {
+		_Impl->Close();
+	}
+
+	void Application::Run() noexcept {
+		_Impl->Run();
+	}
+
+	Window& Application::window() noexcept {
+		return _Impl-> window();
+	}
+
+	unsigned int Application::Width() noexcept{
+		return _Impl->Width();
+	}
+
+	unsigned int Application::Height() noexcept {
+		return _Impl->Height();
 	}
 
 	void Application::OnEvent(Event& _Event)noexcept {
-		if (_Event.EventType() == EventTy::WindowClose) {
-			_Impl->_Running = false;
-		}
-		for (auto it = _Impl->_LayerStack.end(); it != _Impl->_LayerStack.begin();) {
-			(*--it)->OnEvent(_Event);
-			if (_Event.Handled)
-				break;
-		}
-		//clearconsole();
-		_print(_Event);
+		_Impl->OnEvent(_Event);
 	}
-
-	void Application::run() {
-		while (_Impl->_Running) {
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			int i = 0;
-			for (Layer* _Layer : _Impl->_LayerStack)
-				_Layer->OnUpdate();
-				
-			_Impl->_Window->Update();
-		}
-	}
-
-	void Application::close() {
-		this->~Application();
-	}
-
 	
 }
 

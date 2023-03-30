@@ -1,0 +1,32 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\datastructures\\simd.ixx",
+        "ProvidedModule": "simd",
+        "Includes": [
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\immintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\wmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\nmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\smmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\tmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\pmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\emmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\xmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\mmintrin.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\ucrt\\malloc.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\ucrt\\corecrt.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\vcruntime.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\sal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\concurrencysal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\vadefs.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\ucrt\\corecrt_malloc.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\zmmintrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\intrin.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\intrin0.inl.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\setjmp.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\ammintrin.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -145,16 +145,20 @@
       <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <EnableModules>true</EnableModules>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)Alpha\vendor\GLM</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib; ImGui.lib;</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/imgui/debug/;$(SolutionDIr)$(ProjectName)/vendor/glfw/debug/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -170,6 +174,9 @@
       <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <EnableModules>true</EnableModules>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)Alpha\vendor\GLM</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <Optimization>MaxSpeed</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -178,10 +185,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib; ImGui.lib;</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDIr)$(ProjectName)/vendor/imgui/release/;$(SolutionDIr)$(ProjectName)/vendor/glfw/release/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -192,9 +201,12 @@
     <ClCompile Include="include\DataStructures\algorithm.ixx" />
     <ClCompile Include="include\DataStructures\LinearContainer.ixx" />
     <ClCompile Include="include\DataStructures\list.ixx" />
+    <ClCompile Include="include\DataStructures\code.ixx" />
+    <ClCompile Include="include\DataStructures\simd.ixx" />
     <ClCompile Include="include\DataStructures\stack.ixx" />
     <ClCompile Include="include\Engine\Core\Application.ixx" />
     <ClCompile Include="include\Engine\Core\EntryPoint.ixx" />
+    <ClCompile Include="include\Engine\Core\Input.ixx" />
     <ClCompile Include="include\Engine\Core\KeyCodes.ixx" />
     <ClCompile Include="include\Engine\Core\Layer.ixx" />
     <ClCompile Include="include\Engine\Core\LayerStack.ixx" />
@@ -206,23 +218,47 @@
     <ClCompile Include="include\Engine\Events\MouseEvent.ixx" />
     <ClCompile Include="include\Engine\ImGui\ImGuiLayer.ixx" />
     <ClCompile Include="include\Function\Function.ixx" />
+    <ClCompile Include="include\Function\Polynomial.ixx" />
+    <ClCompile Include="include\GraphTheory\Graph.ixx" />
     <ClCompile Include="include\Io\initializer.ixx" />
     <ClCompile Include="include\Io\io.ixx" />
     <ClCompile Include="include\Io\string.ixx" />
     <ClCompile Include="include\LinearAlgebra\Matrix.ixx" />
+    <ClCompile Include="include\LinearAlgebra\Vector.ixx" />
+    <ClCompile Include="include\NumberTheory\ContinuedFraction.ixx" />
     <ClCompile Include="include\NumberTheory\Int.ixx" />
     <ClCompile Include="include\NumberTheory\Rational.ixx" />
+    <ClCompile Include="include\SetTheory\Set.ixx" />
+    <ClCompile Include="include\Time\time.ixx" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\GraphicsContext.cpp" />
     <ClCompile Include="src\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Int.cpp" />
     <ClCompile Include="src\io.cpp" />
     <ClCompile Include="src\string.cpp" />
     <ClCompile Include="src\Window.cpp" />
-    <ClCompile Include="vendor\GLAD\glad.ixx" />
-    <ClCompile Include="vendor\GLFW\glfw3.ixx" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Engine\Api\GraphicsContext.hpp" />
+    <ClInclude Include="include\Engine\Api\OpenGL\OpenGLGraphicsContext.h" />
+    <ClInclude Include="vendor\GLFW\glfw3.h" />
+    <ClInclude Include="vendor\GLFW\glfw3native.h" />
+    <ClInclude Include="vendor\IMGUI\imconfig.h" />
     <ClInclude Include="vendor\IMGUI\imgui.h" />
+    <ClInclude Include="vendor\IMGUI\imgui_impl_glfw.h" />
+    <ClInclude Include="vendor\IMGUI\imgui_impl_opengl3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vendor\GLAD\GLAD.vcxproj">
+      <Project>{8137e268-a6a7-4122-934d-e4b156f0abec}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendor\GLFW\GLFW.vcxproj">
+      <Project>{5bb7d22c-8077-4ce1-84ea-483360ea33b4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendor\ImGui\ImGui.vcxproj">
+      <Project>{ba860d97-a633-451f-bd11-85766037baac}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,7 +4,28 @@
         "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\algorithm.ixx",
         "ProvidedModule": "algorithm",
         "Includes": [],
-        "ImportedModules": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc"
+            },
+            {
+                "Name": "utility",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\utility.ixx.ifc"
+            },
+            {
+                "Name": "typeinfo",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typeinfo.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "LinearContainer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\LinearContainer.ixx.ifc"
+            }
+        ],
         "ImportedHeaderUnits": []
     }
 }

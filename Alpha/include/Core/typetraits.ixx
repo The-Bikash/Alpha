@@ -548,6 +548,7 @@ export namespace alpha{
 	[[nodiscard]] constexpr _Ty* _Unfancy(_Ty* _Ptr) noexcept { // do nothing for plain pointers
 		return _Ptr;
 	}
+
 #endif
 		template <class _Ty, _Ty... _Vals>
 		struct integer_sequence { // sequence of integer parameters

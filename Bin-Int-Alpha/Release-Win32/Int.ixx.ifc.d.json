@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\numbertheory\\int.ixx",
+        "ProvidedModule": "Int",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\core.ixx.ifc"
+            },
+            {
+                "Name": "initializer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\initializer.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

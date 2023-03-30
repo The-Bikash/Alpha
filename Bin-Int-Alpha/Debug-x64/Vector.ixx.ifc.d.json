@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\linearalgebra\\vector.ixx",
+        "ProvidedModule": "Vector",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

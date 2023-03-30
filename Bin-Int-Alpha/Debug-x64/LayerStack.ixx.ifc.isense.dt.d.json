@@ -18,12 +18,12 @@
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\algorithm.ixx.ifc.dt"
             },
             {
-                "Name": "Event",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
-            },
-            {
                 "Name": "string",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc.dt"
+            },
+            {
+                "Name": "Event",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
             },
             {
                 "Name": "initializer",

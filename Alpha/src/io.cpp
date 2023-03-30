@@ -627,8 +627,7 @@ namespace alpha {
                 if (_Val >= 1000000000) return 10;
                 if (_Val >= 100000000) return 9; return 8;
             } if (_Val >= 1000000) return 7; return 6;
-        }
-        else {
+        } else {
             if (_Val >= 1000) {
                 if (_Val >= 10000) return 5; return 4;
             }
@@ -669,7 +668,7 @@ namespace alpha {
     }
 
     void Itos(unsigned int _Val, char* _Buffer)noexcept {
-        auto _Slots = reinterpret_cast<int*>(_Buffer);
+        auto* _Slots = reinterpret_cast<int*>(_Buffer);
         if (_Val >= 100000) {
             if (_Val >= 10000000) {
                 if (_Val >= 1000000000) {
@@ -826,6 +825,8 @@ namespace alpha {
             }
         }
     }
+
+
     void itos(int _Val, char* _Buffer)noexcept {
         unsigned int _Tmp = _Val;
         if (_Val < 0) {

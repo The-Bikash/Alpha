@@ -4,6 +4,7 @@
         "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\window.ixx",
         "ProvidedModule": "Window",
         "ImportedModules": [
+            "string",
             "Event"
         ],
         "ImportedHeaderUnits": []

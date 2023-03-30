@@ -2,7 +2,6 @@ module;
 
 #include <yvals_core.h>
 
-
 export module utility;
 
 import typetraits;
@@ -805,6 +804,32 @@ export namespace alpha {
 
 		return true;
 	}
+
+	template <typename U>
+	inline constexpr auto _Unwrappable(int) -> decltype(declval<U>()._Unwrapped(), bool{}) {
+		return true;
+	}
+
+	template <typename U>
+	inline constexpr bool _Unwrappable(...) {
+		return false;
+	}
+
+	template <typename T>
+	inline constexpr bool _Unwrappable_v = _Unwrappable<T>(0);
+
+	template <class _Iter>
+	[[nodiscard]] constexpr decltype(auto) _Get_unwrapped(_Iter&& _It) noexcept {
+		if constexpr (is_pointer_v<decay_t<_Iter>>) {
+			return _It + 0;
+		}else if constexpr (_Unwrappable_v<_Iter>) {
+			return static_cast<_Iter&&>(_It)._Unwrapped();
+		}else {
+			return static_cast<_Iter&&>(_It);
+		}
+	}
+
+
 #endif // _HAS_CXX20
 	__declspec(noreturn) void __cdecl abort(void);
 #if _HAS_CXX23

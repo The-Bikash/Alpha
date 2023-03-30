@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\input.ixx",
+        "ProvidedModule": "Input",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "KeyCodes",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\KeyCodes.ixx.ifc.dt"
+            },
+            {
+                "Name": "MouseCodes",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\MouseCodes.ixx.ifc.dt"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

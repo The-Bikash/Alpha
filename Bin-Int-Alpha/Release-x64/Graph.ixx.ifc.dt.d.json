@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\graphtheory\\graph.ixx",
+        "ProvidedModule": "Graph",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

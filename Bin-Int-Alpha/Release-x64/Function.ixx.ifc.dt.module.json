@@ -2,12 +2,8 @@
     "Version": "1.1",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\function\\function.ixx",
-        "ProvidedModule": "Function",
-        "ImportedModules": [
-            "io",
-            "core",
-            "string"
-        ],
+        "ProvidedModule": "",
+        "ImportedModules": [],
         "ImportedHeaderUnits": []
     }
 }

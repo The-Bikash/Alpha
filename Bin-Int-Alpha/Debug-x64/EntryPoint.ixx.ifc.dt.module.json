@@ -1,10 +1,12 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
         "ProvidedModule": "EntryPoint",
         "ImportedModules": [
-            "Application"
+            "Application",
+            "core",
+            "code"
         ],
         "ImportedHeaderUnits": []
     }

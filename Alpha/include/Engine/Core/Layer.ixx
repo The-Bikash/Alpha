@@ -7,13 +7,16 @@ export namespace alpha {
 
 	class Layer {
 	public:
-		inline Layer(const string& _Name) : _Name(_Name){}
+		inline Layer(const string& _Name = "Layer") : _Name(_Name) {}
 		virtual inline ~Layer() = default;
 
-		virtual inline void OnAttach() = 0;
-		virtual inline void OnDetach() = 0;
-		virtual inline void OnUpdate() = 0;
-		virtual inline void OnEvent(Event& event) = 0;
+		virtual inline void OnAttach() {}
+		virtual inline void OnDetach() {}
+		virtual inline void OnUpdate() {}
+		virtual inline void OnRender() {}
+		virtual inline void OnEvent(Event& event) {}
+
+		const string& GetName()const { return _Name; }
 	protected:
 		string _Name;
 	};

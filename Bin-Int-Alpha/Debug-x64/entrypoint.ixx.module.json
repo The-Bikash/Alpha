@@ -4,7 +4,9 @@
         "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
         "ProvidedModule": "EntryPoint",
         "ImportedModules": [
-            "Application"
+            "Application",
+            "core",
+            "code"
         ],
         "ImportedHeaderUnits": []
     }

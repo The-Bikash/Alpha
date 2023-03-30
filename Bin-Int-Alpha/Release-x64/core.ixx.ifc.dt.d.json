@@ -4,13 +4,13 @@
         "Source": "d:\\projects\\alpha\\alpha\\include\\core\\core.ixx",
         "ProvidedModule": "core",
         "Includes": [
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\sal.h",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\concurrencysal.h",
-            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\ucrt\\corecrt_stdio_config.h",
-            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\ucrt\\corecrt.h",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\vcruntime.h",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\vadefs.h",
-            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\shared\\apisetcconv.h"
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\sal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\concurrencysal.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\ucrt\\corecrt_stdio_config.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\ucrt\\corecrt.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\vcruntime.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\vadefs.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22000.0\\shared\\apisetcconv.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

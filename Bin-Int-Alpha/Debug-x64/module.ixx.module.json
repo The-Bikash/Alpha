@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\module.ixx",
+        "ProvidedModule": "Module",
+        "ImportedModules": [
+            "LinearContainer",
+            "algorithm",
+            "time"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

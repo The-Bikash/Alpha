@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\settheory\\set.ixx",
+        "ProvidedModule": "Set",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

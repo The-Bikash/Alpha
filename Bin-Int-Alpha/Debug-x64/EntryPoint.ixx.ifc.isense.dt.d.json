@@ -10,6 +10,14 @@
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Application.ixx.ifc.dt"
             },
             {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc.dt"
+            },
+            {
+                "Name": "code",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\code.ixx.ifc.dt"
+            },
+            {
                 "Name": "Event",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
             },
@@ -20,6 +28,10 @@
             {
                 "Name": "Layer",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Layer.ixx.ifc.dt"
+            },
+            {
+                "Name": "Window",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Window.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

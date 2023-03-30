@@ -44,7 +44,7 @@ export namespace alpha {
 
     template<class _Ty> inline constexpr void _print(const _Ty& _Obj)noexcept {
         if constexpr (is_fundamental_v<_Ty>) {
-            char _Buffer[25] = { 32,0 }; char* _Buf = _Buffer + 1;
+            char _Buffer[25] = { 0 }; char* _Buf = _Buffer;
 
             if      constexpr (is_same_v<_Ty, int>) { itos(_Obj, _Buf); _prints(_Buffer); }
             else if constexpr (is_same_v<_Ty, short>) { itos(_Obj, _Buf); _prints(_Buffer); }

@@ -1,0 +1,27 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\linearcontainer.ixx",
+        "ProvidedModule": "LinearContainer",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\core.ixx.ifc"
+            },
+            {
+                "Name": "initializer",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\initializer.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "io",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-Win32\\io.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

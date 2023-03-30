@@ -2,22 +2,9 @@
     "Version": "1.2",
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\function\\function.ixx",
-        "ProvidedModule": "Function",
+        "ProvidedModule": "",
         "Includes": [],
-        "ImportedModules": [
-            {
-                "Name": "io",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc"
-            },
-            {
-                "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
-            },
-            {
-                "Name": "string",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
-            }
-        ],
+        "ImportedModules": [],
         "ImportedHeaderUnits": []
     }
 }

@@ -287,7 +287,7 @@ export namespace alpha {
 			_Ty Tmp = _Matrix(i, j);
 			if constexpr (Tmp != _Zero) {
 				if constexpr (Tmp != unity) R_D(i, Tmp); size_t k;
-				if constexpr (x == true) k = 0; else k = i + 1;
+				if (x == true) k = 0; else k = i + 1;
 				for (k; k < _Row; ++k) {
 					Tmp = _Matrix(k, j);
 					if constexpr (Tmp != _Zero)
@@ -300,7 +300,7 @@ export namespace alpha {
 		constexpr void C_MAKE_SPECIAL(const size_t i, const size_t j, bool x = false) {
 			_Ty Tmp = _Matrix(i, j), Tmpx;
 			if constexpr (Tmp != _Zero) {
-				size_t k; if constexpr (x == true) k = 0; else k = i + 1;
+				size_t k; if (x == true) k = 0; else k = i + 1;
 				for (k; k < _Row; ++k) {
 					Tmpx = _Matrix(k, j) / Tmp;
 					if constexpr (Tmpx != _Zero)
@@ -774,6 +774,11 @@ export namespace alpha {
 			for (const auto& i : Tmp)
 				sum += subMatrix(i, i).DET();
 			return sum;
+
+			Array<size_t> v(_Row);
+			iota(v.begin(), v.end(), 1);
+			for_each_combination(v, Order, [&sum, this](const Array<size_t>& i) { sum += this->subMatrix(i, i).DET(); });
+			return sum;
 		}
 		[[nodiscard]] constexpr Matrix adj()const {
 			Matrix Tmp(_Row); size_t i, j;
@@ -1024,6 +1029,10 @@ export namespace alpha{
 			_That._Mat = _MatTmp;
 			_That._Row = _RowTmp;
 		}
+
+		constexpr auto resize(_Int _NewSize)noexcept {
+
+		}
 	public:
 		[[nodiscard]] constexpr _Ty* operator[](const _Int ith)noexcept {
 			if constexpr (_debug) {
@@ -1201,18 +1210,18 @@ export namespace alpha{
 			this->_ElemRowTy2(i, _Unity / _Mat[i][j], j);
 			for (_Int _idx = 0; _idx < i; ++_idx) {
 				if (_Mat[_idx][j] != _Zero)
-					this->_ElemRowTy3(_idx, i, (-_Mat[_idx][j]), j);
+					_ElemRowTy3(_idx, i, (-_Mat[_idx][j]), j);
 			}
 			for (_Int _idx = i + 1; _idx < _Row; ++_idx) {
 				if (_Mat[_idx][j] != _Zero)
-					this->_ElemRowTy3(_idx, i, -_Mat[_idx][j], j);
+					_ElemRowTy3(_idx, i, -_Mat[_idx][j], j);
 			}
 		}
 		inline constexpr auto _MakeLeftRightRestZero(const _Int i, const _Int j)noexcept {
 
 		}
 
-		inline constexpr auto _RREFinverseHelper(const _Int i, const _Int j, Array<_RowOperation>& _Data)noexcept {
+		inline constexpr auto _RREFInverseHelper(const _Int i, const _Int j, Array<_RowOperation>& _Data)noexcept {
 			_Ty _Scalar = _Unity / _Mat[i][j];
 			this->_ElemRowTy2(i, _Scalar, j);
 			_Data.emplace_back(i, _Scalar);
@@ -1223,33 +1232,12 @@ export namespace alpha{
 					this->_ElemRowTy3(_idx, i, _Scalar, j);
 					_Data.emplace_back(_idx, i, _Scalar);
 				}
-			} 
+			}
 			for (++_idx; _idx < _Row; ++_idx) {
 				if (_Mat[_idx][j] != _Zero) {
 					_Scalar = -_Mat[_idx][j];
 					this->_ElemRowTy3(_idx, i, _Scalar, j);
 					_Data.emplace_back(_idx, i, _Scalar);
-				}
-			}
-		}
-
-		inline constexpr auto _RREFinverseHelper(const _Int i, const _Int j, SquareMat& _Imat)noexcept {
-			_Ty _Scalar = _Unity / _Mat[i][j];
-			this->_ElemRowTy2(i, _Scalar, j);
-			_Imat._ElemRowTy2(i, _Scalar);
-			_Int _idx = 0;
-			for (; _idx < i; ++_idx) {
-				if (_Mat[_idx][j] != _Zero) {
-					_Scalar = -_Mat[_idx][j];
-					this->_ElemRowTy3(_idx, i, _Scalar, j);
-					_Imat._ElemRowTy3(_idx, i, _Scalar);
-				}
-			}
-			for (++_idx; _idx < _Row; ++_idx) {
-				if (_Mat[_idx][j] != _Zero) {
-					_Scalar = -_Mat[_idx][j];
-					this->_ElemRowTy3(_idx, i, _Scalar, j);
-					_Imat._ElemRowTy3(_idx, i, _Scalar);
 				}
 			}
 		}
@@ -1266,53 +1254,74 @@ export namespace alpha{
 						}
 					}
 					if (_idx < _Row) {
-						this->_RREFinverseHelper(_Rpivot, _Cpivot, _Data);
+						this->_RREFInverseHelper(_Rpivot, _Cpivot, _Data);
 						++_Rpivot;
 					} else return false;
 				} else {
-					this->_RREFinverseHelper(_Rpivot, _Cpivot, _Data);
+					this->_RREFInverseHelper(_Rpivot, _Cpivot, _Data);
 					++_Rpivot;
 				}
 			} return true;
 		}
-	public:
-		constexpr auto& REF()noexcept {
+	private:
+		template<class _Fn1, class _Fn2>
+		constexpr void _REDUCE(_Fn1 _Func1, _Fn2 _Func2)noexcept {
 			_Int _Cpivot = 0, _Rpivot = 0;
 			for (_Cpivot = 0; _Cpivot < _Row; ++_Cpivot) {
 				if (_Mat[_Rpivot][_Cpivot] == _Zero) {
 					auto i = _Rpivot + 1;
 					for (; i < _Row; ++i)
 						if (_Mat[i][_Cpivot] != _Zero) {
-							this->_ElemRowTy1(i, _Rpivot); break;
+							_Func1(i, _Rpivot); break;
 						}
 					if (i < _Row) {
-						this->_MakeDownRestZero(_Rpivot, _Cpivot);
+						_Func2(_Rpivot, _Cpivot);
 						++_Rpivot;
 					}
 				} else {
-					this->_MakeDownRestZero(_Rpivot, _Cpivot);
+					_Func2(_Rpivot, _Cpivot);
+					++_Rpivot;
+				}
+			}
+		}
+	public:
+		constexpr auto& rrf()noexcept {
+			_Int _Cpivot = 0, _Rpivot = 0;
+			for (_Cpivot = 0; _Cpivot < _Row; ++_Cpivot) {
+				if (_Mat[_Rpivot][_Cpivot] == _Zero) {
+					auto i = _Rpivot + 1;
+					for (; i < _Row; ++i)
+						if (_Mat[i][_Cpivot] != _Zero) {
+							_ElemRowTy1(i, _Rpivot); break;
+						}
+					if (i < _Row) {
+						_MakeDownRestZero(_Rpivot, _Cpivot);
+						++_Rpivot;
+					}
+				} else {
+					_MakeDownRestZero(_Rpivot, _Cpivot);
 					++_Rpivot;
 				}
 			}
 			return *this;
 		}
 
-		constexpr void RREF()noexcept {
+		constexpr void rref()noexcept {
 			_Int _Cpivot = 0, _Rpivot = 0;
 			for (_Cpivot = 0; _Cpivot < _Row; ++_Cpivot) {
 				if (_Mat[_Rpivot][_Cpivot] == _Zero) {
 					auto i = _Rpivot + 1;
 					for (; i < _Row; ++i) {
 						if (_Mat[i][_Cpivot] != _Zero) {
-							this->_ElemRowTy1(i, _Rpivot); break;
+							_ElemRowTy1(i, _Rpivot); break;
 						}
 					}
 					if (i < _Row) {
-						this->_MakeUpDownRestZero(_Rpivot, _Cpivot);
+						_MakeUpDownRestZero(_Rpivot, _Cpivot);
 						++_Rpivot;
 					}
 				} else {
-					this->_MakeUpDownRestZero(_Rpivot, _Cpivot);
+					_MakeUpDownRestZero(_Rpivot, _Cpivot);
 					++_Rpivot;
 				}
 			}
@@ -1338,34 +1347,90 @@ export namespace alpha{
 			} return false;
 		}
 
-		constexpr bool inverse()noexcept {
-			SquareMat _Imat(_Row, MatrixType::IdentityMatrix);
+	private:
+		inline constexpr auto _RREFinverseHelper(const _Int i, const _Int j, SquareMat& _Imat)noexcept {
+			_Ty _Scalar = _Unity / _Mat[i][j];
+			this->_ElemRowTy2(i, _Scalar, j);
+			_Imat._ElemRowTy2(i, _Scalar);
+			_Int _idx = 0;
+			for (; _idx < i; ++_idx) {
+				if (_Mat[_idx][j] != _Zero) {
+					_Scalar = -_Mat[_idx][j];
+					this->_ElemRowTy3(_idx, i, _Scalar, j);
+					_Imat._ElemRowTy3(_idx, i, _Scalar);
+				}
+			}
+			for (++_idx; _idx < _Row; ++_idx) {
+				if (_Mat[_idx][j] != _Zero) {
+					_Scalar = -_Mat[_idx][j];
+					this->_ElemRowTy3(_idx, i, _Scalar, j);
+					_Imat._ElemRowTy3(_idx, i, _Scalar);
+				}
+			}
+		}
+		inline constexpr auto _ChangeToIndentity()noexcept {
+			_Memset(_Zero);
+			for (_Int i = 0; i < _Row; ++i)
+				_Mat[i][i] = _Unity;
+		}
+		inline constexpr auto _InverseGreater3_3()noexcept {
+			static SquareMat _Imat(_Row, MatrixType::IdentityMatrix);
+			_Imat.resize(_Row);
 			_Int _Cpivot = 0, _Rpivot = 0, _idx;
 			for (_Cpivot = 0; _Cpivot < _Row; ++_Cpivot) {
 				if (_Mat[_Rpivot][_Cpivot] == _Zero) {
-					_idx = _Rpivot + 1;
-					for (; _idx < _Row; ++_idx) {
+					for (_idx = _Rpivot + 1; _idx < _Row; ++_idx) {
 						if (_Mat[_idx][_Cpivot] != _Zero) {
 							this->_ElemRowTy1(_idx, _Rpivot);
-							_Imat._ElemRowTy1(_idx, _Rpivot);
-							break;
+							_Imat._ElemRowTy1(_idx, _Rpivot); break;
 						}
 					} if (_idx < _Row) {
-						this->_RREFinverseHelper(_Rpivot, _Cpivot, _Imat);
+						_RREFinverseHelper(_Rpivot, _Cpivot, _Imat);
 						++_Rpivot;
 					} else {
-						_Imat._Memset(_Zero);
-						for (_Int i = 0; i < _Row; ++i)
-							_Mat[i][i] = _Unity;
+						_Imat._ChangeToIndentity();
 						return false;
 					}
 				} else {
-					this->_RREFinverseHelper(_Rpivot, _Cpivot, _Imat);
+					_RREFinverseHelper(_Rpivot, _Cpivot, _Imat);
 					++_Rpivot;
 				}
 			} this->swap(_Imat); return true;
 		}
+	public:
+		constexpr bool inverse()noexcept {
+			if (_Row > 3) return _InverseGreater3_3();
+			else {
+				switch (_Row) {
+				case 1: {
 
+				}
+				}
+			}
+		}
+
+		constexpr bool inverse(bool _Flag)noexcept {
+			if (_Flag) {
+				SquareMat _Copy = *this;
+				if (!inverse()) {
+					this->swap(_Copy);
+					return false;
+				} else return true;
+			} else return inverse();
+		}
+
+	private:
+		constexpr inline auto _DetGreater4_4()const noexcept{
+			_Int i = 0; _Ty _Sum = _Zero, _Val;
+			for (_Int j = 0; j < _Row; ++j) {
+				if (_Mat[i][j] != _Zero) {
+					_Val = _Mat[i][j] * SquareMat(*this, i, j).det();
+					(i + j) & 1 ? _Sum -= _Val : _Sum += _Val;
+				}
+			}
+			return _Sum;
+		}
+	public:
 		constexpr auto det()const noexcept {
 			if (_Row <= 3)
 				if (_Row == 3) return
@@ -1378,15 +1443,7 @@ export namespace alpha{
 					_Mat[0][0];
 				else __debugbreak;
 
-
-			_Int i = 0; _Ty _Sum = _Zero, _Val;
-			for (_Int j = 0; j < _Row; ++j) {
-				if (_Mat[i][j] != _Zero) {
-					_Val = _Mat[i][j] * SquareMat(*this, i, j).det();
-					(i + j) & 1 ? _Sum -= _Val : _Sum += _Val;
-				}
-			}
-			return _Sum;
+			return _DetGreater4_4();
 		}
 
 		constexpr auto determinate()const noexcept {
@@ -1427,7 +1484,7 @@ export namespace alpha{
 		constexpr auto _CountNonZeroRow()noexcept {
 			_Int _Count = 0;
 			for (_Int i = 0; i < _Row; ++i)
-				if (!isZeroRow()) ++_Count;
+				if (!isZeroRow(i)) ++_Count;
 			return _Count;
 		}
 		
@@ -1435,32 +1492,34 @@ export namespace alpha{
 		constexpr auto rank()noexcept {
 			if (isRRF()) return _CountNonZeroRow();
 			SquareMat _Tmp = *this;
-			_Tmp.REF(); return _Tmp._CountNonZeroRow();
+			_Tmp.rrf(); return _Tmp._CountNonZeroRow();
 		}
 
 	public:
 
-		constexpr SquareMat operator()(const Array<_Int>& I, const Array<_Int>& J)noexcept {
+		constexpr SquareMat operator()(const Array<_Int>& _Data1, const Array<_Int>& _Data2)noexcept {
 			if constexpr (_debug) {
-				if (I.size() != J.size()) __debugbreak();
+				if (_Data1.size() != _Data2.size()) __debugbreak();
 				//check array is sorted or not
 			}
-			SquareMat _SubMatrix((_Int)I.size());
-			_Int i1 = 0, j1 = 0;
-			for (const auto i : I) { j1 = 0;
-				for (const auto j : J) { 
-					_SubMatrix._Mat[i1][j1] = _Mat[i][j]; ++j1;
-				} ++i1;
+			SquareMat _SubMatrix(static_cast<_Int>(_Data1.size()));
+			_Int i = 0, j = 0;
+			for (const auto _Posi : _Data1) {
+				j = 0;
+				for (const auto _Posj : _Data2) { 
+					_SubMatrix._Mat[i][j++] = _Mat[_Posi][_Posj];
+				} 
+				++i;
 			}
 			return _SubMatrix;
 		}
 
-		constexpr _Ty Minor(const Array<_Int>& I, const Array<_Int>& J)noexcept {
+		constexpr _Ty minor(const Array<_Int>& I, const Array<_Int>& J)noexcept {
 			return this->operator()(I, J).det();
 		}
 
-		constexpr _Ty SignedMinor(const Array<_Int>& I, const Array<_Int>& J)noexcept {
-			auto _Total = sum(I.begin(), I.end()) + sum(J.begin(), J.end());
+		constexpr _Ty signedMinor(const Array<_Int>& I, const Array<_Int>& J)noexcept {
+			auto _Total = accumulate(I.begin(), I.end(), 0U) + accumulate(J.begin(), J.end(), 0U);
 			auto _Signed = _Total & 1 ? -_Unity : _Unity;
 			return this->operator()(I, J).det() * _Signed;
 		}
@@ -1483,6 +1542,7 @@ export namespace alpha{
 			}
 		}
 
+		
 		constexpr auto operator-=(const SquareMat& _That)noexcept {
 			if constexpr (_debug) {
 				if (_Rowcheck(_That)) __debugbreak();

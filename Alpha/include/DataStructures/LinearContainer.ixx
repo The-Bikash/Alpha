@@ -25,14 +25,17 @@ export namespace alpha {
 	class ConstLinearContainerIterator {
 	public:
 		using _Ty = LinearContainer::ArgType;
+		using _Ref = const _Ty&;
 	public:
 		constexpr ConstLinearContainerIterator(_Ty* _Ptr)noexcept : _Ptr(_Ptr) {}
+		[[nodiscard]] constexpr _Ref operator*()const noexcept {
+			return *_Ptr;
+		}
+		[[nodiscard]] constexpr const _Ty* operator->()const noexcept {
+			return _Ptr;
+		}
 		constexpr ConstLinearContainerIterator& operator++()noexcept {
 			++_Ptr;
-			return *this;
-		}
-		constexpr ConstLinearContainerIterator& operator--() noexcept {
-			--_Ptr;
 			return *this;
 		}
 		constexpr ConstLinearContainerIterator operator++(int) noexcept {
@@ -40,86 +43,121 @@ export namespace alpha {
 			++(*this);
 			return iterator;
 		}
+		constexpr ConstLinearContainerIterator& operator--() noexcept {
+			--_Ptr;
+			return *this;
+		}
 		constexpr ConstLinearContainerIterator operator--(int) noexcept {
 			ConstLinearContainerIterator iterator = *this;
 			--(*this);
 			return iterator;
 		}
-		constexpr _Ty& operator[] (size_t index)const noexcept {
+		constexpr ConstLinearContainerIterator& operator+=(size_t _Off) noexcept {
+			_Ptr += _Off;
+			return *this;
+		}
+		[[nodiscard]] constexpr ConstLinearContainerIterator operator+(size_t _Off) noexcept {
+			ConstLinearContainerIterator _Tmp = *this;
+			_Tmp += _Off;
+			return _Tmp;
+		}
+		constexpr ConstLinearContainerIterator& operator-=(size_t _Off) noexcept {
+			_Ptr -= _Off;
+			return *this;
+		}
+		[[nodiscard]] constexpr ConstLinearContainerIterator operator-(size_t _Off) noexcept {
+			ConstLinearContainerIterator _Tmp = *this;
+			_Tmp -= _Off;
+			return _Tmp;
+		}
+		[[nodiscard]] constexpr size_t operator-(ConstLinearContainerIterator _That)noexcept {
+			return _Ptr - _That._Ptr;
+		}
+		[[nodiscard]] constexpr _Ref operator[] (size_t index)const noexcept {
 			return *(_Ptr + index);
 		}
-		constexpr _Ty* operator->()const noexcept {
-			return _Ptr;
+		[[nodiscard]] constexpr bool operator==(const ConstLinearContainerIterator& that)const {
+			return _Ptr == that._Ptr;
 		}
-		constexpr _Ty& operator*()const noexcept {
-			return *_Ptr;
+		[[nodiscard]] constexpr bool operator!=(const ConstLinearContainerIterator& that)const {
+			return _Ptr != that._Ptr;
 		}
-		constexpr bool operator==(const ConstLinearContainerIterator& that)const {
-			return this->_Ptr == that._Ptr;
+		[[nodiscard]] constexpr const _Ty* _Unwrapped() const noexcept {
+			return this->_Ptr;
 		}
-		constexpr bool operator!=(const ConstLinearContainerIterator& that)const {
-			return this->_Ptr != that._Ptr;
-		}
-		inline constexpr size_t operator-(ConstLinearContainerIterator _That)noexcept {
-			return _That._Ptr - _Ptr;
-		}
-	private:
 		_Ty* _Ptr;
 	};
 
 	template<class LinearContainer>
-	class LinearContainerIterator {
+	class LinearContainerIterator : public ConstLinearContainerIterator<LinearContainer> {
 	public:
+		using _Mybase = ConstLinearContainerIterator<LinearContainer>;
 		using _Ty = typename LinearContainer::ArgType;
+		using reference = _Ty&;
+		using pointer = _Ty*;
 	public:
-		inline constexpr LinearContainerIterator(_Ty* _Ptr) : _Ptr(_Ptr) {}
-		inline constexpr operator ConstLinearContainerIterator<LinearContainer>() noexcept{
-			return ConstLinearContainerIterator<LinearContainer>(_Ptr);
+		[[nodiscard]] constexpr reference operator*() const noexcept {
+			return const_cast<reference>(_Mybase::operator*());
 		}
-		inline constexpr LinearContainerIterator& operator++() noexcept {
-			++_Ptr;
+
+		[[nodiscard]] constexpr pointer operator->() const noexcept {
+			return this->_Ptr;
+		}
+
+		constexpr LinearContainerIterator& operator++() noexcept {
+			_Mybase::operator++();
 			return *this;
 		}
-		inline constexpr LinearContainerIterator& operator--() noexcept {
-			--_Ptr;
+
+		constexpr LinearContainerIterator operator++(int) noexcept {
+			LinearContainerIterator _Tmp = *this;
+			_Mybase::operator++();
+			return _Tmp;
+		}
+
+		constexpr LinearContainerIterator& operator--() noexcept {
+			_Mybase::operator--();
 			return *this;
 		}
-		inline constexpr LinearContainerIterator operator++(int) noexcept {
-			LinearContainerIterator iterator = *this;
-			++(*this);
-			return iterator;
+
+		constexpr LinearContainerIterator operator--(int) noexcept {
+			LinearContainerIterator _Tmp = *this;
+			_Mybase::operator--();
+			return _Tmp;
 		}
-		inline constexpr LinearContainerIterator operator--(int) noexcept {
-			LinearContainerIterator iterator = *this;
-			--(*this);
-			return iterator;
+
+		constexpr LinearContainerIterator& operator+=(const size_t _Off) noexcept {
+			_Mybase::operator+=(_Off);
+			return *this;
 		}
-		inline constexpr _Ty& operator[] (size_t index)noexcept {
-			return *(_Ptr + index);
+
+		[[nodiscard]] constexpr LinearContainerIterator operator+(const size_t _Off) const noexcept {
+			LinearContainerIterator _Tmp = *this;
+			_Tmp += _Off;
+			return _Tmp;
 		}
-		inline constexpr _Ty* operator->()noexcept {
-			return _Ptr;
+
+		constexpr LinearContainerIterator& operator-=(const size_t _Off) noexcept {
+			_Mybase::operator-=(_Off);
+			return *this;
 		}
-		inline constexpr _Ty& operator*()noexcept {
-			return *_Ptr;
+
+		using _Mybase::operator-;
+
+		[[nodiscard]] constexpr LinearContainerIterator operator-(const size_t _Off) const noexcept {
+			LinearContainerIterator _Tmp = *this;
+			_Tmp -= _Off;
+			return _Tmp;
 		}
-		inline constexpr bool operator == (const LinearContainerIterator& that)const {
-			return this->_Ptr == that._Ptr;
+
+		[[nodiscard]] constexpr reference operator[](const size_t _Off) const noexcept {
+			return const_cast<reference>(_Mybase::operator[](_Off));
 		}
-		inline constexpr bool operator != (const LinearContainerIterator& that)const {
-			return this->_Ptr != that._Ptr;
+
+
+		[[nodiscard]] constexpr _Ty* _Unwrapped() const noexcept {
+			return this->_Ptr;
 		}
-		inline constexpr LinearContainerIterator operator+(const size_t index)noexcept {
-			return LinearContainerIterator(_Ptr + index);
-		}
-		inline constexpr LinearContainerIterator operator-(const size_t index)noexcept {
-			return LinearContainerIterator(_Ptr - index);
-		}
-		inline constexpr size_t operator-(LinearContainerIterator _That)noexcept {
-			return _That._Ptr - _Ptr;
-		}
-	private:
-		_Ty* _Ptr;
 	};
 
 	template<class _Ty>
@@ -134,30 +172,27 @@ export namespace alpha {
 			_AllocateExactly(2);
 		}
 
-		explicit constexpr LinearContainer(const size_t _Size)noexcept {
-			_AllocateExactly(_Size);
-			_Siz = 0;
-		}
-
 		constexpr LinearContainer(const size_t _Size, const _Ty& _Val)noexcept {
 			_AllocateExactly(_Size);
 			_Siz = _Size;
 			_Memset(_Val);
 		}
 
+		explicit constexpr LinearContainer(const size_t _Size)noexcept : LinearContainer(_Size, _Ty()) {}
+
 		constexpr LinearContainer(const initializer<_Ty>& list)noexcept {
 			_Siz = list.size();
 			_AllocateExactly(_Siz);
 			size_t _idx = 0;
 			for (const auto& _Val : list) {
-				_Ptr[_idx] = _Val;
+				new(_Ptr + _idx) _Ty(_Val);
 				++_idx;
 			}
 		}
 
 		constexpr LinearContainer(const LinearContainer& _That)noexcept {
 			_AllocateExactly(_That._Siz);
-			_Copy(_That);
+			_ConstructCopy(_That);
 		}
 
 		constexpr LinearContainer(LinearContainer&& _That)noexcept {
@@ -178,13 +213,10 @@ export namespace alpha {
 
 		constexpr LinearContainer& operator=(const LinearContainer& _That)noexcept {
 			if (this != &_That) {
-				if (_Cap < _That._Siz) {
+				if (_Cap < _That._Siz)
 					_ReallocateExactly(_That._Siz);
-					_Siz = _That._Siz;
-				} else {
-					_Siz = _That._Siz;
-					_Copy(_That);
-				}
+				_Siz = _That._Siz;
+				_Copy(_That);
 			}
 			return *this;
 		};
@@ -215,7 +247,7 @@ export namespace alpha {
 			return _Ptr[_Idx];
 		}
 
-		constexpr const _Ty& operator[](const size_t _Idx) {
+		constexpr _Ty& operator[](const size_t _Idx) {
 			if constexpr (_debug) {
 				if(_Idx >= _Siz) __debugbreak();
 			}
@@ -269,18 +301,25 @@ export namespace alpha {
 		}
 
 		constexpr void print()const noexcept {
-			_print("\n(");
+			_print("\n[");
 			for (size_t i = 0; i < _Siz; ++i) {
 				_print(' ');
 				_print(_Ptr[i]);
 			}
-			_print(" )");
+			_print(" ]");
 		}
 
 		[[nodiscard]] constexpr size_t size()const {
 			return _Siz;
 		}
 
+		[[nodiscard]] constexpr _Ty* data() noexcept {
+			return _Ptr;
+		}
+
+		[[nodiscard]] constexpr const _Ty* data() const noexcept {
+			return _Ptr;
+		}
 		[[nodiscard]] constexpr size_t capacity()const {
 			return _Cap;
 		}
@@ -404,6 +443,17 @@ export namespace alpha {
 			} else {
 				for (size_t _idx = 0; _idx < _Siz; ++_idx) {
 					new(_Ptr + _idx) _Ty(_Val);
+				}
+			}
+		}
+
+		inline constexpr auto _ConstructCopy(const LinearContainer& _That)noexcept {
+			_Siz = _That._Siz;
+			if constexpr (is_fundamental_v<_Ty> || is_pointer_v<_Ty>) {
+				memcpy(_Ptr, _That._Ptr, _That._Siz * sizeof(_Ty));
+			} else {
+				for (size_t _idx = 0; _idx < _Siz; ++_idx) {
+					new(_Ptr + _idx) _Ty(_That._Ptr[_idx]);
 				}
 			}
 		}

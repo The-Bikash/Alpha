@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\io\\io.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\io\\io.ixx",
         "ProvidedModule": "io",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "typeinfo",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typeinfo.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typeinfo.ixx.ifc.dt"
             },
             {
                 "Name": "typetraits",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

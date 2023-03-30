@@ -1,0 +1,12 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\imgui\\imguilayer.ixx",
+        "ProvidedModule": "ImGuiLayer",
+        "ImportedModules": [
+            "Event",
+            "Layer"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

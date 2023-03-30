@@ -3,7 +3,13 @@
     "Data": {
         "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\algorithm.ixx",
         "ProvidedModule": "algorithm",
-        "ImportedModules": [],
+        "ImportedModules": [
+            "core",
+            "utility",
+            "typeinfo",
+            "typetraits",
+            "LinearContainer"
+        ],
         "ImportedHeaderUnits": []
     }
 }

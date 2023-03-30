@@ -1,0 +1,11 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\core\\utility.ixx",
+        "ProvidedModule": "utility",
+        "ImportedModules": [
+            "typetraits"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

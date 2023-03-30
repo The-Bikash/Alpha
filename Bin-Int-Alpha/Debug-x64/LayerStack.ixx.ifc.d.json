@@ -30,12 +30,16 @@
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\initializer.ixx.ifc"
             },
             {
+                "Name": "core",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc"
+            },
+            {
                 "Name": "typetraits",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
             },
             {
-                "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\core.ixx.ifc"
+                "Name": "utility",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\utility.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

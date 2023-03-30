@@ -1,0 +1,22 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\graphicscontext.ixx",
+        "ProvidedModule": "GraphicsContext",
+        "Includes": [
+            "d:\\projects\\alpha\\alpha\\include\\engine\\api\\opengl\\openglgraphicscontext.h",
+            "d:\\projects\\alpha\\vendor\\glad\\include\\glad\\glad.h",
+            "d:\\projects\\alpha\\vendor\\glad\\include\\khr\\khrplatform.h",
+            "d:\\projects\\alpha\\vendor\\glfw\\include\\glfw\\glfw3.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\ucrt\\stddef.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\ucrt\\corecrt.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\vcruntime.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\sal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\concurrencysal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\vadefs.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.34.31933\\include\\stdint.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

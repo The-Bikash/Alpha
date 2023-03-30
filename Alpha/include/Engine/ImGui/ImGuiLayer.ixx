@@ -12,15 +12,15 @@ export namespace alpha {
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnUpdate() override;
-		virtual void OnEvent(Event& _Event) override;
+		virtual void OnRender() override;
 
+		   
 		void Begin();
 		void End();
 
 		void BlockEvents(bool _Block) { _BlockEvents = _Block; }
 
-		void SetDarkThemeColors();
+		//void SetDarkThemeColors(); */
 	private:
 		bool _BlockEvents = true;
 	};

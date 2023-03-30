@@ -14,6 +14,10 @@
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Layer.ixx.ifc"
             },
             {
+                "Name": "Window",
+                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Window.ixx.ifc"
+            },
+            {
                 "Name": "string",
                 "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc"
             }

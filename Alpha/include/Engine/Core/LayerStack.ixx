@@ -1,5 +1,4 @@
 export module LayerStack;
-
 import Layer;
 import LinearContainer;
 import algorithm;

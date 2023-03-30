@@ -59,7 +59,7 @@ namespace alpha {
         putchar('-');
     }
 
-    struct UnsignedInt::UnsignedIntImpl {
+    struct UnsignedIntImpl {
         _Mtype* _Num;
         _Stype  _Siz;
         _Stype  _Cap;
@@ -115,30 +115,24 @@ namespace alpha {
         }
 
         inline void _Free()noexcept {
-            if (_Num != nullptr) {
-                free(_Num);
-                _Num = nullptr;
-                _Siz = 0;
-                _Cap = 0;
-            }
+            free(_Num);
+            _Num = nullptr;
+            _Siz = 0;
+            _Cap = 0;
         }
-    };
 
 
-    UnsignedInt::UnsignedInt()noexcept {
-        _Impl = static_cast<UnsignedIntImpl*>(malloc(sizeof(UnsignedIntImpl)));
-        _Impl->_Calloc(2);
-        _Impl->_Siz = 1;
+    UnsignedIntImpl()noexcept {
+        _Calloc(2);
+        _Siz = 1;
     }
 
-    UnsignedInt::UnsignedInt(const longInitializer& _List)noexcept {
-        _Impl = static_cast<UnsignedIntImpl*>(malloc(sizeof(UnsignedIntImpl)));
-
+    UnsignedIntImpl(const longInitializer& _List)noexcept {
         if constexpr (__specialcompiler) {
-            _Impl->_Siz = _List.size();
-            _Impl->_Siz = _Impl->_Siz & 1 ? (++_Impl->_Siz) >> 1 : _Impl->_Siz >> 1;
+            _Siz = _List.size();
+            _Siz = _Siz & 1 ? (++_Siz) >> 1 : _Siz >> 1;
 
-            _Impl->_Alloc(_Impl->_Siz);
+            _Alloc(_Siz);
 
             _Stype _Index = 0;
             _Stype i = 0;
@@ -147,59 +141,58 @@ namespace alpha {
                 if (i & 1) {
                     _Tmp = _Slot;
                     _Tmp <<= 64;
-                    _Impl->_Num[_Index] |= _Tmp;
+                    _Num[_Index] |= _Tmp;
                     _Index++;
                 }
                 else {
-                    _Impl->_Num[_Index] = _Slot;
+                    _Num[_Index] = _Slot;
                 }
                 ++i;
             }
-        }  else {
-            _Impl->_Siz = _List.size();
-            _Impl->_Alloc(_Impl->_Siz);
+        }
+        else {
+            _Siz = _List.size();
+            _Alloc(_Siz);
             auto _Index = 0U;
             for (const auto& _Slot : _List)
-                _Impl->_Num[_Index++] = _Slot;
+                _Num[_Index++] = _Slot;
         }
     }
 
-    UnsignedInt::UnsignedInt(const _Stype _Size)noexcept {
-        _Impl = static_cast<UnsignedIntImpl*>(malloc(sizeof(UnsignedIntImpl)));
-        _Impl->_Alloc(_Size);
-        _Impl->_Num[0] = 0;
-        _Impl->_Siz = 1;
+    UnsignedIntImpl(const _Stype _Size)noexcept {
+         _Alloc(_Size);
+        _Num[0] = 0;
+        _Siz = 1;
     }
 
-    UnsignedInt::UnsignedInt(const UnsignedInt& _That)noexcept {
-        _Impl = static_cast<UnsignedIntImpl*>(malloc(sizeof(UnsignedIntImpl)));
-        _Impl->_Siz = _That._Impl->_Siz;
-        _Impl->_Alloc(_That._Impl->_Cap);
-        memcpy(_Impl->_Num, _That._Impl->_Num, _Impl->_Siz << _shft);
+    UnsignedIntImpl(const UnsignedIntImpl& _That)noexcept {
+        _Siz = _That._Siz;
+        _Alloc(_That._Cap);
+        memcpy(_Num, _That._Num, _Siz << _shft);
     }
 
-    UnsignedInt::UnsignedInt(UnsignedInt&& _That)noexcept {
-        _Impl = _That._Impl;
-        _That._Impl = nullptr;
+    UnsignedIntImpl(UnsignedIntImpl&& _That)noexcept {
+        _Num = _That._Num;
+        _Siz = _That._Siz;
+        _Cap = _That._Cap;
+
+        _That._Num = nullptr;
+        _Siz = 0;
+        _Cap = 0;
     }
 
-    UnsignedInt::~UnsignedInt()noexcept {
-        if (_Impl != nullptr) {
-            _Impl->_Free();
-            free(_Impl);
-            _Impl = nullptr;
-        }
+    ~UnsignedIntImpl()noexcept {
+        if (_Num != nullptr)
+            _Free();
     }
 
-
-
-    constexpr UnsignedInt& UnsignedInt::operator=(const longInitializer& _That)noexcept {
+    constexpr UnsignedIntImpl& operator=(const longInitializer& _That)noexcept {
         if constexpr (__specialcompiler) {
-            _Impl->_Siz = _That.size();
-            _Impl->_Siz = _Impl->_Siz & 1 ? (++_Impl->_Siz) >> 1 : _Impl->_Siz >> 1;
-            if (_Impl->_Siz >= _Impl->_Cap) {
-                free(_Impl->_Num);
-                _Impl->_Alloc(_Impl->_Siz);
+            _Siz = _That.size();
+            _Siz = _Siz & 1 ? (++_Siz) >> 1 : _Siz >> 1;
+            if (_Siz >= _Cap) {
+                free(_Num);
+                _Alloc(_Siz);
             }
 
             _Stype _Index = 0;
@@ -209,111 +202,108 @@ namespace alpha {
                 if (i & 1) {
                     _Tmp = _Slot;
                     _Tmp <<= 64;
-                    _Impl->_Num[_Index] |= _Tmp;
+                    _Num[_Index] |= _Tmp;
                     _Index++;
                 }
                 else {
-                    _Impl->_Num[_Index] = _Slot;
+                    _Num[_Index] = _Slot;
                 }
                 ++i;
             }
-        } else {
-            _Impl->_Siz = _That.size();
-            if (_Impl->_Siz >= _Impl->_Cap) {
-                free(_Impl->_Num);
-                _Impl->_Alloc(_Impl->_Siz);
+        }
+        else {
+            _Siz = _That.size();
+            if (_Siz >= _Cap) {
+                free(_Num);
+                _Alloc(_Siz);
             }
             auto _Index = 0U;
             for (const auto& _Slot : _That)
-                _Impl->_Num[_Index++] = _Slot;
+                _Num[_Index++] = _Slot;
         }
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator=(const _Stype _Size)noexcept {
-        if (_Size > _Impl->_Cap) {
-            free(_Impl->_Num);
-            _Impl->_Alloc(_Size);
+    constexpr UnsignedIntImpl& operator=(const _Stype _Size)noexcept {
+        if (_Size > _Cap) {
+            free(_Num);
+            _Alloc(_Size);
         }
-        _Impl->_Siz = 1;
-        _Impl->_Num[0] = 0;
+        _Siz = 1;
+        _Num[0] = 0;
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator=(const UnsignedIntImpl& _That)noexcept {
         if (this != &_That) {
-            if (_That._Impl->_Siz > _Impl->_Cap) {
-                free(_Impl->_Num);
-                _Impl->_Alloc(_That._Impl->_Siz);
+            if (_That._Siz > _Cap) {
+                free(_Num);
+                _Alloc(_That._Siz);
             }
-            _Impl->_Siz = _That._Impl->_Siz;
-            memcpy(_Impl->_Num, _That._Impl->_Num, _That._Impl->_Siz << _shft);
+            _Siz = _That._Siz;
+            memcpy(_Num, _That._Num, _That._Siz << _shft);
         }
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator=(UnsignedInt&& _That)noexcept {
+    constexpr UnsignedIntImpl& operator=(UnsignedIntImpl&& _That)noexcept {
         if (this != &_That) {
-            _Impl->_Free();
-            _Impl = _That._Impl;
-            _That._Impl = nullptr;
+            _Free();
         }
         return *this;
     }
 
 
-    [[nodiscard]] constexpr bool UnsignedInt::operator==(const UnsignedInt& _That)const noexcept {
-        if (_Impl->_Siz == _That._Impl->_Siz) {
-            auto _Ans = memcmp(_Impl->_Num, _That._Impl->_Num, (size_t)_Impl->_Siz << _shft);
+    [[nodiscard]] constexpr bool operator==(const UnsignedIntImpl& _That)const noexcept {
+        if (_Siz == _That._Siz) {
+            auto _Ans = memcmp(_Num, _That._Num, (size_t)_Siz << _shft);
             return _Ans == 0;
         }
         else return false;
     }
 
-    [[nodiscard]] constexpr bool UnsignedInt::operator!=(const UnsignedInt& _That)const noexcept {
+    [[nodiscard]] constexpr bool operator!=(const UnsignedIntImpl& _That)const noexcept {
         return !(*this == _That);
     }
 
-    [[nodiscard]] inline constexpr bool UnsignedInt::operator> (const UnsignedInt& _That)const noexcept {
-        if (_Impl->_Siz == _That._Impl->_Siz) {
-            for (_Type i = _Impl->_Siz - 1; i >= 0; --i)
-                if (_Impl->_Num[i] != _That._Impl->_Num[i])
-                    return _Impl->_Num[i] > _That._Impl->_Num[i];
+    [[nodiscard]] inline constexpr bool operator> (const UnsignedIntImpl& _That)const noexcept {
+        if (_Siz == _That._Siz) {
+            for (_Type i = _Siz - 1; i >= 0; --i)
+                if (_Num[i] != _That._Num[i])
+                    return _Num[i] > _That._Num[i];
             return false;
         }
-        else return _Impl->_Siz > _That._Impl->_Siz;
+        else return _Siz > _That._Siz;
     }
 
-    [[nodiscard]] constexpr bool UnsignedInt::operator< (const UnsignedInt& _That)const noexcept {
+    [[nodiscard]] constexpr bool operator< (const UnsignedIntImpl& _That)const noexcept {
         return _That > *this;
     }
 
-    [[nodiscard]] constexpr bool UnsignedInt::operator>=(const UnsignedInt& _That)const noexcept {
+    [[nodiscard]] constexpr bool operator>=(const UnsignedIntImpl& _That)const noexcept {
         return !(_That > *this);
     }
 
-    [[nodiscard]] constexpr bool UnsignedInt::operator<=(const UnsignedInt& _That)const noexcept {
+    [[nodiscard]] constexpr bool operator<=(const UnsignedIntImpl& _That)const noexcept {
         return !(*this > _That);
     }
 
 
-    constexpr UnsignedInt& UnsignedInt::operator<<=(const _Stype _Shift)noexcept {
+    constexpr UnsignedIntImpl& operator<<=(const _Stype _Shift)noexcept {
         const auto _Sft = _Shift >> _lsft;
         const auto _Rft = _Shift - (_Sft << _lsft);
-        const auto _Msz = _Impl->_Siz + _Sft + 1;
-        if (_Msz >= _Impl->_Cap)
-            _Impl->_Rlloc(_Msz);
+        const auto _Msz = _Siz + _Sft + 1;
+        if (_Msz >= _Cap)
+            _Rlloc(_Msz);
         if (_Sft) {
-            memmove(_Impl->_Num + _Sft, _Impl->_Num, _Impl->_Siz << _shft);
-            memset(_Impl->_Num, 0, _Sft << _shft);
-            _Impl->_Siz += _Sft;
+            memmove(_Num + _Sft, _Num, _Siz << _shft);
+            memset(_Num, 0, _Sft << _shft);
+            _Siz += _Sft;
         }
         if (_Rft) {
             auto _Rsift = _bits - _Rft;
             auto _Mask1 = _zero;
             auto _Mask2 = _zero;
-            auto* _Num = _Impl->_Num;
-            auto& _Siz = _Impl->_Siz;
             for (auto i = _Sft; i < _Siz; ++i) {
                 _Mask2 = _Num[i] >> _Rsift;
                 _Num[i] = _Num[i] << _Rft;
@@ -328,24 +318,22 @@ namespace alpha {
         } return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator>>=(const _Stype _Shift)noexcept {
+    constexpr UnsignedIntImpl& operator>>=(const _Stype _Shift)noexcept {
         const auto _Sft = _Shift >> _lsft;
         const auto _Rft = _Shift - (_Sft << _lsft);
         if (_Sft) {
-            if (_Sft >= _Impl->_Siz) {
-                _Impl->_Num[0] = 0;
-                _Impl->_Siz = 1;
+            if (_Sft >= _Siz) {
+                _Num[0] = 0;
+                _Siz = 1;
                 return *this;
             }
-            _Impl->_Siz -= _Sft;
-            memmove(_Impl->_Num, _Impl->_Num + _Sft, (size_t)_Impl->_Siz << _shft);
+            _Siz -= _Sft;
+            memmove(_Num, _Num + _Sft, (size_t)_Siz << _shft);
         }
         if (_Rft) {
             auto _Rsift = _bits - _Rft;
             auto _Mask1 = _zero;
             auto _Mask2 = _zero;
-            auto* _Num = _Impl->_Num;
-            auto& _Siz = _Impl->_Siz;
             for (_Type i = _Siz - 1; i >= 0; --i) {
                 _Mask2 = _Num[i] << _Rsift;
                 _Num[i] = _Num[i] >> _Rft;
@@ -357,187 +345,188 @@ namespace alpha {
         } return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator|=(const UnsignedInt& _That)noexcept {
-        if (_That._Impl->_Siz > _Impl->_Siz)
-            _Impl->_Update(_That._Impl->_Siz);
-        for (_Stype i = 0; i < _That._Impl->_Siz; ++i)
-            _Impl->_Num[i] |= _That._Impl->_Num[i];
+    constexpr UnsignedIntImpl& operator|=(const UnsignedIntImpl& _That)noexcept {
+        if (_That._Siz > _Siz)
+            _Update(_That._Siz);
+        for (_Stype i = 0; i < _That._Siz; ++i)
+            _Num[i] |= _That._Num[i];
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator&=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator&=(const UnsignedIntImpl& _That)noexcept {
         if (this != &_That) {
-            if (_Impl->_Siz > _That._Impl->_Siz) {
-                for (_Stype i = 0U; i < _That._Impl->_Siz; ++i)
-                    _Impl->_Num[i] &= _That._Impl->_Num[i];
-                _Impl->_Siz = _That._Impl->_Siz;
+            if (_Siz > _That._Siz) {
+                for (_Stype i = 0U; i < _That._Siz; ++i)
+                    _Num[i] &= _That._Num[i];
+                _Siz = _That._Siz;
             }
             else {
-                for (_Stype i = 0u; i < _Impl->_Siz; ++i)
-                    _Impl->_Num[i] &= _That._Impl->_Num[i];
+                for (_Stype i = 0u; i < _Siz; ++i)
+                    _Num[i] &= _That._Num[i];
             }
         } return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator^=(const UnsignedInt& _That)noexcept {
-        if (_That._Impl->_Siz > _Impl->_Siz)
-            _Impl->_Update(_That._Impl->_Siz);
-        for (_Stype _i = 0U; _i < _That._Impl->_Siz; ++_i)
-            _Impl->_Num[_i] ^= _That._Impl->_Num[_i];
+    constexpr UnsignedIntImpl& operator^=(const UnsignedIntImpl& _That)noexcept {
+        if (_That._Siz > _Siz)
+            _Update(_That._Siz);
+        for (_Stype _i = 0U; _i < _That._Siz; ++_i)
+            _Num[_i] ^= _That._Num[_i];
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator+=(const UnsignedInt& _That)noexcept {
-        if (_That._Impl->_Siz > _Impl->_Siz) _Impl->_Update(_That._Impl->_Siz);
+    constexpr UnsignedIntImpl& operator+=(const UnsignedIntImpl& _That)noexcept {
+        if (_That._Siz > _Siz) _Update(_That._Siz);
         auto _Cary1 = false;
         auto _Cary2 = false;
         auto _Cache = _zero;
-        for (_Stype i = 0; i < _That._Impl->_Siz; ++i) {
-            _Cache = _Impl->_Num[i] + _That._Impl->_Num[i];
-            _Cary2 = _Cache == _Tmax && _Cary1 ? true : _Cache < _Impl->_Num[i];
-            _Impl->_Num[i] = _Cache + _Cary1;
+        for (_Stype i = 0; i < _That._Siz; ++i) {
+            _Cache = _Num[i] + _That._Num[i];
+            _Cary2 = _Cache == _Tmax && _Cary1 ? true : _Cache < _Num[i];
+            _Num[i] = _Cache + _Cary1;
             _Cary1 = _Cary2;
         }
-        for (auto i = _That._Impl->_Siz; i < _Impl->_Siz && _Cary1; ++i) {
-            _Cary2 = _Impl->_Num[i] == _Tmax;
-            _Impl->_Num[i] = _Impl->_Num[i] + _Cary1;
+        for (auto i = _That._Siz; i < _Siz && _Cary1; ++i) {
+            _Cary2 = _Num[i] == _Tmax;
+            _Num[i] = _Num[i] + _Cary1;
             _Cary1 = _Cary2;
         }
         if (_Cary1) {
-            if (_Impl->_Siz == _Impl->_Cap) _Impl->_Rlloc(_Impl->_Siz + 1);
-            _Impl->_Num[_Impl->_Siz] = 1; ++_Impl->_Siz;
+            if (_Siz == _Cap) _Rlloc(_Siz + 1);
+            _Num[_Siz] = 1; ++_Siz;
         }
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator-=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator-=(const UnsignedIntImpl& _That)noexcept {
         auto _Brrw1 = false;
         auto _Brrw2 = false;
-        for (_Stype i = 0; i < _That._Impl->_Siz; ++i) {
-            _Brrw2 = _Impl->_Num[i] == _That._Impl->_Num[i] && _Brrw1 ? true : _Impl->_Num[i] < _That._Impl->_Num[i];
-            _Impl->_Num[i] = _Impl->_Num[i] - _That._Impl->_Num[i] - _Brrw1;
+        for (_Stype i = 0; i < _That._Siz; ++i) {
+            _Brrw2 = _Num[i] == _That._Num[i] && _Brrw1 ? true : _Num[i] < _That._Num[i];
+            _Num[i] = _Num[i] - _That._Num[i] - _Brrw1;
             _Brrw1 = _Brrw2;
         }
         if (_Brrw1) {
-            auto i = _That._Impl->_Siz;
-            for (; _Impl->_Num[i] == 0; ++i)
-                _Impl->_Num[i] = _Tmax;
-            _Impl->_Num[i] -= _Brrw1;
+            auto i = _That._Siz;
+            for (; _Num[i] == 0; ++i)
+                _Num[i] = _Tmax;
+            _Num[i] -= _Brrw1;
         }
-        for (; _Impl->_Num[_Impl->_Siz - 1] == 0 && _Impl->_Siz > 1; --_Impl->_Siz) {}
+        for (; _Num[_Siz - 1] == 0 && _Siz > 1; --_Siz) {}
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator*=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator*=(const UnsignedIntImpl& _That)noexcept {
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator/=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator/=(const UnsignedIntImpl& _That)noexcept {
         return *this;
     }
 
-    constexpr UnsignedInt& UnsignedInt::operator%=(const UnsignedInt& _That)noexcept {
+    constexpr UnsignedIntImpl& operator%=(const UnsignedIntImpl& _That)noexcept {
         return *this;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator<<(const _Stype that)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator<<(const _Stype that)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp <<= that;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator>>(const _Stype that)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator>>(const _Stype that)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp >>= that;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator|(const UnsignedInt& _That)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator|(const UnsignedIntImpl& _That)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp |= _That;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator&(const UnsignedInt& _That)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator&(const UnsignedIntImpl& _That)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp &= _That;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator^(const UnsignedInt& _That)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator^(const UnsignedIntImpl& _That)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp ^= _That;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator+(const UnsignedInt& _That)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator+(const UnsignedIntImpl& _That)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp += _That;
         return _Tmp;
     }
 
-    [[nodiscard]] UnsignedInt UnsignedInt::operator-(const UnsignedInt& _That)const noexcept {
-        UnsignedInt _Tmp(*this);
+    [[nodiscard]] UnsignedIntImpl operator-(const UnsignedIntImpl& _That)const noexcept {
+        UnsignedIntImpl _Tmp(*this);
         _Tmp -= _That;
         return _Tmp;
     }
 
 
-    void _print(const UnsignedInt& _That)noexcept {
+    void _print(const UnsignedIntImpl& _That)noexcept {
         char _Buff[_bits + 1]{};
         _Buff[_bits] = '\0';
         _Mtype _Mask = 0;
         _Mtype _Tmp = 1; _Tmp <<= (_bits - 1);
-        for (_Type i = _That._Impl->_Siz - 1; i >= 0; --i) {
+        for (_Type i = _That._Siz - 1; i >= 0; --i) {
             _Mask = _Tmp;
             for (auto j = 0; j < _bits; ++j) {
-                _Buff[j] = (_That._Impl->_Num[i] & _Mask) ? '1' : '0';
+                _Buff[j] = (_That._Num[i] & _Mask) ? '1' : '0';
                 _Mask >>= 1;
             }
             fputs(_Buff, console);
         }
     }
 
-    inline void Add(UnsignedInt& _Answr, const UnsignedInt& _First, const UnsignedInt& _Secnd)noexcept {
+    inline void Add(UnsignedIntImpl& _Answr, const UnsignedIntImpl& _First, const UnsignedIntImpl& _Secnd)noexcept {
         _Mtype* _This = 0;
         _Stype  _Siza = 0;
         _Mtype* _That = 0;
         _Stype  _Sizb = 0;
-        
-        if (_First._Impl->_Siz >= _Secnd._Impl->_Siz) {
-            _This = _First._Impl->_Num;
-            _That = _Secnd._Impl->_Num;
-            _Siza = _First._Impl->_Siz;
-            _Sizb = _Secnd._Impl->_Siz;
-        } else {
-            _That = _First._Impl->_Num;
-            _This = _Secnd._Impl->_Num;
-            _Sizb = _First._Impl->_Siz;
-            _Siza = _Secnd._Impl->_Siz;
+
+        if (_First._Siz >= _Secnd._Siz) {
+            _This = _First._Num;
+            _That = _Secnd._Num;
+            _Siza = _First._Siz;
+            _Sizb = _Secnd._Siz;
+        }
+        else {
+            _That = _First._Num;
+            _This = _Secnd._Num;
+            _Sizb = _First._Siz;
+            _Siza = _Secnd._Siz;
         }
 
         auto _Cache = _zero;
         auto _Cary1 = false;
         auto _Cary2 = false;
 
-        if (_Siza >= _Answr._Impl->_Cap) {
-            free(_Answr._Impl->_Num);
-            _Answr._Impl->_Alloc(_Siza + 1);
-        } _Answr._Impl->_Siz = _Siza;
+        if (_Siza >= _Answr._Cap) {
+            free(_Answr._Num);
+            _Answr._Alloc(_Siza + 1);
+        } _Answr._Siz = _Siza;
 
         for (_Stype i = 0; i < _Sizb; ++i) {
             _Cache = _This[i] + _That[i];
             _Cary2 = _Cache == _Tmax && _Cary1 ? true : _Cache < _This[i];
-            _Answr._Impl->_Num[i] = _Cache + _Cary1;
+            _Answr._Num[i] = _Cache + _Cary1;
             _Cary1 = _Cary2;
         }
         for (auto i = _Sizb; i < _Siza && _Cary1; ++i) {
             _Cary2 = _This[i] == _Tmax;
-            _Answr._Impl->_Num[i] = _This[i] + _Cary1;
+            _Answr._Num[i] = _This[i] + _Cary1;
             _Cary1 = _Cary2;
         }
         if (_Cary1) {
-            _Answr._Impl->_Num[_Answr._Impl->_Siz] = 1; ++_Answr._Impl->_Siz;
+            _Answr._Num[_Answr._Siz] = 1; ++_Answr._Siz;
         }
     }
 
@@ -782,5 +771,5 @@ namespace alpha {
          return _Res;
 
      }*/
-
+};
 }

@@ -66,12 +66,6 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\GLFW\glfw3.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vendor\GLAD\glad.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="include\Engine\Core\LayerStack.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -120,9 +114,63 @@
     <ClCompile Include="src\ImGuiLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\Engine\Core\Input.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GraphicsContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Time\time.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\code.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Function\Polynomial.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\SetTheory\Set.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\GraphTheory\Graph.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\NumberTheory\ContinuedFraction.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DataStructures\simd.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\LinearAlgebra\Vector.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\IMGUI\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\IMGUI\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\IMGUI\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\IMGUI\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Api\OpenGL\OpenGLGraphicsContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Api\GraphicsContext.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

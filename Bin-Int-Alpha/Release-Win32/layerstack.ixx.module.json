@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\layerstack.ixx",
+        "ProvidedModule": "LayerStack",
+        "ImportedModules": [
+            "Layer",
+            "LinearContainer",
+            "algorithm"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

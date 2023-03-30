@@ -6,8 +6,6 @@ import core;
 
 namespace alpha {
 	
-	
-	
 	inline constexpr size_t _Fndsz(const size_t _Size) {
 		size_t _Tmp = 16;
 		while (_Tmp < _Size)
