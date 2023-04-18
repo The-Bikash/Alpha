@@ -3,63 +3,63 @@
 namespace glm{
 namespace detail
 {
-	template<length_t L, typename T, qualifier Q, bool compute = false>
+	template<length_t L, typename _Ty, qualifier Q, bool compute = false>
 	struct compute_ceilShift
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& v, T)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, _Ty, Q> const& v, _Ty)
 		{
 			return v;
 		}
 	};
 
-	template<length_t L, typename T, qualifier Q>
-	struct compute_ceilShift<L, T, Q, true>
+	template<length_t L, typename _Ty, qualifier Q>
+	struct compute_ceilShift<L, _Ty, Q, true>
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& v, T Shift)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, _Ty, Q> const& v, _Ty Shift)
 		{
 			return v | (v >> Shift);
 		}
 	};
 
-	template<length_t L, typename T, qualifier Q, bool isSigned = true>
+	template<length_t L, typename _Ty, qualifier Q, bool isSigned = true>
 	struct compute_ceilPowerOfTwo
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, _Ty, Q> const& x)
 		{
-			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
+			GLM_STATIC_ASSERT(!std::numeric_limits<_Ty>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
-			vec<L, T, Q> const Sign(sign(x));
+			vec<L, _Ty, Q> const Sign(sign(x));
 
-			vec<L, T, Q> v(abs(x));
+			vec<L, _Ty, Q> v(abs(x));
 
-			v = v - static_cast<T>(1);
-			v = v | (v >> static_cast<T>(1));
-			v = v | (v >> static_cast<T>(2));
-			v = v | (v >> static_cast<T>(4));
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 2>::call(v, 8);
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 4>::call(v, 16);
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 8>::call(v, 32);
-			return (v + static_cast<T>(1)) * Sign;
+			v = v - static_cast<_Ty>(1);
+			v = v | (v >> static_cast<_Ty>(1));
+			v = v | (v >> static_cast<_Ty>(2));
+			v = v | (v >> static_cast<_Ty>(4));
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 2>::call(v, 8);
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 4>::call(v, 16);
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 8>::call(v, 32);
+			return (v + static_cast<_Ty>(1)) * Sign;
 		}
 	};
 
-	template<length_t L, typename T, qualifier Q>
-	struct compute_ceilPowerOfTwo<L, T, Q, false>
+	template<length_t L, typename _Ty, qualifier Q>
+	struct compute_ceilPowerOfTwo<L, _Ty, Q, false>
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& x)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, _Ty, Q> const& x)
 		{
-			GLM_STATIC_ASSERT(!std::numeric_limits<T>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
+			GLM_STATIC_ASSERT(!std::numeric_limits<_Ty>::is_iec559, "'ceilPowerOfTwo' only accept integer scalar or vector inputs");
 
-			vec<L, T, Q> v(x);
+			vec<L, _Ty, Q> v(x);
 
-			v = v - static_cast<T>(1);
-			v = v | (v >> static_cast<T>(1));
-			v = v | (v >> static_cast<T>(2));
-			v = v | (v >> static_cast<T>(4));
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 2>::call(v, 8);
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 4>::call(v, 16);
-			v = compute_ceilShift<L, T, Q, sizeof(T) >= 8>::call(v, 32);
-			return v + static_cast<T>(1);
+			v = v - static_cast<_Ty>(1);
+			v = v | (v >> static_cast<_Ty>(1));
+			v = v | (v >> static_cast<_Ty>(2));
+			v = v | (v >> static_cast<_Ty>(4));
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 2>::call(v, 8);
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 4>::call(v, 16);
+			v = compute_ceilShift<L, _Ty, Q, sizeof(_Ty) >= 8>::call(v, 32);
+			return v + static_cast<_Ty>(1);
 		}
 	};
 

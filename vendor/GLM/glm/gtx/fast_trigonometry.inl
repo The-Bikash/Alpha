@@ -3,8 +3,8 @@
 namespace glm{
 namespace detail
 {
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> taylorCos(vec<L, T, Q> const& x)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> taylorCos(vec<L, T, Q> const& x)
 	{
 		return static_cast<T>(1)
 			- (x * x) * (1.f / 2.f)
@@ -28,7 +28,7 @@ namespace detail
 }//namespace detail
 
 	// wrapAngle
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER T wrapAngle(T angle)
 	{
 		return abs<T>(mod<T>(angle, two_pi<T>()));

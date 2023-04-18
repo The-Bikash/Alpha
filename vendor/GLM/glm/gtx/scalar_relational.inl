@@ -2,64 +2,64 @@
 
 namespace glm
 {
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool lessThan
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
 		return x < y;
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool lessThanEqual
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
 		return x <= y;
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool greaterThan
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
 		return x > y;
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool greaterThanEqual
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
 		return x >= y;
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool equal
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
-		return detail::compute_equal<T, std::numeric_limits<T>::is_iec559>::call(x, y);
+		return detail::compute_equal<_Ty, std::numeric_limits<_Ty>::is_iec559>::call(x, y);
 	}
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER bool notEqual
 	(
-		T const& x,
-		T const& y
+		_Ty const& x,
+		_Ty const& y
 	)
 	{
-		return !detail::compute_equal<T, std::numeric_limits<T>::is_iec559>::call(x, y);
+		return !detail::compute_equal<_Ty, std::numeric_limits<_Ty>::is_iec559>::call(x, y);
 	}
 
 	GLM_FUNC_QUALIFIER bool any

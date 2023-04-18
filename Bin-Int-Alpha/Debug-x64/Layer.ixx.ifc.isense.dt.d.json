@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\layer.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\core\\layer.ixx",
         "ProvidedModule": "Layer",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "Event",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc.dt"
             },
             {
                 "Name": "string",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\string.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

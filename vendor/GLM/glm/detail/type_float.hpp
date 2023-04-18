@@ -10,7 +10,7 @@
 namespace glm{
 namespace detail
 {
-	template <typename T>
+	template <typename _Ty>
 	union float_t
 	{};
 

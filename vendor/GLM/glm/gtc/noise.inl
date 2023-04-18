@@ -8,8 +8,8 @@
 namespace glm{
 namespace gtc
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<4, T, Q> grad4(T const& j, vec<4, T, Q> const& ip)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<4, _Ty, Q> grad4(T const& j, vec<4, T, Q> const& ip)
 	{
 		vec<3, T, Q> pXYZ = floor(fract(vec<3, T, Q>(j) * vec<3, T, Q>(ip)) * T(7)) * ip[2] - T(1);
 		T pW = static_cast<T>(1.5) - dot(abs(pXYZ), vec<3, T, Q>(1));
@@ -20,7 +20,7 @@ namespace gtc
 }//namespace gtc
 
 	// Classic Perlin noise
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER T perlin(vec<2, T, Q> const& Position)
 	{
 		vec<4, T, Q> Pi = glm::floor(vec<4, T, Q>(Position.x, Position.y, Position.x, Position.y)) + vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
@@ -61,7 +61,7 @@ namespace gtc
 	}
 
 	// Classic Perlin noise
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& Position)
 	{
 		vec<3, T, Q> Pi0 = floor(Position); // Integer part for indexing

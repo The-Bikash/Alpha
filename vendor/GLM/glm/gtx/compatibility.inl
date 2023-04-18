@@ -21,7 +21,7 @@ namespace glm
 #		endif
 	}
 
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER vec<1, bool, Q> isfinite(
 		vec<1, T, Q> const& x)
 	{

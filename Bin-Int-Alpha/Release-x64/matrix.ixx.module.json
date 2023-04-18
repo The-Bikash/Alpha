@@ -1,7 +1,7 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\linearalgebra\\matrix.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\linearalgebra\\matrix.ixx",
         "ProvidedModule": "Matrix",
         "ImportedModules": [
             "io",
@@ -13,7 +13,8 @@
             "initializer",
             "LinearContainer",
             "list",
-            "algorithm"
+            "algorithm",
+            "simd"
         ],
         "ImportedHeaderUnits": []
     }

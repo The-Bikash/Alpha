@@ -33,20 +33,20 @@ namespace glm
 	/// @{
 
 	/// Convert a linear sRGB color to D65 YUV.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> convertLinearSRGBToD65XYZ(vec<3, T, Q> const& ColorLinearSRGB);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<3, _Ty, Q> convertLinearSRGBToD65XYZ(vec<3, _Ty, Q> const& ColorLinearSRGB);
 
 	/// Convert a linear sRGB color to D50 YUV.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> convertLinearSRGBToD50XYZ(vec<3, T, Q> const& ColorLinearSRGB);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<3, _Ty, Q> convertLinearSRGBToD50XYZ(vec<3, _Ty, Q> const& ColorLinearSRGB);
 
 	/// Convert a D65 YUV color to linear sRGB.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> convertD65XYZToLinearSRGB(vec<3, T, Q> const& ColorD65XYZ);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<3, _Ty, Q> convertD65XYZToLinearSRGB(vec<3, _Ty, Q> const& ColorD65XYZ);
 
 	/// Convert a D65 YUV color to D50 YUV.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> convertD65XYZToD50XYZ(vec<3, T, Q> const& ColorD65XYZ);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<3, _Ty, Q> convertD65XYZToD50XYZ(vec<3, _Ty, Q> const& ColorD65XYZ);
 
 	/// @}
 } //namespace glm

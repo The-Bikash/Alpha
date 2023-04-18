@@ -1,4 +1,5 @@
 module;
+#include <compare>
 #include <chrono>
 #include <iostream>
 #include <cmath>

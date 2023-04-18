@@ -461,13 +461,13 @@ static inline double ImRsqrt(double x)          { return 1.0 / sqrt(x); }
 #endif
 // - ImMin/ImMax/ImClamp/ImLerp/ImSwap are used by widgets which support variety of types: signed/unsigned int/long long float/double
 // (Exceptionally using templates here but we could also redefine them for those types)
-template<typename T> static inline T ImMin(T lhs, T rhs)                        { return lhs < rhs ? lhs : rhs; }
-template<typename T> static inline T ImMax(T lhs, T rhs)                        { return lhs >= rhs ? lhs : rhs; }
-template<typename T> static inline T ImClamp(T v, T mn, T mx)                   { return (v < mn) ? mn : (v > mx) ? mx : v; }
-template<typename T> static inline T ImLerp(T a, T b, float t)                  { return (T)(a + (b - a) * t); }
-template<typename T> static inline void ImSwap(T& a, T& b)                      { T tmp = a; a = b; b = tmp; }
-template<typename T> static inline T ImAddClampOverflow(T a, T b, T mn, T mx)   { if (b < 0 && (a < mn - b)) return mn; if (b > 0 && (a > mx - b)) return mx; return a + b; }
-template<typename T> static inline T ImSubClampOverflow(T a, T b, T mn, T mx)   { if (b > 0 && (a < mn + b)) return mn; if (b < 0 && (a > mx + b)) return mx; return a - b; }
+template<typename _Ty> static inline _Ty ImMin(_Ty lhs, _Ty rhs)                        { return lhs < rhs ? lhs : rhs; }
+template<typename _Ty> static inline _Ty ImMax(_Ty lhs, _Ty rhs)                        { return lhs >= rhs ? lhs : rhs; }
+template<typename _Ty> static inline _Ty ImClamp(_Ty v, _Ty mn, _Ty mx)                   { return (v < mn) ? mn : (v > mx) ? mx : v; }
+template<typename _Ty> static inline _Ty ImLerp(_Ty a, _Ty b, float t)                  { return (_Ty)(a + (b - a) * t); }
+template<typename _Ty> static inline void ImSwap(_Ty& a, _Ty& b)                      { _Ty tmp = a; a = b; b = tmp; }
+template<typename _Ty> static inline _Ty ImAddClampOverflow(_Ty a, _Ty b, _Ty mn, _Ty mx)   { if (b < 0 && (a < mn - b)) return mn; if (b > 0 && (a > mx - b)) return mx; return a + b; }
+template<typename _Ty> static inline _Ty ImSubClampOverflow(_Ty a, _Ty b, _Ty mn, _Ty mx)   { if (b > 0 && (a < mn + b)) return mn; if (b < 0 && (a > mx + b)) return mx; return a - b; }
 // - Misc maths helpers
 static inline ImVec2 ImMin(const ImVec2& lhs, const ImVec2& rhs)                { return ImVec2(lhs.x < rhs.x ? lhs.x : rhs.x, lhs.y < rhs.y ? lhs.y : rhs.y); }
 static inline ImVec2 ImMax(const ImVec2& lhs, const ImVec2& rhs)                { return ImVec2(lhs.x >= rhs.x ? lhs.x : rhs.x, lhs.y >= rhs.y ? lhs.y : rhs.y); }
@@ -615,31 +615,31 @@ IM_MSVC_RUNTIME_CHECKS_RESTORE
 
 // Helper: ImSpan<>
 // Pointing to a span of data we don't own.
-template<typename T>
+template<typename _Ty>
 struct ImSpan
 {
-    T*                  Data;
-    T*                  DataEnd;
+    _Ty*                  Data;
+    _Ty*                  DataEnd;
 
     // Constructors, destructor
     inline ImSpan()                                 { Data = DataEnd = NULL; }
-    inline ImSpan(T* data, int size)                { Data = data; DataEnd = data + size; }
-    inline ImSpan(T* data, T* data_end)             { Data = data; DataEnd = data_end; }
+    inline ImSpan(_Ty* data, int size)                { Data = data; DataEnd = data + size; }
+    inline ImSpan(_Ty* data, _Ty* data_end)             { Data = data; DataEnd = data_end; }
 
-    inline void         set(T* data, int size)      { Data = data; DataEnd = data + size; }
-    inline void         set(T* data, T* data_end)   { Data = data; DataEnd = data_end; }
+    inline void         set(_Ty* data, int size)      { Data = data; DataEnd = data + size; }
+    inline void         set(_Ty* data, _Ty* data_end)   { Data = data; DataEnd = data_end; }
     inline int          size() const                { return (int)(ptrdiff_t)(DataEnd - Data); }
-    inline int          size_in_bytes() const       { return (int)(ptrdiff_t)(DataEnd - Data) * (int)sizeof(T); }
-    inline T&           operator[](int i)           { T* p = Data + i; IM_ASSERT(p >= Data && p < DataEnd); return *p; }
-    inline const T&     operator[](int i) const     { const T* p = Data + i; IM_ASSERT(p >= Data && p < DataEnd); return *p; }
+    inline int          size_in_bytes() const       { return (int)(ptrdiff_t)(DataEnd - Data) * (int)sizeof(_Ty); }
+    inline _Ty&           operator[](int i)           { _Ty* p = Data + i; IM_ASSERT(p >= Data && p < DataEnd); return *p; }
+    inline const _Ty&     operator[](int i) const     { const _Ty* p = Data + i; IM_ASSERT(p >= Data && p < DataEnd); return *p; }
 
-    inline T*           begin()                     { return Data; }
-    inline const T*     begin() const               { return Data; }
-    inline T*           end()                       { return DataEnd; }
-    inline const T*     end() const                 { return DataEnd; }
+    inline _Ty*           begin()                     { return Data; }
+    inline const _Ty*     begin() const               { return Data; }
+    inline _Ty*           end()                       { return DataEnd; }
+    inline const _Ty*     end() const                 { return DataEnd; }
 
     // Utilities
-    inline int  index_from_ptr(const T* it) const   { IM_ASSERT(it >= Data && it < DataEnd); const ptrdiff_t off = it - Data; return (int)off; }
+    inline int  index_from_ptr(const _Ty* it) const   { IM_ASSERT(it >= Data && it < DataEnd); const ptrdiff_t off = it - Data; return (int)off; }
 };
 
 // Helper: ImSpanAllocator<>
@@ -660,33 +660,33 @@ struct ImSpanAllocator
     inline void  SetArenaBasePtr(void* base_ptr)    { BasePtr = (char*)base_ptr; }
     inline void* GetSpanPtrBegin(int n)             { IM_ASSERT(n >= 0 && n < CHUNKS && CurrIdx == CHUNKS); return (void*)(BasePtr + Offsets[n]); }
     inline void* GetSpanPtrEnd(int n)               { IM_ASSERT(n >= 0 && n < CHUNKS && CurrIdx == CHUNKS); return (void*)(BasePtr + Offsets[n] + Sizes[n]); }
-    template<typename T>
-    inline void  GetSpan(int n, ImSpan<T>* span)    { span->set((T*)GetSpanPtrBegin(n), (T*)GetSpanPtrEnd(n)); }
+    template<typename _Ty>
+    inline void  GetSpan(int n, ImSpan<_Ty>* span)    { span->set((_Ty*)GetSpanPtrBegin(n), (_Ty*)GetSpanPtrEnd(n)); }
 };
 
 // Helper: ImPool<>
 // Basic keyed storage for contiguous instances, slow/amortized insertion, O(1) indexable, O(Log N) queries by ID over a dense/hot buffer,
 // Honor constructor/destructor. Add/remove invalidate all pointers. Indexes have the same lifetime as the associated object.
 typedef int ImPoolIdx;
-template<typename T>
+template<typename _Ty>
 struct ImPool
 {
-    ImVector<T>     Buf;        // Contiguous data
+    ImVector<_Ty>     Buf;        // Contiguous data
     ImGuiStorage    Map;        // ID->Index
     ImPoolIdx       FreeIdx;    // Next free idx to use
     ImPoolIdx       AliveCount; // Number of active/alive items (for display purpose)
 
     ImPool()    { FreeIdx = AliveCount = 0; }
     ~ImPool()   { Clear(); }
-    T*          GetByKey(ImGuiID key)               { int idx = Map.GetInt(key, -1); return (idx != -1) ? &Buf[idx] : NULL; }
-    T*          GetByIndex(ImPoolIdx n)             { return &Buf[n]; }
-    ImPoolIdx   GetIndex(const T* p) const          { IM_ASSERT(p >= Buf.Data && p < Buf.Data + Buf.Size); return (ImPoolIdx)(p - Buf.Data); }
-    T*          GetOrAddByKey(ImGuiID key)          { int* p_idx = Map.GetIntRef(key, -1); if (*p_idx != -1) return &Buf[*p_idx]; *p_idx = FreeIdx; return Add(); }
-    bool        Contains(const T* p) const          { return (p >= Buf.Data && p < Buf.Data + Buf.Size); }
-    void        Clear()                             { for (int n = 0; n < Map.Data.Size; n++) { int idx = Map.Data[n].val_i; if (idx != -1) Buf[idx].~T(); } Map.Clear(); Buf.clear(); FreeIdx = AliveCount = 0; }
-    T*          Add()                               { int idx = FreeIdx; if (idx == Buf.Size) { Buf.resize(Buf.Size + 1); FreeIdx++; } else { FreeIdx = *(int*)&Buf[idx]; } IM_PLACEMENT_NEW(&Buf[idx]) T(); AliveCount++; return &Buf[idx]; }
-    void        Remove(ImGuiID key, const T* p)     { Remove(key, GetIndex(p)); }
-    void        Remove(ImGuiID key, ImPoolIdx idx)  { Buf[idx].~T(); *(int*)&Buf[idx] = FreeIdx; FreeIdx = idx; Map.SetInt(key, -1); AliveCount--; }
+    _Ty*          GetByKey(ImGuiID key)               { int idx = Map.GetInt(key, -1); return (idx != -1) ? &Buf[idx] : NULL; }
+    _Ty*          GetByIndex(ImPoolIdx n)             { return &Buf[n]; }
+    ImPoolIdx   GetIndex(const _Ty* p) const          { IM_ASSERT(p >= Buf.Data && p < Buf.Data + Buf.Size); return (ImPoolIdx)(p - Buf.Data); }
+    _Ty*          GetOrAddByKey(ImGuiID key)          { int* p_idx = Map.GetIntRef(key, -1); if (*p_idx != -1) return &Buf[*p_idx]; *p_idx = FreeIdx; return Add(); }
+    bool        Contains(const _Ty* p) const          { return (p >= Buf.Data && p < Buf.Data + Buf.Size); }
+    void        Clear()                             { for (int n = 0; n < Map.Data.Size; n++) { int idx = Map.Data[n].val_i; if (idx != -1) Buf[idx].~_Ty(); } Map.Clear(); Buf.clear(); FreeIdx = AliveCount = 0; }
+    _Ty*          Add()                               { int idx = FreeIdx; if (idx == Buf.Size) { Buf.resize(Buf.Size + 1); FreeIdx++; } else { FreeIdx = *(int*)&Buf[idx]; } IM_PLACEMENT_NEW(&Buf[idx]) _Ty(); AliveCount++; return &Buf[idx]; }
+    void        Remove(ImGuiID key, const _Ty* p)     { Remove(key, GetIndex(p)); }
+    void        Remove(ImGuiID key, ImPoolIdx idx)  { Buf[idx].~_Ty(); *(int*)&Buf[idx] = FreeIdx; FreeIdx = idx; Map.SetInt(key, -1); AliveCount--; }
     void        Reserve(int capacity)               { Buf.reserve(capacity); Map.Data.reserve(capacity); }
 
     // To iterate a ImPool: for (int n = 0; n < pool.GetMapSize(); n++) if (T* t = pool.TryGetMapData(n)) { ... }
@@ -694,7 +694,7 @@ struct ImPool
     int         GetAliveCount() const               { return AliveCount; }      // Number of active/alive items in the pool (for display purpose)
     int         GetBufSize() const                  { return Buf.Size; }
     int         GetMapSize() const                  { return Map.Data.Size; }   // It is the map we need iterate to find valid items, since we don't have "alive" storage anywhere
-    T*          TryGetMapData(ImPoolIdx n)          { int idx = Map.Data[n].val_i; if (idx == -1) return NULL; return GetByIndex(idx); }
+    _Ty*          TryGetMapData(ImPoolIdx n)          { int idx = Map.Data[n].val_i; if (idx == -1) return NULL; return GetByIndex(idx); }
 #ifndef IMGUI_DISABLE_OBSOLETE_FUNCTIONS
     int         GetSize()                           { return GetMapSize(); } // For ImPlot: should use GetMapSize() from (IMGUI_VERSION_NUM >= 18304)
 #endif
@@ -705,7 +705,7 @@ struct ImPool
 // This is used by Settings to store persistent data while reducing allocation count.
 // We store the chunk size first, and align the final size on 4 bytes boundaries.
 // The tedious/zealous amount of casting is to avoid -Wcast-align warnings.
-template<typename T>
+template<typename _Ty>
 struct ImChunkStream
 {
     ImVector<char>  Buf;
@@ -713,14 +713,14 @@ struct ImChunkStream
     void    clear()                     { Buf.clear(); }
     bool    empty() const               { return Buf.Size == 0; }
     int     size() const                { return Buf.Size; }
-    T*      alloc_chunk(size_t sz)      { size_t HDR_SZ = 4; sz = IM_MEMALIGN(HDR_SZ + sz, 4u); int off = Buf.Size; Buf.resize(off + (int)sz); ((int*)(void*)(Buf.Data + off))[0] = (int)sz; return (T*)(void*)(Buf.Data + off + (int)HDR_SZ); }
-    T*      begin()                     { size_t HDR_SZ = 4; if (!Buf.Data) return NULL; return (T*)(void*)(Buf.Data + HDR_SZ); }
-    T*      next_chunk(T* p)            { size_t HDR_SZ = 4; IM_ASSERT(p >= begin() && p < end()); p = (T*)(void*)((char*)(void*)p + chunk_size(p)); if (p == (T*)(void*)((char*)end() + HDR_SZ)) return (T*)0; IM_ASSERT(p < end()); return p; }
-    int     chunk_size(const T* p)      { return ((const int*)p)[-1]; }
-    T*      end()                       { return (T*)(void*)(Buf.Data + Buf.Size); }
-    int     offset_from_ptr(const T* p) { IM_ASSERT(p >= begin() && p < end()); const ptrdiff_t off = (const char*)p - Buf.Data; return (int)off; }
-    T*      ptr_from_offset(int off)    { IM_ASSERT(off >= 4 && off < Buf.Size); return (T*)(void*)(Buf.Data + off); }
-    void    swap(ImChunkStream<T>& rhs) { rhs.Buf.swap(Buf); }
+    _Ty*      alloc_chunk(size_t sz)      { size_t HDR_SZ = 4; sz = IM_MEMALIGN(HDR_SZ + sz, 4u); int off = Buf.Size; Buf.resize(off + (int)sz); ((int*)(void*)(Buf.Data + off))[0] = (int)sz; return (_Ty*)(void*)(Buf.Data + off + (int)HDR_SZ); }
+    _Ty*      begin()                     { size_t HDR_SZ = 4; if (!Buf.Data) return NULL; return (_Ty*)(void*)(Buf.Data + HDR_SZ); }
+    _Ty*      next_chunk(_Ty* p)            { size_t HDR_SZ = 4; IM_ASSERT(p >= begin() && p < end()); p = (_Ty*)(void*)((char*)(void*)p + chunk_size(p)); if (p == (_Ty*)(void*)((char*)end() + HDR_SZ)) return (_Ty*)0; IM_ASSERT(p < end()); return p; }
+    int     chunk_size(const _Ty* p)      { return ((const int*)p)[-1]; }
+    _Ty*      end()                       { return (_Ty*)(void*)(Buf.Data + Buf.Size); }
+    int     offset_from_ptr(const _Ty* p) { IM_ASSERT(p >= begin() && p < end()); const ptrdiff_t off = (const char*)p - Buf.Data; return (int)off; }
+    _Ty*      ptr_from_offset(int off)    { IM_ASSERT(off >= 4 && off < Buf.Size); return (_Ty*)(void*)(Buf.Data + off); }
+    void    swap(ImChunkStream<_Ty>& rhs) { rhs.Buf.swap(Buf); }
 
 };
 
@@ -3402,12 +3402,12 @@ namespace ImGui
     // Template functions are instantiated in imgui_widgets.cpp for a finite number of types.
     // To use them externally (for custom widget) you may need an "extern template" statement in your code in order to link to existing instances and silence Clang warnings (see #2036).
     // e.g. " extern template IMGUI_API float RoundScalarWithFormatT<float, float>(const char* format, ImGuiDataType data_type, float v); "
-    template<typename T, typename SIGNED_T, typename FLOAT_T>   IMGUI_API float ScaleRatioFromValueT(ImGuiDataType data_type, T v, T v_min, T v_max, bool is_logarithmic, float logarithmic_zero_epsilon, float zero_deadzone_size);
-    template<typename T, typename SIGNED_T, typename FLOAT_T>   IMGUI_API T     ScaleValueFromRatioT(ImGuiDataType data_type, float t, T v_min, T v_max, bool is_logarithmic, float logarithmic_zero_epsilon, float zero_deadzone_size);
-    template<typename T, typename SIGNED_T, typename FLOAT_T>   IMGUI_API bool  DragBehaviorT(ImGuiDataType data_type, T* v, float v_speed, T v_min, T v_max, const char* format, ImGuiSliderFlags flags);
-    template<typename T, typename SIGNED_T, typename FLOAT_T>   IMGUI_API bool  SliderBehaviorT(const ImRect& bb, ImGuiID id, ImGuiDataType data_type, T* v, T v_min, T v_max, const char* format, ImGuiSliderFlags flags, ImRect* out_grab_bb);
-    template<typename T>                                        IMGUI_API T     RoundScalarWithFormatT(const char* format, ImGuiDataType data_type, T v);
-    template<typename T>                                        IMGUI_API bool  CheckboxFlagsT(const char* label, T* flags, T flags_value);
+    template<typename _Ty, typename SIGNED_T, typename FLOAT_T>   IMGUI_API float ScaleRatioFromValueT(ImGuiDataType data_type, _Ty v, _Ty v_min, _Ty v_max, bool is_logarithmic, float logarithmic_zero_epsilon, float zero_deadzone_size);
+    template<typename _Ty, typename SIGNED_T, typename FLOAT_T>   IMGUI_API _Ty     ScaleValueFromRatioT(ImGuiDataType data_type, float t, _Ty v_min, _Ty v_max, bool is_logarithmic, float logarithmic_zero_epsilon, float zero_deadzone_size);
+    template<typename _Ty, typename SIGNED_T, typename FLOAT_T>   IMGUI_API bool  DragBehaviorT(ImGuiDataType data_type, _Ty* v, float v_speed, _Ty v_min, _Ty v_max, const char* format, ImGuiSliderFlags flags);
+    template<typename _Ty, typename SIGNED_T, typename FLOAT_T>   IMGUI_API bool  SliderBehaviorT(const ImRect& bb, ImGuiID id, ImGuiDataType data_type, _Ty* v, _Ty v_min, _Ty v_max, const char* format, ImGuiSliderFlags flags, ImRect* out_grab_bb);
+    template<typename _Ty>                                        IMGUI_API _Ty     RoundScalarWithFormatT(const char* format, ImGuiDataType data_type, _Ty v);
+    template<typename _Ty>                                        IMGUI_API bool  CheckboxFlagsT(const char* label, _Ty* flags, _Ty flags_value);
 
     // Data type helpers
     IMGUI_API const ImGuiDataTypeInfo*  DataTypeGetInfo(ImGuiDataType data_type);

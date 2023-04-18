@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<3, 3, T, Q> shearX2D(mat<3, 3, T, Q> const& m, T s)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<3, 3, _Ty, Q> shearX2D(mat<3, 3, T, Q> const& m, T s)
 	{
 		mat<3, 3, T, Q> r(1);
 		r[1][0] = s;

@@ -1,7 +1,7 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\code.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\datastructures\\code.ixx",
         "ProvidedModule": "code",
         "ImportedModules": [
             "LinearContainer",
@@ -10,7 +10,9 @@
             "io",
             "simd",
             "Matrix",
-            "Rational"
+            "Rational",
+            "Complex",
+            "string"
         ],
         "ImportedHeaderUnits": []
     }

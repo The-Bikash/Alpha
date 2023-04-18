@@ -1,0 +1,27 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\complexanalysis\\complex.ixx",
+        "ProvidedModule": "Complex",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
+            },
+            {
+                "Name": "io",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "utility",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\utility.ixx.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

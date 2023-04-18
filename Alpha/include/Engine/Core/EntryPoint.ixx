@@ -8,11 +8,12 @@ extern alpha::Application* alpha::CreateApplication();
 
 export int main(int argc, char** argv) {
 	FUN();
-	if constexpr (_debug) {
+	
+	/*if constexpr (_debug) {
 		auto app = alpha::CreateApplication();
 		app->Run();
 		delete app;
-	}
+	}*/
 	return 0;
 }
 

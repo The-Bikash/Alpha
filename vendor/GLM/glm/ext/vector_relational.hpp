@@ -35,8 +35,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, _Ty epsilon);
 
 	/// Returns the component-wise comparison of |x - y| < epsilon.
 	/// True if this expression is satisfied.
@@ -44,8 +44,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, vec<L, _Ty, Q> const& epsilon);
 
 	/// Returns the component-wise comparison of |x - y| >= epsilon.
 	/// True if this expression is not satisfied.
@@ -53,8 +53,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, T epsilon);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, _Ty epsilon);
 
 	/// Returns the component-wise comparison of |x - y| >= epsilon.
 	/// True if this expression is not satisfied.
@@ -62,8 +62,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point or integer scalar types
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& epsilon);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, vec<L, _Ty, Q> const& epsilon);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is satisfied.
@@ -71,8 +71,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, int ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is satisfied.
@@ -80,8 +80,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, vec<L, int, Q> const& ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is not satisfied.
@@ -89,8 +89,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, int ULPs);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, int ULPs);
 
 	/// Returns the component-wise comparison between two vectors in term of ULPs.
 	/// True if this expression is not satisfied.
@@ -98,8 +98,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
 	/// @tparam Q Value from qualifier enum
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, int, Q> const& ULPs);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR vec<L, bool, Q> notEqual(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y, vec<L, int, Q> const& ULPs);
 
 	/// @}
 }//namespace glm

@@ -43,8 +43,8 @@ namespace glm
 	/// @tparam T Value type. Currently supported: float or double.
 	///
 	/// @see gtc_random
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> linearRand(vec<L, T, Q> const& Min, vec<L, T, Q> const& Max);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> linearRand(vec<L, _Ty, Q> const& Min, vec<L, _Ty, Q> const& Max);
 
 	/// Generate random numbers in the interval [Min, Max], according a gaussian distribution
 	///
@@ -55,26 +55,26 @@ namespace glm
 	/// Generate a random 2D vector which coordinates are regularly distributed on a circle of a given radius
 	///
 	/// @see gtc_random
-	template<typename T>
-	GLM_FUNC_DECL vec<2, T, defaultp> circularRand(T Radius);
+	template<typename _Ty>
+	GLM_FUNC_DECL vec<2, _Ty, defaultp> circularRand(_Ty Radius);
 
 	/// Generate a random 3D vector which coordinates are regularly distributed on a sphere of a given radius
 	///
 	/// @see gtc_random
-	template<typename T>
-	GLM_FUNC_DECL vec<3, T, defaultp> sphericalRand(T Radius);
+	template<typename _Ty>
+	GLM_FUNC_DECL vec<3, _Ty, defaultp> sphericalRand(_Ty Radius);
 
 	/// Generate a random 2D vector which coordinates are regularly distributed within the area of a disk of a given radius
 	///
 	/// @see gtc_random
-	template<typename T>
-	GLM_FUNC_DECL vec<2, T, defaultp> diskRand(T Radius);
+	template<typename _Ty>
+	GLM_FUNC_DECL vec<2, _Ty, defaultp> diskRand(_Ty Radius);
 
 	/// Generate a random 3D vector which coordinates are regularly distributed within the volume of a ball of a given radius
 	///
 	/// @see gtc_random
-	template<typename T>
-	GLM_FUNC_DECL vec<3, T, defaultp> ballRand(T Radius);
+	template<typename _Ty>
+	GLM_FUNC_DECL vec<3, _Ty, defaultp> ballRand(_Ty Radius);
 
 	/// @}
 }//namespace glm

@@ -478,8 +478,8 @@ namespace glm
 	/// @see gtc_packing
 	/// @see vec<3, T, Q> unpackRGBM(vec<4, T, Q> const& p)
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a>
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<4, T, Q> packRGBM(vec<3, T, Q> const& rgb);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<4, _Ty, Q> packRGBM(vec<3, _Ty, Q> const& rgb);
 
 	/// Returns a floating-point vector with components obtained by reinterpreting an integer vector as 16-bit floating-point numbers and converting them to 32-bit floating-point values.
 	/// The first component of the vector is obtained from the 16 least-significant bits of v;
@@ -488,8 +488,8 @@ namespace glm
 	/// @see gtc_packing
 	/// @see vec<4, T, Q> packRGBM(vec<3, float, Q> const& v)
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a>
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<3, T, Q> unpackRGBM(vec<4, T, Q> const& rgbm);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<3, _Ty, Q> unpackRGBM(vec<4, _Ty, Q> const& rgbm);
 
 	/// Returns an unsigned integer vector obtained by converting the components of a floating-point vector
 	/// to the 16-bit floating-point representation found in the OpenGL Specification.

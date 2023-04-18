@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\input.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\core\\input.ixx",
         "ProvidedModule": "Input",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "KeyCodes",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\KeyCodes.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\KeyCodes.ixx.ifc"
             },
             {
                 "Name": "MouseCodes",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\MouseCodes.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\MouseCodes.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> rgb2YCoCg
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> rgb2YCoCg
 	(
 		vec<3, T, Q> const& rgbColor
 	)
@@ -57,10 +57,10 @@ namespace glm
 		}
 	};
 
-	template<typename T, qualifier Q>
-	class compute_YCoCgR<T, Q, true> {
+	template<typename _Ty, qualifier Q>
+	class compute_YCoCgR<_Ty, Q, true> {
 	public:
-		static GLM_FUNC_QUALIFIER vec<3, T, Q> rgb2YCoCgR
+		static GLM_FUNC_QUALIFIER vec<3, _Ty, Q> rgb2YCoCgR
 		(
 			vec<3, T, Q> const& rgbColor
 		)
@@ -87,8 +87,8 @@ namespace glm
 		}
 	};
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> rgb2YCoCgR
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> rgb2YCoCgR
 	(
 		vec<3, T, Q> const& rgbColor
 	)

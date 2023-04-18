@@ -2,20 +2,20 @@
 
 namespace glm
 {
-	template <length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<C, R, T, Q> flipud(mat<C, R, T, Q> const& in)
+	template <length_t C, length_t R, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<C, R, _Ty, Q> flipud(mat<C, R, _Ty, Q> const& in)
 	{
-		mat<R, C, T, Q> tin = transpose(in);
+		mat<R, C, _Ty, Q> tin = transpose(in);
 		tin = fliplr(tin);
-		mat<C, R, T, Q> out = transpose(tin);
+		mat<C, R, _Ty, Q> out = transpose(tin);
 
 		return out;
 	}
 
-	template <length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<C, R, T, Q> fliplr(mat<C, R, T, Q> const& in)
+	template <length_t C, length_t R, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<C, R, _Ty, Q> fliplr(mat<C, R, _Ty, Q> const& in)
 	{
-		mat<C, R, T, Q> out;
+		mat<C, R, _Ty, Q> out;
 		for (length_t i = 0; i < C; i++)
 		{
 			out[i] = in[(C - i) - 1];
@@ -24,8 +24,8 @@ namespace glm
 		return out;
 	}
 
-	template <length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER void qr_decompose(mat<C, R, T, Q> const& in, mat<(C < R ? C : R), R, T, Q>& q, mat<C, (C < R ? C : R), T, Q>& r)
+	template <length_t C, length_t R, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER void qr_decompose(mat<C, R, _Ty, Q> const& in, mat<(C < R ? C : R), R, _Ty, Q>& q, mat<C, (C < R ? C : R), _Ty, Q>& r)
 	{
 		// Uses modified Gram-Schmidt method
 		// Source: https://en.wikipedia.org/wiki/Gram–Schmidt_process
@@ -59,19 +59,19 @@ namespace glm
 		}
 	}
 
-	template <length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER void rq_decompose(mat<C, R, T, Q> const& in, mat<(C < R ? C : R), R, T, Q>& r, mat<C, (C < R ? C : R), T, Q>& q)
+	template <length_t C, length_t R, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER void rq_decompose(mat<C, R, _Ty, Q> const& in, mat<(C < R ? C : R), R, _Ty, Q>& r, mat<C, (C < R ? C : R), _Ty, Q>& q)
 	{
 		// From https://en.wikipedia.org/wiki/QR_decomposition:
 		// The RQ decomposition transforms a matrix A into the product of an upper triangular matrix R (also known as right-triangular) and an orthogonal matrix Q. The only difference from QR decomposition is the order of these matrices.
 		// QR decomposition is Gram–Schmidt orthogonalization of columns of A, started from the first column.
 		// RQ decomposition is Gram–Schmidt orthogonalization of rows of A, started from the last row.
 
-		mat<R, C, T, Q> tin = transpose(in);
+		mat<R, C, _Ty, Q> tin = transpose(in);
 		tin = fliplr(tin);
 
-		mat<R, (C < R ? C : R), T, Q> tr;
-		mat<(C < R ? C : R), C, T, Q> tq;
+		mat<R, (C < R ? C : R), _Ty, Q> tr;
+		mat<(C < R ? C : R), C, _Ty, Q> tq;
 		qr_decompose(tin, tq, tr);
 
 		tr = fliplr(tr);

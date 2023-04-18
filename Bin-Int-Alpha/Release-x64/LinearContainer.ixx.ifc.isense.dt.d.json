@@ -1,25 +1,25 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\linearcontainer.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\datastructures\\linearcontainer.ixx",
         "ProvidedModule": "LinearContainer",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
             },
             {
                 "Name": "initializer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc.dt"
             },
             {
                 "Name": "typetraits",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc.dt"
             },
             {
                 "Name": "io",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

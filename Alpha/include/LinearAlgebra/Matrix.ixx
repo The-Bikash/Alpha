@@ -11,6 +11,7 @@ import initializer;
 import LinearContainer;
 import list;
 import algorithm;
+import simd;
 
 
 #define __Matrix(_Pos) *(_Mat + _Pos)
@@ -908,6 +909,16 @@ export namespace alpha{
 			}
 		}
 
+		constexpr void input() noexcept {
+			_Ty _Val;
+			for (_Int i = 0; i < _Row; ++i) {
+				for (_Int j = 0; j < _Row; ++j) {
+					alpha::input(_Val);
+					_Mat[i][j] = _Val;
+				}
+			}
+		}
+
 		constexpr MatrixType type()const noexcept {
 			return MatrixType::SquareMatrix;
 		}
@@ -1041,7 +1052,6 @@ export namespace alpha{
 			}
 			return _Mat[ith];
 		}
-
 		[[nodiscard]] constexpr const _Ty* operator[](const _Int ith)const noexcept {
 			if constexpr (_debug) {
 				if (ith >= _Row)
@@ -1049,7 +1059,6 @@ export namespace alpha{
 			}
 			return _Mat[ith];
 		}
-
 		[[nodiscard]] constexpr _Ty& operator()(const _Int ith, const _Int jth)noexcept {
 			if constexpr (_debug) {
 				if (ith >= _Row || jth >= _Row)
@@ -1057,7 +1066,6 @@ export namespace alpha{
 			}
 			return _Mat[ith][jth];
 		}
-
 		[[nodiscard]] constexpr const _Ty& operator()(const _Int ith, const _Int jth)const noexcept {
 			if constexpr (_debug) {
 				if (ith >= _Row || jth >= _Row)
@@ -1077,20 +1085,23 @@ export namespace alpha{
 			_Mat[i1th] = _Mat[i2th];
 			_Mat[i2th] = _Tmp;
 		}
-
 		inline constexpr void _ElemRowTy2(const _Int ith,  const _Ty& _Scalar, _Int _Pos = 0)noexcept {
 			if constexpr (_debug) {
 				if (ith >= _Row) {
 					__debugbreak();
 				}
 			}
-
-			auto _Ptr = _Mat[ith];
-			for (; _Pos < _Row; ++_Pos) {
-				_Ptr[_Pos] *= _Scalar;
+			if constexpr (alpha::is_same_v<_Ty, float>) {
+				alpha::avx_mul_vecf(_Mat[ith] + _Pos, _Scalar, _Row - _Pos);
+			} else if constexpr (alpha::is_same_v<_Ty, double>) {
+				alpha::avx_mul_vecd(_Mat[ith] + _Pos, _Scalar, _Row - _Pos);
+			} else {
+				auto _Ptr = _Mat[ith];
+				for (; _Pos < _Row; ++_Pos) {
+					_Ptr[_Pos] *= _Scalar;
+				}
 			}
 		}
-
 		inline constexpr void _ElemRowTy3(const _Int i1th, const _Int i2th, const _Ty& _Scalar, _Int _Pos = 0)noexcept {
 			if constexpr (_debug) {
 				if (i1th >= _Row || i2th == _Row || i1th == i2th) {
@@ -1101,49 +1112,26 @@ export namespace alpha{
 			auto _Ptr1 = _Mat[i1th];
 			auto _Ptr2 = _Mat[i2th];
 			auto _Val = _Scalar;
-			for (; _Pos < _Row; ++_Pos) {
-				_Ptr1[_Pos] += _Scalar * _Ptr2[_Pos];
+
+			if constexpr (alpha::is_same_v<_Ty, float>) {
+				alpha::avx_madd_vecf(_Ptr1 + _Pos, _Ptr2 + _Pos, _Ptr1 + _Pos, _Scalar, _Row - _Pos);
+			} else if constexpr (alpha::is_same_v<_Ty, double>) {
+				alpha::avx_madd_vecd(_Ptr1 + _Pos, _Ptr2 + _Pos, _Ptr1 + _Pos, _Scalar, _Row - _Pos);
+			} else {
+				for (; _Pos < _Row; ++_Pos) {
+					_Ptr1[_Pos] += _Scalar * _Ptr2[_Pos];
+				}
 			}
 		}
 	public:
 		inline constexpr void ElementaryRowOperationType1(const _Int _I1, const _Int _I2)noexcept {
-			if constexpr (_debug) {
-				if (_I1 >= _Row || _I2 == _Row) {
-					__debugbreak();
-				}
-			}
-
-			auto _Tmp = _Mat[_I1];
-			_Mat[_I1] = _Mat[_I2];
-			_Mat[_I2] = _Tmp;
+			_ElemRowTy1(_I1, _I2);
 		}
-
 		inline constexpr void ElementaryRowOperationType2(const _Int _I, const _Ty& _Scalar)noexcept {
-			if constexpr (_debug) {
-				if (_I >= _Row) {
-					__debugbreak();
-				}
-			}
-
-			auto _Ptr = _Mat[_I];
-			for (_Int i = 0; i < _Row; ++i) {
-				_Ptr[i] *= _Scalar;
-			}
+			_ElemRowTy2(_I, _Scalar);
 		}
-
 		inline constexpr void ElementaryRowOperationType3(const _Int _I1, const _Int _I2, const _Ty& _Scalar)noexcept {
-			if constexpr (_debug) {
-				if (_I1 >= _Row || _I2 == _Row || _I1 == _I2) {
-					__debugbreak();
-				}
-			}
-
-			auto _Ptr1 = _Mat[_I1];
-			auto _Ptr2 = _Mat[_I2];
-			auto _Val = _Scalar;
-			for (_Int i = 0; i < _Row; ++i) {
-				_Ptr1[i] += _Scalar * _Ptr2[i];
-			}
+			_ElemRowTy3(_I1, _I2, _Scalar);
 		}
 
 		inline constexpr void ElementaryColOperationType1(const _Int _J1, const _Int _J2)noexcept {
@@ -1156,7 +1144,6 @@ export namespace alpha{
 			for (_Int i = 0; i < _Row; ++i)
 				swap(_Mat[i][_J1], _Mat[i][_J2]);
 		}
-
 		inline constexpr void ElementaryColOperationType2(const _Int _J, const _Ty& _Scalar)noexcept {
 			if constexpr (_debug) {
 				if (_J >= _Row) {
@@ -1167,7 +1154,6 @@ export namespace alpha{
 			for (_Int i = 0; i < _Row; ++i)
 				_Mat[i][_J] *= _Scalar;
 		}
-
 		inline constexpr void ElementaryColOperationType3(const _Int _J1, const _Int _J2, const _Ty& _Scalar)noexcept {
 			if constexpr (_debug) {
 				if (_J1 >= _Row || _J2 == _Row || _J1 == _J2) {
@@ -1424,7 +1410,8 @@ export namespace alpha{
 			_Int i = 0; _Ty _Sum = _Zero, _Val;
 			for (_Int j = 0; j < _Row; ++j) {
 				if (_Mat[i][j] != _Zero) {
-					_Val = _Mat[i][j] * SquareMat(*this, i, j).det();
+					_Val = _Mat[i][j];
+					_Val *= SquareMat(*this, i, j).det();
 					(i + j) & 1 ? _Sum -= _Val : _Sum += _Val;
 				}
 			}
@@ -1572,8 +1559,14 @@ export namespace alpha{
 		constexpr auto operator+(const SquareMat& _That)const noexcept {
 			SquareMat _TmpMat(_Row);
 			for (_Int i = 0; i < _Row; ++i) {
-				for (_Int j = 0; j < _Row; ++j) {
-					_TmpMat._Mat[i][j] = _Mat[i][j] + _That._Mat[i][j];
+				if constexpr (is_same_v<_Ty, float>)
+					alpha::avx_add_vecf(_Mat[i], _That._Mat[i], _TmpMat._Mat[i], _Row);
+				else if constexpr (is_same_v<_Ty, double>)
+					alpha::avx_add_vecd(_Mat[i], _That._Mat[i], _TmpMat._Mat[i], _Row);
+				else {
+					for (_Int j = 0; j < _Row; ++j) {
+						_TmpMat._Mat[i][j] = _Mat[i][j] + _That._Mat[i][j];
+					}
 				}
 			}
 			return _TmpMat;
@@ -1582,8 +1575,14 @@ export namespace alpha{
 		constexpr auto operator-(const SquareMat& _That)const noexcept {
 			SquareMat _TmpMat(_Row);
 			for (_Int i = 0; i < _Row; ++i) {
-				for (_Int j = 0; j < _Row; ++j) {
-					_TmpMat._Mat[i][j] = _Mat[i][j] - _That._Mat[i][j];
+				if constexpr (is_same_v<_Ty, float>)
+					alpha::avx_sub_vecf(_Mat[i], _That._Mat[i], _TmpMat._Mat[i], _Row);
+				else if constexpr (is_same_v<_Ty, double>)
+					alpha::avx_sub_vecd(_Mat[i], _That._Mat[i], _TmpMat._Mat[i], _Row);
+				else {
+					for (_Int j = 0; j < _Row; ++j) {
+						_TmpMat._Mat[i][j] = _Mat[i][j] - _That._Mat[i][j];
+					}
 				}
 			}
 			return _TmpMat;
@@ -1670,8 +1669,8 @@ export namespace alpha{
 			}
 		}
 	private:
-		inline static constexpr const _Ty _Zero = static_cast<_Ty>(0);
-		inline static constexpr const _Ty _Unity = static_cast<_Ty>(1);
+		inline static const _Ty _Zero = static_cast<_Ty>(0);
+		inline static const _Ty _Unity = static_cast<_Ty>(1);
 
 		_Ty** _Mat;
 		_Ty* _Arr;
@@ -1682,6 +1681,10 @@ export namespace alpha{
 	inline constexpr auto _print(const SquareMat<_Ty>& _Mat)noexcept {
 		_print('\n');
 		_Mat.display();
+	}
+	template<class _Ty>
+	inline constexpr auto _input(SquareMat<_Ty>& _Mat)noexcept {
+		_Mat.input();
 	}
 	template<class _Ty>
 	inline constexpr auto det(const SquareMat<_Ty>& _Mat)noexcept {

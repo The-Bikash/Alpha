@@ -30,48 +30,48 @@ namespace glm
 
 	/// Wrap an angle to [0 2pi[
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T wrapAngle(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty wrapAngle(_Ty angle);
 
 	/// Faster than the common sin function but less accurate.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastSin(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastSin(_Ty angle);
 
 	/// Faster than the common cos function but less accurate.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastCos(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastCos(_Ty angle);
 
 	/// Faster than the common tan function but less accurate.
 	/// Defined between -2pi and 2pi.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastTan(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastTan(_Ty angle);
 
 	/// Faster than the common asin function but less accurate.
 	/// Defined between -2pi and 2pi.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastAsin(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastAsin(_Ty angle);
 
 	/// Faster than the common acos function but less accurate.
 	/// Defined between -2pi and 2pi.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastAcos(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastAcos(_Ty angle);
 
 	/// Faster than the common atan function but less accurate.
 	/// Defined between -2pi and 2pi.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastAtan(T y, T x);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastAtan(_Ty y, _Ty x);
 
 	/// Faster than the common atan function but less accurate.
 	/// Defined between -2pi and 2pi.
 	/// From GLM_GTX_fast_trigonometry extension.
-	template<typename T>
-	GLM_FUNC_DECL T fastAtan(T angle);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fastAtan(_Ty angle);
 
 	/// @}
 }//namespace glm

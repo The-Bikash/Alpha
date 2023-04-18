@@ -1,14 +1,18 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\datastructures\\code.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\datastructures\\code.ixx",
         "ProvidedModule": "code",
         "ImportedModules": [
             "LinearContainer",
             "algorithm",
             "time",
             "io",
-            "simd"
+            "simd",
+            "Matrix",
+            "Rational",
+            "Complex",
+            "string"
         ],
         "ImportedHeaderUnits": []
     }

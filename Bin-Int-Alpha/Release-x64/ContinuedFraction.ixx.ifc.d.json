@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\numbertheory\\continuedfraction.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\numbertheory\\continuedfraction.ixx",
         "ProvidedModule": "ContinuedFraction",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "LinearContainer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\LinearContainer.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\LinearContainer.ixx.ifc"
             },
             {
                 "Name": "initializer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

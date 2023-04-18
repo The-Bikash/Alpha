@@ -1,9 +1,17 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\function\\polynomial.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\function\\polynomial.ixx",
         "ProvidedModule": "Polynomial",
-        "ImportedModules": [],
+        "ImportedModules": [
+            "core",
+            "io",
+            "Function",
+            "LinearContainer",
+            "string",
+            "list",
+            "initializer"
+        ],
         "ImportedHeaderUnits": []
     }
 }

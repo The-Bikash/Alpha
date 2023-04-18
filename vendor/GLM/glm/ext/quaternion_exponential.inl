@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> exp(qua<T, Q> const& q)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER qua<_Ty, Q> exp(qua<_Ty, Q> const& q)
 	{
 		vec<3, T, Q> u(q.x, q.y, q.z);
 		T const Angle = glm::length(u);

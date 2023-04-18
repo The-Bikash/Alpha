@@ -2,7 +2,7 @@
 
 namespace glm
 {
-	template<length_t L, typename T, qualifier Q>
+	template<length_t L, typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER T normalizeDot(vec<L, T, Q> const& x, vec<L, T, Q> const& y)
 	{
 		return glm::dot(x, y) * glm::inversesqrt(glm::dot(x, x) * glm::dot(y, y));

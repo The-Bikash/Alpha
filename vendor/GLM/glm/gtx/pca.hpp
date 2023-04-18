@@ -58,25 +58,25 @@ namespace glm {
 	/// Compute a covariance matrix form an array of relative coordinates `v` (e.g., relative to the center of gravity of the object)
 	/// @param v Points to a memory holding `n` times vectors
 	/// @param n Number of points in v
-	template<length_t D, typename T, qualifier Q>
-	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n);
+	template<length_t D, typename _Ty, qualifier Q>
+	GLM_INLINE mat<D, D, _Ty, Q> computeCovarianceMatrix(vec<D, _Ty, Q> const* v, size_t n);
 
 	/// Compute a covariance matrix form an array of absolute coordinates `v` and a precomputed center of gravity `c`
 	/// @param v Points to a memory holding `n` times vectors
 	/// @param n Number of points in v
 	/// @param c Precomputed center of gravity
-	template<length_t D, typename T, qualifier Q>
-	GLM_INLINE mat<D, D, T, Q> computeCovarianceMatrix(vec<D, T, Q> const* v, size_t n, vec<D, T, Q> const& c);
+	template<length_t D, typename _Ty, qualifier Q>
+	GLM_INLINE mat<D, D, _Ty, Q> computeCovarianceMatrix(vec<D, _Ty, Q> const* v, size_t n, vec<D, _Ty, Q> const& c);
 
 	/// Compute a covariance matrix form a pair of iterators `b` (begin) and `e` (end) of a container with relative coordinates (e.g., relative to the center of gravity of the object)
 	/// Dereferencing an iterator of type I must yield a `vec&lt;D, T, Q%gt;`
-	template<length_t D, typename T, qualifier Q, typename I>
-	GLM_FUNC_DECL mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e);
+	template<length_t D, typename _Ty, qualifier Q, typename I>
+	GLM_FUNC_DECL mat<D, D, _Ty, Q> computeCovarianceMatrix(I const& b, I const& e);
 
 	/// Compute a covariance matrix form a pair of iterators `b` (begin) and `e` (end) of a container with absolute coordinates and a precomputed center of gravity `c`
 	/// Dereferencing an iterator of type I must yield a `vec&lt;D, T, Q%gt;`
-	template<length_t D, typename T, qualifier Q, typename I>
-	GLM_FUNC_DECL mat<D, D, T, Q> computeCovarianceMatrix(I const& b, I const& e, vec<D, T, Q> const& c);
+	template<length_t D, typename _Ty, qualifier Q, typename I>
+	GLM_FUNC_DECL mat<D, D, _Ty, Q> computeCovarianceMatrix(I const& b, I const& e, vec<D, _Ty, Q> const& c);
 
 	/// Assuming the provided covariance matrix `covarMat` is symmetric and real-valued, this function find the `D` Eigenvalues of the matrix, and also provides the corresponding Eigenvectors.
 	/// Note: the data in `outEigenvalues` and `outEigenvectors` are in matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
@@ -86,28 +86,28 @@ namespace glm {
 	/// @param[out] outEigenvalues Vector to receive the found eigenvalues
 	/// @param[out] outEigenvectors Matrix to receive the found eigenvectors corresponding to the found eigenvalues, as column vectors
 	/// @return The number of eigenvalues found, usually D if the precondition of the covariance matrix is met.
-	template<length_t D, typename T, qualifier Q>
+	template<length_t D, typename _Ty, qualifier Q>
 	GLM_FUNC_DECL unsigned int findEigenvaluesSymReal
 	(
-		mat<D, D, T, Q> const& covarMat,
-		vec<D, T, Q>& outEigenvalues,
-		mat<D, D, T, Q>& outEigenvectors
+		mat<D, D, _Ty, Q> const& covarMat,
+		vec<D, _Ty, Q>& outEigenvalues,
+		mat<D, D, _Ty, Q>& outEigenvectors
 	);
 
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL void sortEigenvalues(vec<2, T, Q>& eigenvalues, mat<2, 2, T, Q>& eigenvectors);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL void sortEigenvalues(vec<2, _Ty, Q>& eigenvalues, mat<2, 2, _Ty, Q>& eigenvectors);
 
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL void sortEigenvalues(vec<3, T, Q>& eigenvalues, mat<3, 3, T, Q>& eigenvectors);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL void sortEigenvalues(vec<3, _Ty, Q>& eigenvalues, mat<3, 3, _Ty, Q>& eigenvectors);
 
 	/// Sorts a group of Eigenvalues&Eigenvectors, for largest Eigenvalue to smallest Eigenvalue.
 	/// The data in `outEigenvalues` and `outEigenvectors` are assumed to be matching order, i.e. `outEigenvector[i]` is the Eigenvector of the Eigenvalue `outEigenvalue[i]`.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL void sortEigenvalues(vec<4, T, Q>& eigenvalues, mat<4, 4, T, Q>& eigenvectors);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL void sortEigenvalues(vec<4, _Ty, Q>& eigenvalues, mat<4, 4, _Ty, Q>& eigenvectors);
 
 	/// @}
 }//namespace glm

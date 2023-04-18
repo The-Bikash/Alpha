@@ -1,8 +1,8 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\function\\function.ixx",
-        "ProvidedModule": "",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\function\\function.ixx",
+        "ProvidedModule": "Function",
         "ImportedModules": [],
         "ImportedHeaderUnits": []
     }

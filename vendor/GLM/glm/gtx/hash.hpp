@@ -48,94 +48,94 @@
 
 namespace std
 {
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::vec<1, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::vec<1, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::vec<1, T, Q> const& v) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::vec<1, _Ty, Q> const& v) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::vec<2, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::vec<2, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::vec<2, T, Q> const& v) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::vec<2, _Ty, Q> const& v) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::vec<3, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::vec<3, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::vec<3, T, Q> const& v) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::vec<3, _Ty, Q> const& v) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::vec<4, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::vec<4, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::vec<4, T, Q> const& v) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::vec<4, _Ty, Q> const& v) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::qua<T,Q>>
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::qua<_Ty,Q>>
 	{
-		GLM_FUNC_DECL size_t operator()(glm::qua<T, Q> const& q) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::qua<_Ty, Q> const& q) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::tdualquat<T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::tdualquat<_Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::tdualquat<T,Q> const& q) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::tdualquat<_Ty,Q> const& q) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 2, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<2, 2, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 2, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<2, 2, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 3, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<2, 3, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 3, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<2, 3, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<2, 4, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<2, 4, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<2, 4, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<2, 4, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 2, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<3, 2, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 2, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<3, 2, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 3, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<3, 3, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 3, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<3, 3, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<3, 4, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<3, 4, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<3, 4, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<3, 4, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 2, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<4, 2, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 2, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<4, 2, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 3, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<4, 3, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 3, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<4, 3, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 
-	template<typename T, glm::qualifier Q>
-	struct hash<glm::mat<4, 4, T,Q> >
+	template<typename _Ty, glm::qualifier Q>
+	struct hash<glm::mat<4, 4, _Ty,Q> >
 	{
-		GLM_FUNC_DECL size_t operator()(glm::mat<4, 4, T,Q> const& m) const GLM_NOEXCEPT;
+		GLM_FUNC_DECL size_t operator()(glm::mat<4, 4, _Ty,Q> const& m) const GLM_NOEXCEPT;
 	};
 } // namespace std
 

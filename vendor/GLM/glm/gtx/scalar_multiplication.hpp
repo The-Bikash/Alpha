@@ -38,10 +38,10 @@ namespace glm
 	/// @addtogroup gtx_scalar_multiplication
 	/// @{
 
-	template<typename T, typename Vec>
+	template<typename _Ty, typename Vec>
 	using return_type_scalar_multiplication = typename std::enable_if<
-		!std::is_same<T, float>::value       // T may not be a float
-		&& std::is_arithmetic<T>::value, Vec // But it may be an int or double (no vec3 or mat3, ...)
+		!std::is_same<_Ty, float>::value       // T may not be a float
+		&& std::is_arithmetic<_Ty>::value, Vec // But it may be an int or double (no vec3 or mat3, ...)
 	>::type;
 
 #define GLM_IMPLEMENT_SCAL_MULT(Vec) \

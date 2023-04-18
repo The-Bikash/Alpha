@@ -4,7 +4,7 @@ namespace glm{
 namespace detail
 {
 	// Internal class for implementing swizzle operators
-	template<typename T, int N>
+	template<typename _Ty, int N>
 	struct _swizzle_base0
 	{
 	protected:
@@ -17,25 +17,25 @@ namespace detail
 		char    _buffer[1];
 	};
 
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, bool Aligned>
-	struct _swizzle_base1 : public _swizzle_base0<T, N>
+	template<int N, typename _Ty, qualifier Q, int E0, int E1, int E2, int E3, bool Aligned>
+	struct _swizzle_base1 : public _swizzle_base0<_Ty, N>
 	{
 	};
 
-	template<typename T, qualifier Q, int E0, int E1, bool Aligned>
-	struct _swizzle_base1<2, T, Q, E0,E1,-1,-2, Aligned> : public _swizzle_base0<T, 2>
+	template<typename _Ty, qualifier Q, int E0, int E1, bool Aligned>
+	struct _swizzle_base1<2, _Ty, Q, E0,E1,-1,-2, Aligned> : public _swizzle_base0<_Ty, 2>
 	{
 		GLM_FUNC_QUALIFIER vec<2, T, Q> operator ()()  const { return vec<2, T, Q>(this->elem(E0), this->elem(E1)); }
 	};
 
-	template<typename T, qualifier Q, int E0, int E1, int E2, bool Aligned>
-	struct _swizzle_base1<3, T, Q, E0,E1,E2,-1, Aligned> : public _swizzle_base0<T, 3>
+	template<typename _Ty, qualifier Q, int E0, int E1, int E2, bool Aligned>
+	struct _swizzle_base1<3, _Ty, Q, E0,E1,E2,-1, Aligned> : public _swizzle_base0<_Ty, 3>
 	{
 		GLM_FUNC_QUALIFIER vec<3, T, Q> operator ()()  const { return vec<3, T, Q>(this->elem(E0), this->elem(E1), this->elem(E2)); }
 	};
 
-	template<typename T, qualifier Q, int E0, int E1, int E2, int E3, bool Aligned>
-	struct _swizzle_base1<4, T, Q, E0,E1,E2,E3, Aligned> : public _swizzle_base0<T, 4>
+	template<typename _Ty, qualifier Q, int E0, int E1, int E2, int E3, bool Aligned>
+	struct _swizzle_base1<4, _Ty, Q, E0,E1,E2,E3, Aligned> : public _swizzle_base0<_Ty, 4>
 	{
 		GLM_FUNC_QUALIFIER vec<4, T, Q> operator ()()  const { return vec<4, T, Q>(this->elem(E0), this->elem(E1), this->elem(E2), this->elem(E3)); }
 	};
@@ -51,8 +51,8 @@ namespace detail
 		DUPLICATE_ELEMENTS = 1 if there is a repeated element, 0 otherwise (used to specialize swizzles
 			containing duplicate elements so that they cannot be used as r-values).
 	*/
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int DUPLICATE_ELEMENTS>
-	struct _swizzle_base2 : public _swizzle_base1<N, T, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
+	template<int N, typename _Ty, qualifier Q, int E0, int E1, int E2, int E3, int DUPLICATE_ELEMENTS>
+	struct _swizzle_base2 : public _swizzle_base1<N, _Ty, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
 	{
 		struct op_equal
 		{
@@ -140,8 +140,8 @@ namespace detail
 	};
 
 	// Specialization for swizzles containing duplicate elements.  These cannot be modified.
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
-	struct _swizzle_base2<N, T, Q, E0,E1,E2,E3, 1> : public _swizzle_base1<N, T, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
+	template<int N, typename _Ty, qualifier Q, int E0, int E1, int E2, int E3>
+	struct _swizzle_base2<N, _Ty, Q, E0,E1,E2,E3, 1> : public _swizzle_base1<N, _Ty, Q, E0,E1,E2,E3, detail::is_aligned<Q>::value>
 	{
 		struct Stub {};
 
@@ -154,14 +154,14 @@ namespace detail
 		}
 	};
 
-	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3>
-	struct _swizzle : public _swizzle_base2<N, T, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)>
+	template<int N, typename _Ty, qualifier Q, int E0, int E1, int E2, int E3>
+	struct _swizzle : public _swizzle_base2<N, _Ty, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)>
 	{
-		typedef _swizzle_base2<N, T, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)> base_type;
+		typedef _swizzle_base2<N, _Ty, Q, E0, E1, E2, E3, (E0 == E1 || E0 == E2 || E0 == E3 || E1 == E2 || E1 == E3 || E2 == E3)> base_type;
 
 		using base_type::operator=;
 
-		GLM_FUNC_QUALIFIER operator vec<N, T, Q> () const { return (*this)(); }
+		GLM_FUNC_QUALIFIER operator vec<N, _Ty, Q> () const { return (*this)(); }
 	};
 
 //

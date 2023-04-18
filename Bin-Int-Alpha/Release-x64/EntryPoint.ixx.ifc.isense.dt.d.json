@@ -1,37 +1,37 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
         "ProvidedModule": "EntryPoint",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "Application",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Application.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Application.ixx.ifc.dt"
             },
             {
                 "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
             },
             {
                 "Name": "code",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\code.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\code.ixx.ifc.dt"
             },
             {
                 "Name": "Event",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc.dt"
             },
             {
                 "Name": "string",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc.dt"
             },
             {
                 "Name": "Layer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Layer.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Layer.ixx.ifc.dt"
             },
             {
                 "Name": "Window",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Window.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Window.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

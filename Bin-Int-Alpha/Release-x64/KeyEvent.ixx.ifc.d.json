@@ -1,21 +1,21 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\events\\keyevent.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\events\\keyevent.ixx",
         "ProvidedModule": "KeyEvent",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "Event",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
             },
             {
                 "Name": "KeyCodes",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\KeyCodes.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\KeyCodes.ixx.ifc"
             },
             {
                 "Name": "string",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

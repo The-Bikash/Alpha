@@ -666,7 +666,7 @@ namespace glm
 namespace glm{
 namespace detail
 {
-	template<typename T>
+	template<typename _Ty>
 	struct is_int
 	{
 		enum test {value = 0};

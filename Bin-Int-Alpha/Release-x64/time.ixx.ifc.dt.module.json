@@ -1,7 +1,7 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\time\\time.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\time\\time.ixx",
         "ProvidedModule": "time",
         "ImportedModules": [],
         "ImportedHeaderUnits": []

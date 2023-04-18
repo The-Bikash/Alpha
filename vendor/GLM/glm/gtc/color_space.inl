@@ -3,10 +3,10 @@
 namespace glm{
 namespace detail
 {
-	template<length_t L, typename T, qualifier Q>
+	template<length_t L, typename _Ty, qualifier Q>
 	struct compute_rgbToSrgb
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& ColorRGB, T GammaCorrection)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, T, Q> const& ColorRGB, T GammaCorrection)
 		{
 			vec<L, T, Q> const ClampedColor(clamp(ColorRGB, static_cast<T>(0), static_cast<T>(1)));
 
@@ -17,8 +17,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_rgbToSrgb<4, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_rgbToSrgb<4, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static vec<4, T, Q> call(vec<4, T, Q> const& ColorRGB, T GammaCorrection)
 		{
@@ -26,10 +26,10 @@ namespace detail
 		}
 	};
 
-	template<length_t L, typename T, qualifier Q>
+	template<length_t L, typename _Ty, qualifier Q>
 	struct compute_srgbToRgb
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& ColorSRGB, T Gamma)
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, T, Q> const& ColorSRGB, T Gamma)
 		{
 			return mix(
 				pow((ColorSRGB + static_cast<T>(0.055)) * static_cast<T>(0.94786729857819905213270142180095), vec<L, T, Q>(Gamma)),
@@ -38,8 +38,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_srgbToRgb<4, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_srgbToRgb<4, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static vec<4, T, Q> call(vec<4, T, Q> const& ColorSRGB, T Gamma)
 		{
@@ -48,8 +48,8 @@ namespace detail
 	};
 }//namespace detail
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> convertLinearToSRGB(vec<L, T, Q> const& ColorLinear)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> convertLinearToSRGB(vec<L, T, Q> const& ColorLinear)
 	{
 		return detail::compute_rgbToSrgb<L, T, Q>::call(ColorLinear, static_cast<T>(0.41666));
 	}

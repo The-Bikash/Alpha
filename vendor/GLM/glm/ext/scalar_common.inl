@@ -1,6 +1,6 @@
 namespace glm
 {
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER T min(T a, T b, T c)
 	{
 		return glm::min(glm::min(a, b), c);
@@ -27,7 +27,7 @@ namespace glm
 #	if GLM_HAS_CXX11_STL
 		using std::fmin;
 #	else
-		template<typename T>
+		template<typename _Ty>
 		GLM_FUNC_QUALIFIER T fmin(T a, T b)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'fmin' only accept floating-point input");
@@ -38,7 +38,7 @@ namespace glm
 		}
 #	endif
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER T fmin(T a, T b, T c)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'fmin' only accept floating-point input");
@@ -72,7 +72,7 @@ namespace glm
 #	if GLM_HAS_CXX11_STL
 		using std::fmax;
 #	else
-		template<typename T>
+		template<typename _Ty>
 		GLM_FUNC_QUALIFIER T fmax(T a, T b)
 		{
 			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'fmax' only accept floating-point input");
@@ -83,7 +83,7 @@ namespace glm
 		}
 #	endif
 
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER T fmax(T a, T b, T c)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'fmax' only accept floating-point input");

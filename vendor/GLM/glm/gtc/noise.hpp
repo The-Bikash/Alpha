@@ -38,22 +38,22 @@ namespace glm
 
 	/// Classic perlin noise.
 	/// @see gtc_noise
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T perlin(
-		vec<L, T, Q> const& p);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty perlin(
+		vec<L, _Ty, Q> const& p);
 
 	/// Periodic perlin noise.
 	/// @see gtc_noise
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T perlin(
-		vec<L, T, Q> const& p,
-		vec<L, T, Q> const& rep);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty perlin(
+		vec<L, _Ty, Q> const& p,
+		vec<L, _Ty, Q> const& rep);
 
 	/// Simplex noise.
 	/// @see gtc_noise
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T simplex(
-		vec<L, T, Q> const& p);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty simplex(
+		vec<L, _Ty, Q> const& p);
 
 	/// @}
 }//namespace glm

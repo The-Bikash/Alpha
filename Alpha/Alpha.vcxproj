@@ -194,6 +194,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\ComplexAnalysis\Complex.ixx" />
     <ClCompile Include="include\Core\core.ixx" />
     <ClCompile Include="include\Core\typeinfo.ixx" />
     <ClCompile Include="include\Core\typetraits.ixx" />
@@ -259,6 +260,9 @@
     <ProjectReference Include="..\vendor\ImGui\ImGui.vcxproj">
       <Project>{ba860d97-a633-451f-bd11-85766037baac}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

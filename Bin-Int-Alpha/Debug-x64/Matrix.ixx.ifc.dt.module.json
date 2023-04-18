@@ -13,7 +13,8 @@
             "initializer",
             "LinearContainer",
             "list",
-            "algorithm"
+            "algorithm",
+            "simd"
         ],
         "ImportedHeaderUnits": []
     }

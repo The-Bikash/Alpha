@@ -641,19 +641,19 @@ namespace detail
 	}
 
 	// Based on Brian Karis http://graphicrants.blogspot.fr/2009/04/rgbm-color-encoding.html
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<4, T, Q> packRGBM(vec<3, T, Q> const& rgb)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<4, _Ty, Q> packRGBM(vec<3, _Ty, Q> const& rgb)
 	{
-		vec<3, T, Q> const Color(rgb * static_cast<T>(1.0 / 6.0));
-		T Alpha = clamp(max(max(Color.x, Color.y), max(Color.z, static_cast<T>(1e-6))), static_cast<T>(0), static_cast<T>(1));
-		Alpha = ceil(Alpha * static_cast<T>(255.0)) / static_cast<T>(255.0);
-		return vec<4, T, Q>(Color / Alpha, Alpha);
+		vec<3, _Ty, Q> const Color(rgb * static_cast<_Ty>(1.0 / 6.0));
+		_Ty Alpha = clamp(max(max(Color.x, Color.y), max(Color.z, static_cast<_Ty>(1e-6))), static_cast<_Ty>(0), static_cast<_Ty>(1));
+		Alpha = ceil(Alpha * static_cast<_Ty>(255.0)) / static_cast<_Ty>(255.0);
+		return vec<4, _Ty, Q>(Color / Alpha, Alpha);
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> unpackRGBM(vec<4, T, Q> const& rgbm)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> unpackRGBM(vec<4, _Ty, Q> const& rgbm)
 	{
-		return vec<3, T, Q>(rgbm.x, rgbm.y, rgbm.z) * rgbm.w * static_cast<T>(6);
+		return vec<3, _Ty, Q>(rgbm.x, rgbm.y, rgbm.z) * rgbm.w * static_cast<_Ty>(6);
 	}
 
 	template<length_t L, qualifier Q>

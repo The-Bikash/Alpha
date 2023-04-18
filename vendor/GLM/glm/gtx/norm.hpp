@@ -34,53 +34,53 @@ namespace glm
 
 	/// Returns the squared length of x.
 	/// From GLM_GTX_norm extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T length2(vec<L, T, Q> const& x);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty length2(vec<L, _Ty, Q> const& x);
 
 	/// Returns the squared distance between p0 and p1, i.e., length2(p0 - p1).
 	/// From GLM_GTX_norm extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T distance2(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty distance2(vec<L, _Ty, Q> const& p0, vec<L, _Ty, Q> const& p1);
 
 	//! Returns the L1 norm between x and y.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T l1Norm(vec<3, T, Q> const& x, vec<3, T, Q> const& y);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty l1Norm(vec<3, _Ty, Q> const& x, vec<3, _Ty, Q> const& y);
 
 	//! Returns the L1 norm of v.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T l1Norm(vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty l1Norm(vec<3, _Ty, Q> const& v);
 
 	//! Returns the L2 norm between x and y.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T l2Norm(vec<3, T, Q> const& x, vec<3, T, Q> const& y);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty l2Norm(vec<3, _Ty, Q> const& x, vec<3, _Ty, Q> const& y);
 
 	//! Returns the L2 norm of v.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T l2Norm(vec<3, T, Q> const& x);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty l2Norm(vec<3, _Ty, Q> const& x);
 
 	//! Returns the L norm between x and y.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T lxNorm(vec<3, T, Q> const& x, vec<3, T, Q> const& y, unsigned int Depth);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty lxNorm(vec<3, _Ty, Q> const& x, vec<3, _Ty, Q> const& y, unsigned int Depth);
 
 	//! Returns the L norm of v.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T lxNorm(vec<3, T, Q> const& x, unsigned int Depth);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty lxNorm(vec<3, _Ty, Q> const& x, unsigned int Depth);
 
 	//! Returns the LMax norm between x and y.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T lMaxNorm(vec<3, T, Q> const& x, vec<3, T, Q> const& y);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty lMaxNorm(vec<3, _Ty, Q> const& x, vec<3, _Ty, Q> const& y);
 
 	//! Returns the LMax norm of v.
 	//! From GLM_GTX_norm extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL T lMaxNorm(vec<3, T, Q> const& x);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty lMaxNorm(vec<3, _Ty, Q> const& x);
 
 	/// @}
 }//namespace glm

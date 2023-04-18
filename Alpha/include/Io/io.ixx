@@ -1,25 +1,29 @@
 module;
+#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <cwchar>
+#include <cstdlib>
 export module io;
 
 import typeinfo;
 import typetraits;
 
-extern "C" {
-
-    char* __cdecl gcvt(
-        double _Value,
-        int    _DigitCount,
-        char*  _DstBuf
-    );
-
-
-    __inline int __cdecl printf(
-        char const* const _Format,
-        ...);
-
-    export int __cdecl system(char const* _Command);
-    export void __cdecl exit(int _Code);
-}
+//extern "C" {
+//
+//    char* __cdecl gcvt(
+//        double _Value,
+//        int    _DigitCount,
+//        char*  _DstBuf
+//    );
+//
+//
+//    __inline int __cdecl printf(
+//        char const* const _Format,
+//        ...);
+//
+//    export int __cdecl system(char const* _Command);
+//    export void __cdecl exit(int _Code);
+//}
 export char newline = '\n';
 
 export namespace alpha {
@@ -42,7 +46,8 @@ export namespace alpha {
     inline void _print(const char* _Str)noexcept;
     void _print(const bool _var)noexcept;
 
-    template<class _Ty> inline constexpr void _print(const _Ty& _Obj)noexcept {
+    template<class _Ty> 
+    inline constexpr void _print(const _Ty& _Obj)noexcept {
         if constexpr (is_fundamental_v<_Ty>) {
             char _Buffer[25] = { 0 }; char* _Buf = _Buffer;
 
@@ -75,10 +80,41 @@ export namespace alpha {
             exit(1);
         }
     }
+    template<class _Ty> 
+    inline void _input(_Ty& _Obj) noexcept {
+        if constexpr (is_fundamental_v<_Ty>) {
+            if      constexpr (is_same_v<_Ty, int>) { std::scanf("%d", &_Obj); }
+            else if constexpr (is_same_v<_Ty, short>) { std::scanf("%hd", &_Obj); }
+            else if constexpr (is_same_v<_Ty, long long>) { std::scanf("%lld", &_Obj); }
+            else if constexpr (is_same_v<_Ty, unsigned int>) { std::scanf("%u", &_Obj); }
+            else if constexpr (is_same_v<_Ty, unsigned short>) { std::scanf("%hu", &_Obj); }
+            else if constexpr (is_same_v<_Ty, unsigned long long>) { std::scanf("%llu", &_Obj); }
+            else if constexpr (is_same_v<_Ty, float>) { std::scanf("%f", &_Obj); }
+            else if constexpr (is_same_v<_Ty, double>) { std::scanf("%lf", &_Obj); }
+            else if constexpr (is_same_v<_Ty, bool>) { std::scanf("%d", &_Obj); }
+            else if constexpr (is_same_v<_Ty, char>) { std::scanf("%c", &_Obj); }
+            else if constexpr (is_same_v<_Ty, wchar_t>) { std::wscanf(L"%lc", &_Obj); }
+            else {
+                _print("\nYou should define void _input(");
+                _print(typeof<_Ty>);
+                _print("& _Obj) function in your code\n\n");
+                std::exit(1);
+            }
+        } else {
+            _print("\nYou should define void _input(");
+            _print(typeof<_Ty>);
+            _print("& _Obj) function in your code\n\n");
+            std::exit(1);
+        }
+    }
+
 
     template<class _Ty, class... _Ts>
     inline constexpr void print(const _Ty& _Val, const _Ts&... _Args)noexcept {
         _print(_Val); if constexpr (sizeof...(_Args) > 0) print(_Args...);
     }
-
+    template<class _Ty, class... _Ts>
+    inline void input(_Ty& _Val, _Ts&... _Args)noexcept {
+        _input(_Val); if constexpr (sizeof...(_Args) > 0) input(_Args...);
+    }
 }

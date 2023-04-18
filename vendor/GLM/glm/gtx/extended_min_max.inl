@@ -2,7 +2,7 @@
 
 namespace glm
 {
-	template<typename T>
+	template<typename _Ty>
 	GLM_FUNC_QUALIFIER T min(
 		T const& x,
 		T const& y,

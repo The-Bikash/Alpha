@@ -45,8 +45,8 @@ namespace glm
 		return Result;
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> rotate_slow(mat<4, 4, T, Q> const& m, T angle, vec<3, T, Q> const& v)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<4, 4, _Ty, Q> rotate_slow(mat<4, 4, T, Q> const& m, T angle, vec<3, T, Q> const& v)
 	{
 		T const a = angle;
 		T const c = cos(a);

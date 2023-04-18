@@ -25,12 +25,12 @@ namespace glm
 		return false;
 	}
 
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER bool intersectRayTriangle
 	(
-		vec<3, T, Q> const& orig, vec<3, T, Q> const& dir,
-		vec<3, T, Q> const& vert0, vec<3, T, Q> const& vert1, vec<3, T, Q> const& vert2,
-		vec<2, T, Q>& baryPosition, T& distance
+		vec<3, _Ty, Q> const& orig, vec<3, _Ty, Q> const& dir,
+		vec<3, _Ty, Q> const& vert0, vec<3, _Ty, Q> const& vert1, vec<3, _Ty, Q> const& vert2,
+		vec<2, _Ty, Q>& baryPosition, _Ty& distance
 	)
 	{
 		// find vectors for two edges sharing vert0

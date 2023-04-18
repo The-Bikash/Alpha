@@ -2,7 +2,7 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER T radialGradient
 	(
 		vec<2, T, Q> const& Center,

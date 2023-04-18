@@ -24,14 +24,14 @@ namespace glm
 	/// @addtogroup ext_matrix_common
 	/// @{
 
-	template<length_t C, length_t R, typename T, typename U, qualifier Q>
-	GLM_FUNC_DECL mat<C, R, T, Q> mix(mat<C, R, T, Q> const& x, mat<C, R, T, Q> const& y, mat<C, R, U, Q> const& a);
+	template<length_t C, length_t R, typename _Ty, typename U, qualifier Q>
+	GLM_FUNC_DECL mat<C, R, _Ty, Q> mix(mat<C, R, _Ty, Q> const& x, mat<C, R, _Ty, Q> const& y, mat<C, R, U, Q> const& a);
 
-	template<length_t C, length_t R, typename T, typename U, qualifier Q>
-	GLM_FUNC_DECL mat<C, R, T, Q> mix(mat<C, R, T, Q> const& x, mat<C, R, T, Q> const& y, U a);
+	template<length_t C, length_t R, typename _Ty, typename U, qualifier Q>
+	GLM_FUNC_DECL mat<C, R, _Ty, Q> mix(mat<C, R, _Ty, Q> const& x, mat<C, R, _Ty, Q> const& y, U a);
 
-	template <length_t C, length_t R, typename T, qualifier Q>
-	GLM_FUNC_DECL GLM_CONSTEXPR mat<C, R, T, Q> abs(mat<C, R, T, Q> const& x);
+	template <length_t C, length_t R, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL GLM_CONSTEXPR mat<C, R, _Ty, Q> abs(mat<C, R, _Ty, Q> const& x);
 
 	/// @}
 }//namespace glm

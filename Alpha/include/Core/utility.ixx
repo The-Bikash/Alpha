@@ -809,14 +809,24 @@ export namespace alpha {
 	inline constexpr auto _Unwrappable(int) -> decltype(declval<U>()._Unwrapped(), bool{}) {
 		return true;
 	}
+	template <typename U>
+	inline constexpr auto _Orderable(int) -> decltype(declval<U>().operator>(U()), bool{}) {
+		return true;
+	}
 
 	template <typename U>
 	inline constexpr bool _Unwrappable(...) {
 		return false;
 	}
+	template <typename U>
+	inline constexpr bool _Orderable(...) {
+		return false;
+	}
 
-	template <typename T>
-	inline constexpr bool _Unwrappable_v = _Unwrappable<T>(0);
+	template <typename _Ty>
+	inline constexpr bool _Unwrappable_v = _Unwrappable<_Ty>(0);
+	template <typename _Ty>
+	inline constexpr bool _Orderable_v = _Orderable<_Ty>(0);
 
 	template <class _Iter>
 	[[nodiscard]] constexpr decltype(auto) _Get_unwrapped(_Iter&& _It) noexcept {

@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T angle(qua<T, Q> const& x)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER _Ty angle(qua<_Ty, Q> const& x)
 	{
 		if (abs(x.w) > cos_one_over_two<T>())
 		{

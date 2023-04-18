@@ -162,38 +162,38 @@ namespace glm
 		std::basic_ostream<CTy, CTr>& operator<<(std::basic_ostream<CTy, CTr>&, order const&);
 	}//namespace io
 
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, qua<T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<1, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<2, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<3, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<4, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 2, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 3, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 4, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 2, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 3, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 4, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 2, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 3, T, Q> const&);
-	template<typename CTy, typename CTr, typename T, qualifier Q>
-	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 4, T, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, qua<_Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<1, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<2, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<3, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, vec<4, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 2, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 3, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<2, 4, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 2, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 3, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<3, 4, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 2, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 3, _Ty, Q> const&);
+	template<typename CTy, typename CTr, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL std::basic_ostream<CTy,CTr>& operator<<(std::basic_ostream<CTy,CTr>&, mat<4, 4, _Ty, Q> const&);
 
-  template<typename CTy, typename CTr, typename T, qualifier Q>
+  template<typename CTy, typename CTr, typename _Ty, qualifier Q>
 	GLM_FUNC_DECL std::basic_ostream<CTy,CTr> & operator<<(std::basic_ostream<CTy,CTr> &,
-                                                         std::pair<mat<4, 4, T, Q> const, mat<4, 4, T, Q> const> const&);
+                                                         std::pair<mat<4, 4, _Ty, Q> const, mat<4, 4, _Ty, Q> const> const&);
 
 	/// @}
 }//namespace glm

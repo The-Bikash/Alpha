@@ -39,9 +39,9 @@ namespace glm
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top, T const& zNear, T const& zFar)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluOrtho2D.xml">gluOrtho2D man page</a>
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> ortho(
-		T left, T right, T bottom, T top);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> ortho(
+		_Ty left, _Ty right, _Ty bottom, _Ty top);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using left-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -49,9 +49,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoLH_ZO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoLH_ZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume using right-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -59,9 +59,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoLH_NO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoLH_NO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using left-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -69,9 +69,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoRH_ZO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoRH_ZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using right-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -79,9 +79,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoRH_NO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoRH_NO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using left-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -89,9 +89,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoZO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -99,9 +99,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoNO(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoNO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using left-handed coordinates.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -110,9 +110,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoLH(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoLH(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using right-handed coordinates.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -121,9 +121,9 @@ namespace glm
 	/// @tparam T A floating-point scalar type
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> orthoRH(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> orthoRH(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a matrix for an orthographic parallel viewing volume, using the default handedness and default near and far clip planes definition.
 	/// To change default handedness use GLM_FORCE_LEFT_HANDED. To change default near and far clip planes definition use GLM_FORCE_DEPTH_ZERO_TO_ONE.
@@ -132,84 +132,84 @@ namespace glm
 	///
 	/// @see - glm::ortho(T const& left, T const& right, T const& bottom, T const& top)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glOrtho.xml">glOrtho man page</a>
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> ortho(
-		T left, T right, T bottom, T top, T zNear, T zFar);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> ortho(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty zNear, _Ty zFar);
 
 	/// Creates a left handed frustum matrix.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumLH_ZO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumLH_ZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a left handed frustum matrix.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumLH_NO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumLH_NO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a right handed frustum matrix.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumRH_ZO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumRH_ZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a right handed frustum matrix.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumRH_NO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumRH_NO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a frustum matrix using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumZO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumZO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a frustum matrix using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumNO(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumNO(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a left handed frustum matrix.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
 	/// Otherwise, the near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumLH(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumLH(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a right handed frustum matrix.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
 	/// Otherwise, the near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustumRH(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustumRH(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 	/// Creates a frustum matrix with default handedness, using the default handedness and default near and far clip planes definition.
 	/// To change default handedness use GLM_FORCE_LEFT_HANDED. To change default near and far clip planes definition use GLM_FORCE_DEPTH_ZERO_TO_ONE.
 	///
 	/// @tparam T A floating-point scalar type
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glFrustum.xml">glFrustum man page</a>
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> frustum(
-		T left, T right, T bottom, T top, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> frustum(
+		_Ty left, _Ty right, _Ty bottom, _Ty top, _Ty near, _Ty far);
 
 
 	/// Creates a matrix for a right handed, symmetric perspective-view frustum.
@@ -221,9 +221,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveRH_ZO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveRH_ZO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a right handed, symmetric perspective-view frustum.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -234,9 +234,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveRH_NO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveRH_NO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a left handed, symmetric perspective-view frustum.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -247,9 +247,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveLH_ZO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveLH_ZO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a left handed, symmetric perspective-view frustum.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -260,9 +260,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveLH_NO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveLH_NO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a symmetric perspective-view frustum using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -273,9 +273,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveZO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveZO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a symmetric perspective-view frustum using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -286,9 +286,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveNO(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveNO(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a right handed, symmetric perspective-view frustum.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -300,9 +300,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveRH(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveRH(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a left handed, symmetric perspective-view frustum.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -314,9 +314,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveLH(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveLH(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Creates a matrix for a symmetric perspective-view frustum based on the default handedness and default near and far clip planes definition.
 	/// To change default handedness use GLM_FORCE_LEFT_HANDED. To change default near and far clip planes definition use GLM_FORCE_DEPTH_ZERO_TO_ONE.
@@ -328,9 +328,9 @@ namespace glm
 	///
 	/// @tparam T A floating-point scalar type
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml">gluPerspective man page</a>
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspective(
-		T fovy, T aspect, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspective(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using right-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -342,9 +342,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovRH_ZO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovRH_ZO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using right-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -356,9 +356,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovRH_NO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovRH_NO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using left-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -370,9 +370,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovLH_ZO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovLH_ZO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using left-handed coordinates.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -384,9 +384,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovLH_NO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovLH_NO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -398,9 +398,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovZO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovZO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view using left-handed coordinates if GLM_FORCE_LEFT_HANDED if defined or right-handed coordinates otherwise.
 	/// The near and far clip planes correspond to z normalized device coordinates of -1 and +1 respectively. (OpenGL clip volume definition)
@@ -412,9 +412,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovNO(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovNO(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a right handed perspective projection matrix based on a field of view.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -427,9 +427,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovRH(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovRH(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a left handed perspective projection matrix based on a field of view.
 	/// If GLM_FORCE_DEPTH_ZERO_TO_ONE is defined, the near and far clip planes correspond to z normalized device coordinates of 0 and +1 respectively. (Direct3D clip volume definition)
@@ -442,9 +442,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFovLH(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFovLH(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Builds a perspective projection matrix based on a field of view and the default handedness and default near and far clip planes definition.
 	/// To change default handedness use GLM_FORCE_LEFT_HANDED. To change default near and far clip planes definition use GLM_FORCE_DEPTH_ZERO_TO_ONE.
@@ -456,9 +456,9 @@ namespace glm
 	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> perspectiveFov(
-		T fov, T width, T height, T near, T far);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> perspectiveFov(
+		_Ty fov, _Ty width, _Ty height, _Ty near, _Ty far);
 
 	/// Creates a matrix for a left handed, symmetric perspective-view frustum with far plane at infinite.
 	///
@@ -467,9 +467,9 @@ namespace glm
 	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> infinitePerspectiveLH(
-		T fovy, T aspect, T near);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> infinitePerspectiveLH(
+		_Ty fovy, _Ty aspect, _Ty near);
 
 	/// Creates a matrix for a right handed, symmetric perspective-view frustum with far plane at infinite.
 	///
@@ -478,9 +478,9 @@ namespace glm
 	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> infinitePerspectiveRH(
-		T fovy, T aspect, T near);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> infinitePerspectiveRH(
+		_Ty fovy, _Ty aspect, _Ty near);
 
 	/// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite with default handedness.
 	///
@@ -489,9 +489,9 @@ namespace glm
 	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> infinitePerspective(
-		T fovy, T aspect, T near);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> infinitePerspective(
+		_Ty fovy, _Ty aspect, _Ty near);
 
 	/// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite for graphics hardware that doesn't support depth clamping.
 	///
@@ -500,9 +500,9 @@ namespace glm
 	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> tweakedInfinitePerspective(
-		T fovy, T aspect, T near);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> tweakedInfinitePerspective(
+		_Ty fovy, _Ty aspect, _Ty near);
 
 	/// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite for graphics hardware that doesn't support depth clamping.
 	///
@@ -512,9 +512,9 @@ namespace glm
 	/// @param ep Epsilon
 	///
 	/// @tparam T A floating-point scalar type
-	template<typename T>
-	GLM_FUNC_DECL mat<4, 4, T, defaultp> tweakedInfinitePerspective(
-		T fovy, T aspect, T near, T ep);
+	template<typename _Ty>
+	GLM_FUNC_DECL mat<4, 4, _Ty, defaultp> tweakedInfinitePerspective(
+		_Ty fovy, _Ty aspect, _Ty near, _Ty ep);
 
 	/// @}
 }//namespace glm

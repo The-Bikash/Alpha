@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projects\Alpha\Bin-Test\Debug-x64\Test.exe</FullPath>
+      <FullPath>D:\C++20\Projects\Alpha\Bin-Test\Debug-x64\Test.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

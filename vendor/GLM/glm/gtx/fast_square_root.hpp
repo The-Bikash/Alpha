@@ -41,8 +41,8 @@ namespace glm
 	/// Faster than the common sqrt function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> fastSqrt(vec<L, T, Q> const& x);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> fastSqrt(vec<L, _Ty, Q> const& x);
 
 	/// Faster than the common inversesqrt function but less accurate.
 	///
@@ -53,8 +53,8 @@ namespace glm
 	/// Faster than the common inversesqrt function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> fastInverseSqrt(vec<L, T, Q> const& x);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> fastInverseSqrt(vec<L, _Ty, Q> const& x);
 
 	/// Faster than the common length function but less accurate.
 	///
@@ -65,8 +65,8 @@ namespace glm
 	/// Faster than the common length function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T fastLength(vec<L, T, Q> const& x);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty fastLength(vec<L, _Ty, Q> const& x);
 
 	/// Faster than the common distance function but less accurate.
 	///
@@ -77,8 +77,8 @@ namespace glm
 	/// Faster than the common distance function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T fastDistance(vec<L, T, Q> const& x, vec<L, T, Q> const& y);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL _Ty fastDistance(vec<L, _Ty, Q> const& x, vec<L, _Ty, Q> const& y);
 
 	/// Faster than the common normalize function but less accurate.
 	///
@@ -89,8 +89,8 @@ namespace glm
 	/// Faster than the common normalize function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> fastNormalize(vec<L, T, Q> const& x);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> fastNormalize(vec<L, _Ty, Q> const& x);
 
 	/// @}
 }// namespace glm

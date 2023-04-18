@@ -31,15 +31,15 @@ namespace glm
 
 	//! Build a cross product matrix.
 	//! From GLM_GTX_matrix_cross_product extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<3, 3, T, Q> matrixCross3(
-		vec<3, T, Q> const& x);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<3, 3, _Ty, Q> matrixCross3(
+		vec<3, _Ty, Q> const& x);
 
 	//! Build a cross product matrix.
 	//! From GLM_GTX_matrix_cross_product extension.
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> matrixCross4(
-		vec<3, T, Q> const& x);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> matrixCross4(
+		vec<3, _Ty, Q> const& x);
 
 	/// @}
 }//namespace glm

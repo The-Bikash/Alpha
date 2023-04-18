@@ -7,8 +7,8 @@ namespace glm
 {
 	// -- Component accesses --
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER typename tdualquat<T, Q>::part_type & tdualquat<T, Q>::operator[](typename tdualquat<T, Q>::length_type i)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER typename tdualquat<_Ty, Q>::part_type & tdualquat<_Ty, Q>::operator[](typename tdualquat<T, Q>::length_type i)
 	{
 		assert(i >= 0 && i < this->length());
 		return (&real)[i];
@@ -39,9 +39,9 @@ namespace glm
 		{}
 #	endif
 
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	template<qualifier P>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR tdualquat<T, Q>::tdualquat(tdualquat<T, P> const& d)
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR tdualquat<_Ty, Q>::tdualquat(tdualquat<T, P> const& d)
 		: real(d.real)
 		, dual(d.dual)
 	{}
@@ -100,9 +100,9 @@ namespace glm
 		}
 #	endif
 
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	template<typename U>
-	GLM_FUNC_QUALIFIER tdualquat<T, Q> & tdualquat<T, Q>::operator=(tdualquat<U, Q> const& q)
+	GLM_FUNC_QUALIFIER tdualquat<_Ty, Q> & tdualquat<_Ty, Q>::operator=(tdualquat<U, Q> const& q)
 	{
 		this->real = q.real;
 		this->dual = q.dual;
@@ -234,8 +234,8 @@ namespace glm
 	{
 		// Dual Quaternion Linear blend aka DLB:
 		// Lerp is only defined in [0, 1]
-		assert(a >= static_cast<T>(0));
-		assert(a <= static_cast<T>(1));
+		assert(a >= static_cast<_Ty>(0));
+		assert(a <= static_cast<_Ty>(1));
 		T const k = dot(x.real,y.real) < static_cast<T>(0) ? -a : a;
 		T const one(1);
 		return tdualquat<T, Q>(x * (one - a) + y * k);

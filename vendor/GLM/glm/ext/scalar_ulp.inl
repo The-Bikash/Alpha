@@ -216,13 +216,13 @@ namespace glm
 #		endif
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER T nextFloat(T x, int ULPs)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER _Ty nextFloat(_Ty x, int ULPs)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'next_float' only accept floating-point input");
+		GLM_STATIC_ASSERT(std::numeric_limits<_Ty>::is_iec559, "'next_float' only accept floating-point input");
 		assert(ULPs >= 0);
 
-		T temp = x;
+		_Ty temp = x;
 		for(int i = 0; i < ULPs; ++i)
 			temp = nextFloat(temp);
 		return temp;
@@ -254,13 +254,13 @@ namespace glm
 #		endif
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER T prevFloat(T x, int ULPs)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER _Ty prevFloat(_Ty x, int ULPs)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'prev_float' only accept floating-point input");
+		GLM_STATIC_ASSERT(std::numeric_limits<_Ty>::is_iec559, "'prev_float' only accept floating-point input");
 		assert(ULPs >= 0);
 
-		T temp = x;
+		_Ty temp = x;
 		for(int i = 0; i < ULPs; ++i)
 			temp = prevFloat(temp);
 		return temp;

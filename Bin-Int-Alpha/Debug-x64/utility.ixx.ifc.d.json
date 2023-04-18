@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\core\\utility.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\core\\utility.ixx",
         "ProvidedModule": "utility",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\yvals_core.h",
@@ -14,7 +14,7 @@
         "ImportedModules": [
             {
                 "Name": "typetraits",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

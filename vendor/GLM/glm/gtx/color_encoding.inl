@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> convertLinearSRGBToD65XYZ(vec<3, T, Q> const& ColorLinearSRGB)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> convertLinearSRGBToD65XYZ(vec<3, T, Q> const& ColorLinearSRGB)
 	{
 		vec<3, T, Q> const M(0.490f, 0.17697f, 0.2f);
 		vec<3, T, Q> const N(0.31f,  0.8124f, 0.01063f);

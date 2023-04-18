@@ -1,0 +1,14 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\complexanalysis\\complex.ixx",
+        "ProvidedModule": "Complex",
+        "ImportedModules": [
+            "core",
+            "io",
+            "typetraits",
+            "utility"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

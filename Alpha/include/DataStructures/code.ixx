@@ -1,15 +1,6 @@
-module;
-#include <bitset>
-#include <intrin.h>
-#include <omp.h>
-#include <iostream>
-#include <vector>
-#include <utility>
-#include <numeric>
-#include <string>
-#include <exception>
-#include <bit>
-#include <algorithm>
+﻿module;
+#include<stdlib.h>
+#include<compare>
 export module code;
 
 import LinearContainer;
@@ -19,102 +10,148 @@ import io;
 import simd;
 import Matrix;
 import Rational;
-using namespace std;
-
-bool isPrime(int n) {
-    if (n <= 1)
-        return false;
-
-    for (int i = 2; i <= n / 2; i++) {
-        if (n % i == 0)
-            return false;
-    }
-
-    return true;
-
-}
-
-
-// Computes (a^b) % m using modular exponentiation
-long long power(long long a, long long b, long long m) {
-    long long res = 1;
-    while (b > 0) {
-        if (b & 1) {
-            res = (res * a) % m;
-        }
-        a = (a * a) % m;
-        b >>= 1;
-    }
-    return res;
-}
-
-// Miller-Rabin primality test
-bool isPrime(long long n, int k) {
-    if (n <= 1 || (n > 2 && n % 2 == 0))
-        return false;
-
-    long long d = n - 1;
-    while (d % 2 == 0) {
-        d >>= 1;
-    }
-
-    // Repeat k times
-    for (int i = 0; i < k; i++) {
-        long long a = rand() % (n - 2) + 2;
-        long long x = power(a, d, n);
-
-        if (x == 1 || x == n - 1)
-            continue;
-
-        bool isWitness = false;
-        while (d != n - 1) {
-            x = (x * x) % n;
-            d <<= 1;
-            if (x == 1)
-                return false;
-            if (x == n - 1) {
-                isWitness = true;
-                break;
-            }
-        }
-
-        if (!isWitness)
-            return false;
-    }
-
-    return true;
-}
-
+import Complex;
+import string;
 using namespace alpha;
+//void vectorPrint(const Array<string>& _Path) {
+//	for (const auto& component : _Path)
+//		print(component);
+//};
+//bool back(Array<string>& _Path, string& _Input) {
+//	input(_Input);
+//	if (_Input == "back") {
+//		_Path.pop_back();
+//		vectorPrint(_Path);
+//		return true;
+//	}
+//	return false;
+//}
+//
+//bool matrixadd() {
+//	print("Enter the field : "); string field; input(field);
+//	if (field == "real") {
+//		size_t row;
+//		print("Enter the value of row : "); input(row);
+//		SquareMat<float> A(row);
+//		SquareMat<float> B(row);
+//		print("Enter the value of A : \n"); input(A);
+//		print("Enter the value of B : \n"); input(B);
+//		auto C = A + B;
+//		print("Sum of A and B = ", C);
+//	}
+//	else if (field == "rational") {
+//		size_t row;
+//		print("Enter the value of row : "); input(row);
+//		SquareMat<Rational<int>> A(row);
+//		SquareMat<Rational<int>> B(row);
+//		print("Enter the value of A : \n"); input(A);
+//		print("Enter the value of B : \n"); input(B);
+//		auto C = A + B;
+//		print("Sum of A and B = \n", C);
+//	}
+//	else if (field == "complex") {
+//		size_t row;
+//		print("Enter the value of row : "); input(row);
+//		SquareMat<Complex<float>> A(row);
+//		SquareMat<Complex<float>> B(row);
+//		print("Enter the value of A : \n"); input(A);
+//		print("Enter the value of B : \n"); input(B);
+//		auto C = A + B;
+//		print("Sum of A and B = \n", C);
+//	}
+//	else {
+//
+//	}
+//	print("\nIf you do not want to continue press 1 else press 0 : ");
+//	int i; input(i);
+//	if (i == 1) return true;
+//	else return false;
+//}
+//
+//void matrixsub() {
+//
+//}
+//
+//void LinearAlgebra(Array<string>& _Path) {
+//	string _Input;
+//	while (true) {
+//		_Input = string();
+//		if (back(_Path, _Input)) return;
+//		else if (_Input == "matrix add") {
+//			_Path.emplace_back(_Input += '>'); vectorPrint(_Path);
+//			while (true) {
+//				print('\n');
+//				if (matrixadd())break;
+//			}
+//			_Path.pop_back(); vectorPrint(_Path);
+//		}
+//		else if (_Input == "matrix sub") {
+//			_Path.emplace_back(_Input += '>'); vectorPrint(_Path);
+//			matrixsub();
+//		}
+//	}
+//}
+//void RealAnalysis(Array<string>& _Path) {
+//
+//}
+//void ComplexAnalysis(Array<string>& _Path) {
+//
+//}
+
 export void FUN() {
-    //const size_t size = 64*100000;
-    //unsigned int* a = new unsigned int[size];
-    //unsigned int* b = new unsigned int[size];
-    //unsigned int* c = new unsigned int[size];
+	/*alpha::print("*********************** WELCOME ***************************\n\n\n\n");
+	print(">");
+	string _Input;
+	string _Input1;
+	Array<string> _Path = { ">" };
+	auto vectorPrint = [](const Array<string>& _Path) {
+		for (const auto& component : _Path)
+			print(component);
+	};
+	while (true) {
+		_Input = _Input1;
+		input(_Input);
+		if (_Input == string("Linear Algebra")) {
+			_Path.emplace_back(_Input += '>'); vectorPrint(_Path);
+			LinearAlgebra(_Path);
+		}
+		else if (_Input == string("Real Analysis")) {
+			_Path.emplace_back(_Input += '>');
+			vectorPrint(_Path);
+			RealAnalysis(_Path);
+		}
+		else if (_Input == string("Complex Analysis")) {
+			_Path.emplace_back(_Input += '>');
+			vectorPrint(_Path);
+			ComplexAnalysis(_Path);
+		}else {
+			print("Error");
+			print('\n'); vectorPrint(_Path);
+		}
+	}*/
+	using _Ty = Complex<int>;
+	Complex<_Ty> C = { 18433,123242 };
+	size_t size = 100000000;
+	Array<Complex<_Ty>> v1; v1.reserve(size);
+	Array<Complex<_Ty>> v2; v1.reserve(size);
 
-    //for (size_t i = 0; i < size; ++i) {
-    //    a[i] = rand() % 1000;
-    //    b[i] = rand() % 100;
-    //}
+	//srand((unsigned int)time(0));
+	for (size_t i = 0; i < size; ++i) {
+		auto real = (_Ty)(rand() % 1000);
+		auto imag = (_Ty)(rand() % 1000);
+		v1.emplace_back(real, imag);
+		v2.emplace_back(real, imag);
+	}
+	time_start();
+	C._MultoContainer(v1.begin(), v1.end());
+	time_end();
+	time_start();
+	for (size_t i = 0; i < size; ++i) {
+		v2[i] *= C;
+	}
+	time_end();
+	//print(v1);
+	alpha::print(v1 == v2);
 
-
-    //time_start();
-    ///*for (size_t i = 0; i < size; ++i) {
-    //    c[i] = a[i] + b[i];
-
-    //}*/
-    //alpha::_simd_add_vector_uint32(a, b, c, size);
-    //time_end();
-    //delete[]a;
-    //delete[]b;
-    //delete[]c;
-
-    alpha::SquareMat<Rational<int>> x = { {12,13,14}, {20,28,30}, {40,50, 60} };
-
-    alpha::print(x);
-    x.rrf();
-    
-    alpha::print(x,"\n\n\n\n");
-
-    system("pause");
+	
 }

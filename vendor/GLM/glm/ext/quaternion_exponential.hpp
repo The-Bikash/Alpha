@@ -33,29 +33,29 @@ namespace glm
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> exp(qua<T, Q> const& q);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL qua<_Ty, Q> exp(qua<_Ty, Q> const& q);
 
 	/// Returns a logarithm of a quaternion
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> log(qua<T, Q> const& q);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL qua<_Ty, Q> log(qua<_Ty, Q> const& q);
 
 	/// Returns a quaternion raised to a power.
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> pow(qua<T, Q> const& q, T y);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL qua<_Ty, Q> pow(qua<_Ty, Q> const& q, _Ty y);
 
 	/// Returns the square root of a quaternion
 	///
 	/// @tparam T A floating-point scalar type
 	/// @tparam Q A value from qualifier enum
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL qua<T, Q> sqrt(qua<T, Q> const& q);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL qua<_Ty, Q> sqrt(qua<_Ty, Q> const& q);
 
 	/// @}
 } //namespace glm

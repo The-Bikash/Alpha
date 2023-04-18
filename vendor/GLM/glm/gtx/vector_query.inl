@@ -5,11 +5,11 @@
 namespace glm{
 namespace detail
 {
-	template<length_t L, typename T, qualifier Q>
+	template<length_t L, typename _Ty, qualifier Q>
 	struct compute_areCollinear{};
 
-	template<typename T, qualifier Q>
-	struct compute_areCollinear<2, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_areCollinear<2, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static bool call(vec<2, T, Q> const& v0, vec<2, T, Q> const& v1, T const& epsilon)
 		{
@@ -17,8 +17,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_areCollinear<3, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_areCollinear<3, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static bool call(vec<3, T, Q> const& v0, vec<3, T, Q> const& v1, T const& epsilon)
 		{
@@ -26,8 +26,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_areCollinear<4, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_areCollinear<4, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static bool call(vec<4, T, Q> const& v0, vec<4, T, Q> const& v1, T const& epsilon)
 		{
@@ -35,11 +35,11 @@ namespace detail
 		}
 	};
 
-	template<length_t L, typename T, qualifier Q>
+	template<length_t L, typename _Ty, qualifier Q>
 	struct compute_isCompNull{};
 
-	template<typename T, qualifier Q>
-	struct compute_isCompNull<2, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_isCompNull<2, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static vec<2, bool, Q> call(vec<2, T, Q> const& v, T const& epsilon)
 		{
@@ -49,8 +49,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_isCompNull<3, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_isCompNull<3, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static vec<3, bool, Q> call(vec<3, T, Q> const& v, T const& epsilon)
 		{
@@ -61,8 +61,8 @@ namespace detail
 		}
 	};
 
-	template<typename T, qualifier Q>
-	struct compute_isCompNull<4, T, Q>
+	template<typename _Ty, qualifier Q>
+	struct compute_isCompNull<4, _Ty, Q>
 	{
 		GLM_FUNC_QUALIFIER static vec<4, bool, Q> call(vec<4, T, Q> const& v, T const& epsilon)
 		{
@@ -76,8 +76,8 @@ namespace detail
 
 }//namespace detail
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER bool areCollinear(vec<L, T, Q> const& v0, vec<L, T, Q> const& v1, T const& epsilon)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER bool areCollinear(vec<L, _Ty, Q> const& v0, vec<L, _Ty, Q> const& v1, _Ty const& epsilon)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'areCollinear' only accept floating-point inputs");
 

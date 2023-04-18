@@ -1,7 +1,7 @@
 namespace glm
 {
-	template<typename T, typename U, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> projectZO(vec<3, T, Q> const& obj, mat<4, 4, T, Q> const& model, mat<4, 4, T, Q> const& proj, vec<4, U, Q> const& viewport)
+	template<typename _Ty, typename U, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> projectZO(vec<3, T, Q> const& obj, mat<4, 4, T, Q> const& model, mat<4, 4, T, Q> const& proj, vec<4, U, Q> const& viewport)
 	{
 		vec<4, T, Q> tmp = vec<4, T, Q>(obj, static_cast<T>(1));
 		tmp = model * tmp;
@@ -42,8 +42,8 @@ namespace glm
 #		endif
 	}
 
-	template<typename T, typename U, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> unProjectZO(vec<3, T, Q> const& win, mat<4, 4, T, Q> const& model, mat<4, 4, T, Q> const& proj, vec<4, U, Q> const& viewport)
+	template<typename _Ty, typename U, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> unProjectZO(vec<3, T, Q> const& win, mat<4, 4, T, Q> const& model, mat<4, 4, T, Q> const& proj, vec<4, U, Q> const& viewport)
 	{
 		mat<4, 4, T, Q> Inverse = inverse(proj * model);
 
@@ -85,8 +85,8 @@ namespace glm
 #		endif
 	}
 
-	template<typename T, qualifier Q, typename U>
-	GLM_FUNC_QUALIFIER mat<4, 4, T, Q> pickMatrix(vec<2, T, Q> const& center, vec<2, T, Q> const& delta, vec<4, U, Q> const& viewport)
+	template<typename _Ty, qualifier Q, typename U>
+	GLM_FUNC_QUALIFIER mat<4, 4, _Ty, Q> pickMatrix(vec<2, T, Q> const& center, vec<2, T, Q> const& delta, vec<4, U, Q> const& viewport)
 	{
 		assert(delta.x > static_cast<T>(0) && delta.y > static_cast<T>(0));
 		mat<4, 4, T, Q> Result(static_cast<T>(1));

@@ -1,5 +1,4 @@
 module;
-
 export module LinearContainer;
 
 import core;
@@ -238,6 +237,23 @@ export namespace alpha {
 				_Val._Cap = 0;
 			}
 			return *this;
+		}
+
+		constexpr bool operator==(const LinearContainer& _That)noexcept {
+			if (_Siz != _That._Siz) return false;
+			if constexpr (is_arithmetic_v<_Ty>) {
+				return memcmp(_Ptr, _That._Ptr, _Siz * sizeof(_Ty)) == 0;
+			}
+			else {
+				for (size_t i = 0; i < _Siz; ++i) {
+					if (_Ptr[i] != _That._Ptr[i]) return false;
+				}
+				return true;
+			}
+		}
+		
+		constexpr bool operator!=(const LinearContainer& _That)noexcept {
+			return !(*this == _That);
 		}
 
 		constexpr const _Ty& operator[](const size_t _Idx)const {

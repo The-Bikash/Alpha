@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> polar
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> polar
 	(
 		vec<3, T, Q> const& euclidean
 	)

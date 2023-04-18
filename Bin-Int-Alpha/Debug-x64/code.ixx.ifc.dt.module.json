@@ -10,7 +10,9 @@
             "io",
             "simd",
             "Matrix",
-            "Rational"
+            "Rational",
+            "Complex",
+            "string"
         ],
         "ImportedHeaderUnits": []
     }

@@ -10,10 +10,10 @@
 namespace glm{
 namespace detail
 {
-	template <length_t L, typename T, qualifier Q>
+	template <length_t L, typename _Ty, qualifier Q>
 	struct compute_rand
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call();
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call();
 	};
 
 	template <qualifier P>
@@ -95,10 +95,10 @@ namespace detail
 		}
 	};
 
-	template <length_t L, typename T, qualifier Q>
+	template <length_t L, typename _Ty, qualifier Q>
 	struct compute_linearRand
 	{
-		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& Min, vec<L, T, Q> const& Max);
+		GLM_FUNC_QUALIFIER static vec<L, _Ty, Q> call(vec<L, _Ty, Q> const& Min, vec<L, _Ty, Q> const& Max);
 	};
 
 	template<length_t L, qualifier Q>
@@ -209,10 +209,10 @@ namespace detail
 			vec<1, genType, highp>(Max)).x;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> linearRand(vec<L, T, Q> const& Min, vec<L, T, Q> const& Max)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> linearRand(vec<L, _Ty, Q> const& Min, vec<L, _Ty, Q> const& Max)
 	{
-		return detail::compute_linearRand<L, T, Q>::call(Min, Max);
+		return detail::compute_linearRand<L, _Ty, Q>::call(Min, Max);
 	}
 
 	template<typename genType>
@@ -231,25 +231,25 @@ namespace detail
 		return static_cast<genType>(x2 * Deviation * Deviation * sqrt((genType(-2) * log(w)) / w) + Mean);
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> gaussRand(vec<L, T, Q> const& Mean, vec<L, T, Q> const& Deviation)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> gaussRand(vec<L, _Ty, Q> const& Mean, vec<L, _Ty, Q> const& Deviation)
 	{
-		return detail::functor2<vec, L, T, Q>::call(gaussRand, Mean, Deviation);
+		return detail::functor2<vec, L, _Ty, Q>::call(gaussRand, Mean, Deviation);
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER vec<2, T, defaultp> diskRand(T Radius)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER vec<2, _Ty, defaultp> diskRand(_Ty Radius)
 	{
-		assert(Radius > static_cast<T>(0));
+		assert(Radius > static_cast<_Ty>(0));
 
-		vec<2, T, defaultp> Result(T(0));
-		T LenRadius(T(0));
+		vec<2, _Ty, defaultp> Result(_Ty(0));
+		_Ty LenRadius(_Ty(0));
 
 		do
 		{
 			Result = linearRand(
-				vec<2, T, defaultp>(-Radius),
-				vec<2, T, defaultp>(Radius));
+				vec<2, _Ty, defaultp>(-Radius),
+				vec<2, _Ty, defaultp>(Radius));
 			LenRadius = length(Result);
 		}
 		while(LenRadius > Radius);
@@ -257,19 +257,19 @@ namespace detail
 		return Result;
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER vec<3, T, defaultp> ballRand(T Radius)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, defaultp> ballRand(_Ty Radius)
 	{
-		assert(Radius > static_cast<T>(0));
+		assert(Radius > static_cast<_Ty>(0));
 
-		vec<3, T, defaultp> Result(T(0));
-		T LenRadius(T(0));
+		vec<3, _Ty, defaultp> Result(_Ty(0));
+		_Ty LenRadius(_Ty(0));
 
 		do
 		{
 			Result = linearRand(
-				vec<3, T, defaultp>(-Radius),
-				vec<3, T, defaultp>(Radius));
+				vec<3, _Ty, defaultp>(-Radius),
+				vec<3, _Ty, defaultp>(Radius));
 			LenRadius = length(Result);
 		}
 		while(LenRadius > Radius);
@@ -277,27 +277,27 @@ namespace detail
 		return Result;
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER vec<2, T, defaultp> circularRand(T Radius)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER vec<2, _Ty, defaultp> circularRand(_Ty Radius)
 	{
-		assert(Radius > static_cast<T>(0));
+		assert(Radius > static_cast<_Ty>(0));
 
-		T a = linearRand(T(0), static_cast<T>(6.283185307179586476925286766559));
-		return vec<2, T, defaultp>(glm::cos(a), glm::sin(a)) * Radius;
+		_Ty a = linearRand(_Ty(0), static_cast<_Ty>(6.283185307179586476925286766559));
+		return vec<2, _Ty, defaultp>(glm::cos(a), glm::sin(a)) * Radius;
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER vec<3, T, defaultp> sphericalRand(T Radius)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, defaultp> sphericalRand(_Ty Radius)
 	{
-		assert(Radius > static_cast<T>(0));
+		assert(Radius > static_cast<_Ty>(0));
 
-		T theta = linearRand(T(0), T(6.283185307179586476925286766559f));
-		T phi = std::acos(linearRand(T(-1.0f), T(1.0f)));
+		_Ty theta = linearRand(_Ty(0), _Ty(6.283185307179586476925286766559f));
+		_Ty phi = std::acos(linearRand(_Ty(-1.0f), _Ty(1.0f)));
 
-		T x = std::sin(phi) * std::cos(theta);
-		T y = std::sin(phi) * std::sin(theta);
-		T z = std::cos(phi);
+		_Ty x = std::sin(phi) * std::cos(theta);
+		_Ty y = std::sin(phi) * std::sin(theta);
+		_Ty z = std::cos(phi);
 
-		return vec<3, T, defaultp>(x, y, z) * Radius;
+		return vec<3, _Ty, defaultp>(x, y, z) * Radius;
 	}
 }//namespace glm

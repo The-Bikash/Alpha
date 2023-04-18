@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER mat<2, 2, T, Q> diagonal2x2
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER mat<2, 2, _Ty, Q> diagonal2x2
 	(
 		vec<2, T, Q> const& v
 	)

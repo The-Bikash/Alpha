@@ -36,8 +36,8 @@ namespace glm
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point or signed integer scalar types
 	/// @tparam Q Value from qualifier enum
-	template <length_t L, typename T, qualifier Q>
-	T levels(vec<L, T, Q> const& Extent);
+	template <length_t L, typename _Ty, qualifier Q>
+	_Ty levels(vec<L, _Ty, Q> const& Extent);
 
 	/// @}
 }// namespace glm

@@ -1,7 +1,7 @@
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> mix(qua<T, Q> const& x, qua<T, Q> const& y, T a)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER qua<_Ty, Q> mix(qua<T, Q> const& x, qua<T, Q> const& y, T a)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'mix' only accept floating-point inputs");
 

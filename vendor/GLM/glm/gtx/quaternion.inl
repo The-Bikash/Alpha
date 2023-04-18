@@ -5,14 +5,14 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<T, Q> quat_identity()
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER GLM_CONSTEXPR qua<_Ty, Q> quat_identity()
 	{
-		return qua<T, Q>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+		return qua<_Ty, Q>(static_cast<_Ty>(1), static_cast<_Ty>(0), static_cast<_Ty>(0), static_cast<_Ty>(0));
 	}
 
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> cross(vec<3, T, Q> const& v, qua<T, Q> const& q)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> cross(vec<3, _Ty, Q> const& v, qua<_Ty, Q> const& q)
 	{
 		return inverse(q) * v;
 	}

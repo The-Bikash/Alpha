@@ -32,25 +32,25 @@ namespace glm
 
 	typedef qualifier precision;
 
-	template<length_t L, typename T, qualifier Q = defaultp> struct vec;
-	template<length_t C, length_t R, typename T, qualifier Q = defaultp> struct mat;
-	template<typename T, qualifier Q = defaultp> struct qua;
+	template<length_t L, typename _Ty, qualifier Q = defaultp> struct vec;
+	template<length_t C, length_t R, typename _Ty, qualifier Q = defaultp> struct mat;
+	template<typename _Ty, qualifier Q = defaultp> struct qua;
 
 #	if GLM_HAS_TEMPLATE_ALIASES
-		template <typename T, qualifier Q = defaultp> using tvec1 = vec<1, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tvec2 = vec<2, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tvec3 = vec<3, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tvec4 = vec<4, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat2x2 = mat<2, 2, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat2x3 = mat<2, 3, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat2x4 = mat<2, 4, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat3x2 = mat<3, 2, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat3x3 = mat<3, 3, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat3x4 = mat<3, 4, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat4x2 = mat<4, 2, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat4x3 = mat<4, 3, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tmat4x4 = mat<4, 4, T, Q>;
-		template <typename T, qualifier Q = defaultp> using tquat = qua<T, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tvec1 = vec<1, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tvec2 = vec<2, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tvec3 = vec<3, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tvec4 = vec<4, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat2x2 = mat<2, 2, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat2x3 = mat<2, 3, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat2x4 = mat<2, 4, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat3x2 = mat<3, 2, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat3x3 = mat<3, 3, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat3x4 = mat<3, 4, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat4x2 = mat<4, 2, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat4x3 = mat<4, 3, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tmat4x4 = mat<4, 4, _Ty, Q>;
+		template <typename _Ty, qualifier Q = defaultp> using tquat = qua<_Ty, Q>;
 #	endif
 
 namespace detail
@@ -81,7 +81,7 @@ namespace detail
 		};
 #	endif
 
-	template<length_t L, typename T, bool is_aligned>
+	template<length_t L, typename _Ty, bool is_aligned>
 	struct storage
 	{
 		typedef struct type {
@@ -90,18 +90,18 @@ namespace detail
 	};
 
 #	if GLM_HAS_ALIGNOF
-		template<length_t L, typename T>
-		struct storage<L, T, true>
+		template<length_t L, typename _Ty>
+		struct storage<L, _Ty, true>
 		{
-			typedef struct alignas(L * sizeof(T)) type {
+			typedef struct alignas(L * sizeof(_Ty)) type {
 				T data[L];
 			} type;
 		};
 
-		template<typename T>
-		struct storage<3, T, true>
+		template<typename _Ty>
+		struct storage<3, _Ty, true>
 		{
-			typedef struct alignas(4 * sizeof(T)) type {
+			typedef struct alignas(4 * sizeof(_Ty)) type {
 				T data[4];
 			} type;
 		};
@@ -197,8 +197,8 @@ namespace detail
 	struct genTypeTrait
 	{};
 
-	template <length_t C, length_t R, typename T>
-	struct genTypeTrait<mat<C, R, T> >
+	template <length_t C, length_t R, typename _Ty>
+	struct genTypeTrait<mat<C, R, _Ty> >
 	{
 		static const genTypeEnum GENTYPE = GENTYPE_MAT;
 	};

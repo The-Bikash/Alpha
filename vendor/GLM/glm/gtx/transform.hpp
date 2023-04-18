@@ -35,24 +35,24 @@ namespace glm
 	/// Transforms a matrix with a translation 4 * 4 matrix created from 3 scalars.
 	/// @see gtc_matrix_transform
 	/// @see gtx_transform
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> translate(
-		vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> translate(
+		vec<3, _Ty, Q> const& v);
 
 	/// Builds a rotation 4 * 4 matrix created from an axis of 3 scalars and an angle expressed in radians.
 	/// @see gtc_matrix_transform
 	/// @see gtx_transform
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> rotate(
-		T angle,
-		vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> rotate(
+		_Ty angle,
+		vec<3, _Ty, Q> const& v);
 
 	/// Transforms a matrix with a scale 4 * 4 matrix created from a vector of 3 components.
 	/// @see gtc_matrix_transform
 	/// @see gtx_transform
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> scale(
-		vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> scale(
+		vec<3, _Ty, Q> const& v);
 
 	/// @}
 }// namespace glm

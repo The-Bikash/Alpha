@@ -60,9 +60,9 @@ namespace glm
 	/// @see - translate(mat<4, 4, T, Q> const& m, T x, T y, T z)
 	/// @see - translate(vec<3, T, Q> const& v)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glTranslate.xml">glTranslate man page</a>
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> translate(
-		mat<4, 4, T, Q> const& m, vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> translate(
+		mat<4, 4, _Ty, Q> const& m, vec<3, _Ty, Q> const& v);
 
 	/// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
 	///
@@ -76,9 +76,9 @@ namespace glm
 	/// @see - rotate(mat<4, 4, T, Q> const& m, T angle, T x, T y, T z)
 	/// @see - rotate(T angle, vec<3, T, Q> const& v)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glRotate.xml">glRotate man page</a>
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> rotate(
-		mat<4, 4, T, Q> const& m, T angle, vec<3, T, Q> const& axis);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> rotate(
+		mat<4, 4, _Ty, Q> const& m, _Ty angle, vec<3, _Ty, Q> const& axis);
 
 	/// Builds a scale 4 * 4 matrix created from 3 scalars.
 	///
@@ -91,9 +91,9 @@ namespace glm
 	/// @see - scale(mat<4, 4, T, Q> const& m, T x, T y, T z)
 	/// @see - scale(vec<3, T, Q> const& v)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glScale.xml">glScale man page</a>
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> scale(
-		mat<4, 4, T, Q> const& m, vec<3, T, Q> const& v);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> scale(
+		mat<4, 4, _Ty, Q> const& m, vec<3, _Ty, Q> const& v);
 
     /// Builds a scale 4 * 4 matrix created from point referent 3 shearers.
     ///
@@ -118,9 +118,9 @@ namespace glm
     /// @see - shear(vec<2, T, Q> const& l_y)
     /// @see - shear(vec<2, T, Q> const& l_z)
     /// @see no resource...
-    template <typename T, qualifier Q>
-    GLM_FUNC_QUALIFIER mat<4, 4, T, Q> shear(
-        mat<4, 4, T, Q> const &m, vec<3, T, Q> const& p, vec<2, T, Q> const &l_x, vec<2, T, Q> const &l_y, vec<2, T, Q> const &l_z);
+    template <typename _Ty, qualifier Q>
+    GLM_FUNC_QUALIFIER mat<4, 4, _Ty, Q> shear(
+        mat<4, 4, _Ty, Q> const &m, vec<3, _Ty, Q> const& p, vec<2, _Ty, Q> const &l_x, vec<2, _Ty, Q> const &l_y, vec<2, _Ty, Q> const &l_z);
 
     /// Build a right handed look at view matrix.
 	///
@@ -132,9 +132,9 @@ namespace glm
 	/// @tparam Q A value from qualifier enum
 	///
 	/// @see - frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal) frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal)
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> lookAtRH(
-		vec<3, T, Q> const& eye, vec<3, T, Q> const& center, vec<3, T, Q> const& up);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> lookAtRH(
+		vec<3, _Ty, Q> const& eye, vec<3, _Ty, Q> const& center, vec<3, _Ty, Q> const& up);
 
 	/// Build a left handed look at view matrix.
 	///
@@ -146,9 +146,9 @@ namespace glm
 	/// @tparam Q A value from qualifier enum
 	///
 	/// @see - frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal) frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal)
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> lookAtLH(
-		vec<3, T, Q> const& eye, vec<3, T, Q> const& center, vec<3, T, Q> const& up);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> lookAtLH(
+		vec<3, _Ty, Q> const& eye, vec<3, _Ty, Q> const& center, vec<3, _Ty, Q> const& up);
 
 	/// Build a look at view matrix based on the default handedness.
 	///
@@ -161,9 +161,9 @@ namespace glm
 	///
 	/// @see - frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal) frustum(T const& left, T const& right, T const& bottom, T const& top, T const& nearVal, T const& farVal)
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml">gluLookAt man page</a>
-	template<typename T, qualifier Q>
-	GLM_FUNC_DECL mat<4, 4, T, Q> lookAt(
-		vec<3, T, Q> const& eye, vec<3, T, Q> const& center, vec<3, T, Q> const& up);
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_DECL mat<4, 4, _Ty, Q> lookAt(
+		vec<3, _Ty, Q> const& eye, vec<3, _Ty, Q> const& center, vec<3, _Ty, Q> const& up);
 
 	/// @}
 }//namespace glm

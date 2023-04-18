@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER bool isNull(mat<2, 2, T, Q> const& m, T const& epsilon)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER bool isNull(mat<2, 2, _Ty, Q> const& m, _Ty const& epsilon)
 	{
 		bool result = true;
 		for(length_t i = 0; result && i < m.length() ; ++i)

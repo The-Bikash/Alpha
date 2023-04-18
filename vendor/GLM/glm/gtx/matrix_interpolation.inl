@@ -6,8 +6,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER void axisAngle(mat<4, 4, T, Q> const& m, vec<3, T, Q>& axis, T& angle)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER void axisAngle(mat<4, 4, _Ty, Q> const& m, vec<3, _Ty, Q>& axis, _Ty& angle)
 	{
 		T const epsilon =
 		    std::numeric_limits<T>::epsilon() * static_cast<T>(1e2);

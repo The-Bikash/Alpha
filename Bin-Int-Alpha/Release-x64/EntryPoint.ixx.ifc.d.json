@@ -1,37 +1,37 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\engine\\core\\entrypoint.ixx",
         "ProvidedModule": "EntryPoint",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "Application",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Application.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Application.ixx.ifc"
             },
             {
                 "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
             },
             {
                 "Name": "code",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\code.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\code.ixx.ifc"
             },
             {
                 "Name": "Event",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Event.ixx.ifc"
             },
             {
                 "Name": "string",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\string.ixx.ifc"
             },
             {
                 "Name": "Layer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Layer.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Layer.ixx.ifc"
             },
             {
                 "Name": "Window",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Window.ixx.ifc"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Window.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

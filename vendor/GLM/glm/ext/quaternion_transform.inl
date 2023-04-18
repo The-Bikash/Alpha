@@ -1,7 +1,7 @@
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER qua<T, Q> rotate(qua<T, Q> const& q, T const& angle, vec<3, T, Q> const& v)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER qua<_Ty, Q> rotate(qua<T, Q> const& q, T const& angle, vec<3, T, Q> const& v)
 	{
 		vec<3, T, Q> Tmp = v;
 

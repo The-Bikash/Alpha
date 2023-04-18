@@ -45,8 +45,8 @@ namespace glm
 	/// @tparam Q Value from qualifier enum
 	///
 	/// @see gtc_bitfield
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> mask(vec<L, T, Q> const& v);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> mask(vec<L, _Ty, Q> const& v);
 
 	/// Rotate all bits to the right. All the bits dropped in the right side are inserted back on the left side.
 	///
@@ -61,8 +61,8 @@ namespace glm
 	/// @tparam Q Value from qualifier enum
 	///
 	/// @see gtc_bitfield
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> bitfieldRotateRight(vec<L, T, Q> const& In, int Shift);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> bitfieldRotateRight(vec<L, _Ty, Q> const& In, int Shift);
 
 	/// Rotate all bits to the left. All the bits dropped in the left side are inserted back on the right side.
 	///
@@ -77,8 +77,8 @@ namespace glm
 	/// @tparam Q Value from qualifier enum
 	///
 	/// @see gtc_bitfield
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> bitfieldRotateLeft(vec<L, T, Q> const& In, int Shift);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> bitfieldRotateLeft(vec<L, _Ty, Q> const& In, int Shift);
 
 	/// Set to 1 a range of bits.
 	///
@@ -93,8 +93,8 @@ namespace glm
 	/// @tparam Q Value from qualifier enum
 	///
 	/// @see gtc_bitfield
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> bitfieldFillOne(vec<L, T, Q> const& Value, int FirstBit, int BitCount);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> bitfieldFillOne(vec<L, _Ty, Q> const& Value, int FirstBit, int BitCount);
 
 	/// Set to 0 a range of bits.
 	///
@@ -109,8 +109,8 @@ namespace glm
 	/// @tparam Q Value from qualifier enum
 	///
 	/// @see gtc_bitfield
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL vec<L, T, Q> bitfieldFillZero(vec<L, T, Q> const& Value, int FirstBit, int BitCount);
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_DECL vec<L, _Ty, Q> bitfieldFillZero(vec<L, _Ty, Q> const& Value, int FirstBit, int BitCount);
 
 	/// Interleaves the bits of x and y.
 	/// The first bit is the first bit of x followed by the first bit of y.

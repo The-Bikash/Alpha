@@ -1,13 +1,13 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\numbertheory\\rational.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\numbertheory\\rational.ixx",
         "ProvidedModule": "Rational",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "io",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\io.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\io.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

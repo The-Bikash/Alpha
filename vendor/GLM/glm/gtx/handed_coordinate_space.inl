@@ -2,12 +2,12 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
+	template<typename _Ty, qualifier Q>
 	GLM_FUNC_QUALIFIER bool rightHanded
 	(
-		vec<3, T, Q> const& tangent,
-		vec<3, T, Q> const& binormal,
-		vec<3, T, Q> const& normal
+		vec<3, _Ty, Q> const& tangent,
+		vec<3, _Ty, Q> const& binormal,
+		vec<3, _Ty, Q> const& normal
 	)
 	{
 		return dot(cross(normal, tangent), binormal) > T(0);

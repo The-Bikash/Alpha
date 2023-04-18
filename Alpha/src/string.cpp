@@ -1,5 +1,5 @@
 module;
-
+#include<stdio.h>
 module string;
 
 import core;
@@ -106,6 +106,11 @@ namespace alpha {
 			_That._Impl = _Tmp;
 		}
 		return *this;
+	}
+
+	bool string::operator==(const string& _That) noexcept {
+		if (_Impl->_Siz != _That._Impl->_Siz) return false;
+		return memcmp(_Impl->_Str, _That._Impl->_Str, _Impl->_Siz) == 0;
 	}
 
 	string& string::operator+=(const string& _That)noexcept {
@@ -269,7 +274,14 @@ namespace alpha {
 //		return *this;
 //	}
 
-	const char* string::c_str()const noexcept {
+void string::input() noexcept {
+	char _Char;
+	while ((_Char = getchar()) != '\n') {
+		this->operator+=(_Char);
+	}
+}
+
+const char* string::c_str()const noexcept {
 		_Impl->_Str[_Impl->_Siz] = 0;
 		return _Impl->_Str;
 	}
@@ -280,6 +292,10 @@ namespace alpha {
 
 	inline void _print(const string& _That) noexcept {
 		fputs(_That.c_str(), __acrt_iob_func(1));
+	}
+
+	void _input(string& _That) noexcept {
+		_That.input();
 	}
 
 }

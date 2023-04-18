@@ -2,16 +2,16 @@
 
 namespace glm
 {
-	template <length_t L, typename T, qualifier Q>
-	inline T levels(vec<L, T, Q> const& Extent)
+	template <length_t L, typename _Ty, qualifier Q>
+	inline _Ty levels(vec<L, _Ty, Q> const& Extent)
 	{
-		return glm::log2(compMax(Extent)) + static_cast<T>(1);
+		return glm::log2(compMax(Extent)) + static_cast<_Ty>(1);
 	}
 
-	template <typename T>
-	inline T levels(T Extent)
+	template <typename _Ty>
+	inline _Ty levels(_Ty Extent)
 	{
-		return vec<1, T, defaultp>(Extent).x;
+		return vec<1, _Ty, defaultp>(Extent).x;
 	}
 }//namespace glm
 

@@ -30,32 +30,32 @@ namespace glm
 	/// @tparam T A floating-point scalar type.
 	///
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T min(T a, T b, T c);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty min(_Ty a, _Ty b, _Ty c);
 
 	/// Returns the minimum component-wise values of 4 inputs
 	///
 	/// @tparam T A floating-point scalar type.
 	///
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T min(T a, T b, T c, T d);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty min(_Ty a, _Ty b, _Ty c, _Ty d);
 
 	/// Returns the maximum component-wise values of 3 inputs
 	///
 	/// @tparam T A floating-point scalar type.
 	///
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T max(T a, T b, T c);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty max(_Ty a, _Ty b, _Ty c);
 
 	/// Returns the maximum component-wise values of 4 inputs
 	///
 	/// @tparam T A floating-point scalar type.
 	///
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T max(T a, T b, T c, T d);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty max(_Ty a, _Ty b, _Ty c, _Ty d);
 
 	/// Returns the minimum component-wise values of 2 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -63,8 +63,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmin">std::fmin documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmin(T a, T b);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmin(_Ty a, _Ty b);
 
 	/// Returns the minimum component-wise values of 3 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -72,8 +72,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmin">std::fmin documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmin(T a, T b, T c);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmin(_Ty a, _Ty b, _Ty c);
 
 	/// Returns the minimum component-wise values of 4 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -81,8 +81,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmin">std::fmin documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmin(T a, T b, T c, T d);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmin(_Ty a, _Ty b, _Ty c, _Ty d);
 
 	/// Returns the maximum component-wise values of 2 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -90,8 +90,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmax">std::fmax documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmax(T a, T b);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmax(_Ty a, _Ty b);
 
 	/// Returns the maximum component-wise values of 3 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -99,8 +99,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmax">std::fmax documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmax(T a, T b, T C);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmax(_Ty a, _Ty b, _Ty C);
 
 	/// Returns the maximum component-wise values of 4 inputs. If one of the two arguments is NaN, the value of the other argument is returned.
 	///
@@ -108,8 +108,8 @@ namespace glm
 	///
 	/// @see <a href="http://en.cppreference.com/w/cpp/numeric/math/fmax">std::fmax documentation</a>
 	/// @see ext_scalar_common
-	template<typename T>
-	GLM_FUNC_DECL T fmax(T a, T b, T C, T D);
+	template<typename _Ty>
+	GLM_FUNC_DECL _Ty fmax(_Ty a, _Ty b, _Ty C, _Ty D);
 
 	/// Returns min(max(x, minVal), maxVal) for each component in x. If one of the two arguments is NaN, the value of the other argument is returned.
 	///

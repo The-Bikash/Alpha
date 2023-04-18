@@ -3,7 +3,15 @@
     "Data": {
         "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\function\\polynomial.ixx",
         "ProvidedModule": "Polynomial",
-        "ImportedModules": [],
+        "ImportedModules": [
+            "io",
+            "core",
+            "Function",
+            "LinearContainer",
+            "string",
+            "list",
+            "initializer"
+        ],
         "ImportedHeaderUnits": []
     }
 }

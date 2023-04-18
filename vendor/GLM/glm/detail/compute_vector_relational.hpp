@@ -7,10 +7,10 @@
 namespace glm{
 namespace detail
 {
-	template <typename T, bool isFloat>
+	template <typename _Ty, bool isFloat>
 	struct compute_equal
 	{
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static bool call(T a, T b)
+		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static bool call(_Ty a, _Ty b)
 		{
 			return a == b;
 		}

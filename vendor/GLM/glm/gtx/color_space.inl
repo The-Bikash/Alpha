@@ -2,8 +2,8 @@
 
 namespace glm
 {
-	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<3, T, Q> rgbColor(const vec<3, T, Q>& hsvColor)
+	template<typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<3, _Ty, Q> rgbColor(const vec<3, T, Q>& hsvColor)
 	{
 		vec<3, T, Q> hsv = hsvColor;
 		vec<3, T, Q> rgbColor;

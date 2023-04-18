@@ -32,8 +32,8 @@ namespace glm
 #		endif
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER T next_float(T x, int ULPs)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER _Ty next_float(_Ty x, int ULPs)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'next_float' only accept floating-point input");
 		assert(ULPs >= 0);
@@ -70,8 +70,8 @@ namespace glm
 #		endif
 	}
 
-	template<typename T>
-	GLM_FUNC_QUALIFIER T prev_float(T x, int ULPs)
+	template<typename _Ty>
+	GLM_FUNC_QUALIFIER _Ty prev_float(_Ty x, int ULPs)
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'prev_float' only accept floating-point input");
 		assert(ULPs >= 0);
@@ -98,55 +98,55 @@ namespace glm
 		return abs(a.i - b.i);
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> next_float(vec<L, T, Q> const& x)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> next_float(vec<L, _Ty, Q> const& x)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = next_float(x[i]);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> next_float(vec<L, T, Q> const& x, int ULPs)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> next_float(vec<L, _Ty, Q> const& x, int ULPs)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = next_float(x[i], ULPs);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> next_float(vec<L, T, Q> const& x, vec<L, int, Q> const& ULPs)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> next_float(vec<L, _Ty, Q> const& x, vec<L, int, Q> const& ULPs)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = next_float(x[i], ULPs[i]);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> prev_float(vec<L, T, Q> const& x)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> prev_float(vec<L, _Ty, Q> const& x)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = prev_float(x[i]);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> prev_float(vec<L, T, Q> const& x, int ULPs)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> prev_float(vec<L, _Ty, Q> const& x, int ULPs)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = prev_float(x[i], ULPs);
 		return Result;
 	}
 
-	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER vec<L, T, Q> prev_float(vec<L, T, Q> const& x, vec<L, int, Q> const& ULPs)
+	template<length_t L, typename _Ty, qualifier Q>
+	GLM_FUNC_QUALIFIER vec<L, _Ty, Q> prev_float(vec<L, _Ty, Q> const& x, vec<L, int, Q> const& ULPs)
 	{
-		vec<L, T, Q> Result;
+		vec<L, _Ty, Q> Result;
 		for (length_t i = 0, n = Result.length(); i < n; ++i)
 			Result[i] = prev_float(x[i], ULPs[i]);
 		return Result;
