@@ -1,6 +1,7 @@
 ﻿module;
-#include<stdlib.h>
+
 #include<compare>
+#include <iostream>
 export module code;
 
 import LinearContainer;
@@ -12,6 +13,7 @@ import Matrix;
 import Rational;
 import Complex;
 import string;
+import Polynomial;
 using namespace alpha;
 //void vectorPrint(const Array<string>& _Path) {
 //	for (const auto& component : _Path)
@@ -98,6 +100,11 @@ using namespace alpha;
 //
 //}
 
+auto fun(int n) {
+	float one = n & 1 ? -1.0 : 1.0;
+	return one /(3 * n + 2);
+}
+
 export void FUN() {
 	/*alpha::print("*********************** WELCOME ***************************\n\n\n\n");
 	print(">");
@@ -129,29 +136,45 @@ export void FUN() {
 			print('\n'); vectorPrint(_Path);
 		}
 	}*/
-	using _Ty = Complex<int>;
-	Complex<_Ty> C = { 18433,123242 };
-	size_t size = 100000000;
-	Array<Complex<_Ty>> v1; v1.reserve(size);
-	Array<Complex<_Ty>> v2; v1.reserve(size);
+	//using _Ty = Complex<int>;
+	//Complex<_Ty> C = { 18433,123242 };
+	//size_t size = 100000000;
+	//Array<Complex<_Ty>> v1; v1.reserve(size);
+	//Array<Complex<_Ty>> v2; v1.reserve(size);
 
-	//srand((unsigned int)time(0));
-	for (size_t i = 0; i < size; ++i) {
-		auto real = (_Ty)(rand() % 1000);
-		auto imag = (_Ty)(rand() % 1000);
-		v1.emplace_back(real, imag);
-		v2.emplace_back(real, imag);
-	}
-	time_start();
-	C._MultoContainer(v1.begin(), v1.end());
-	time_end();
-	time_start();
-	for (size_t i = 0; i < size; ++i) {
-		v2[i] *= C;
-	}
-	time_end();
-	//print(v1);
-	alpha::print(v1 == v2);
+	////srand((unsigned int)time(0));
+	//for (size_t i = 0; i < size; ++i) {
+	//	auto real = (_Ty)(rand() % 1000);
+	//	auto imag = (_Ty)(rand() % 1000);
+	//	v1.emplace_back(real, imag);
+	//	v2.emplace_back(real, imag);
+	//}
+	//time_start();
+	//C._MultoContainer(v1.begin(), v1.end());
+	//time_end();
+	//time_start();
+	//for (size_t i = 0; i < size; ++i) {
+	//	v2[i] *= C;
+	//}
+	//time_end();
+	////print(v1);
+	//alpha::print(v1 == v2);
 
+	/*SquareMat<int> a = { {1,2,3,4},{0,7,11,5},{0,0,3,6} ,{0,0,0,44} };
+	SquareMat<int> b = { {4,1,3,4},{0,4,13,5},{0,0,23,6},{0,0,0,55} };
+	SquareMat<int> c(a.row(), ZeroMatrix);
+	auto n = a.row();
+	for (int i = 0; i < n; ++i) {
+		for (int j = i; j < n; ++j) {
+			auto sum = 0;
+			for (int k = i; k <= j; ++k) {
+				c[i][j] += a[i][k] * b[k][j];
+			}
+		}
+	}
+	print(a);
+	print(b);
+	print(a * b);
+	print(c);*/
 	
 }

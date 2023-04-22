@@ -11,7 +11,12 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\vadefs.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.35.32215\\include\\xkeycheck.h"
         ],
-        "ImportedModules": [],
+        "ImportedModules": [
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc.dt"
+            }
+        ],
         "ImportedHeaderUnits": []
     }
 }

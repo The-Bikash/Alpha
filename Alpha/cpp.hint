@@ -3,3 +3,4 @@
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
 #define __mxd
 #define _mmx_load_pd
+#define WriteCodeForSearching(Method) template<typename, typename T> struct Has##Method { static_assert(integral_constant<T, false>::value, "Second template parameter needs to be of function type."); }; template<typename ClassType, typename ReturnType, typename... Args> struct Has##Method<ClassType, ReturnType(Args...)> { private: template<typename T> static constexpr auto check(T*) -> typename is_same< ReturnType, decltype(declval<T>().##Method(declval<Args>()...)) >::value; template<typename> static constexpr false_type check(...); typedef decltype(check<ClassType>(0)) type; public: static constexpr bool value = type::value; };

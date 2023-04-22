@@ -12,7 +12,8 @@
             "Matrix",
             "Rational",
             "Complex",
-            "string"
+            "string",
+            "Polynomial"
         ],
         "ImportedHeaderUnits": []
     }

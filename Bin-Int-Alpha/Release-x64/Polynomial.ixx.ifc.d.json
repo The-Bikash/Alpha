@@ -6,12 +6,20 @@
         "Includes": [],
         "ImportedModules": [
             {
+                "Name": "core",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
+            },
+            {
                 "Name": "io",
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc"
             },
             {
-                "Name": "core",
-                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc"
+                "Name": "typetraits",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "utility",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\utility.ixx.ifc"
             },
             {
                 "Name": "Function",

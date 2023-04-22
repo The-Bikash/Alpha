@@ -517,7 +517,7 @@ export namespace alpha {
 			_Siz = _NewSiz;
 		}
 
-	private:
+	protected:
 		size_t  _Siz;
 		size_t  _Cap;
 		_Ty* _Ptr;

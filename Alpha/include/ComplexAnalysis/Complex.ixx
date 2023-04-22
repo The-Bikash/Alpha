@@ -194,6 +194,49 @@ export namespace alpha {
 				(*_UFirst)._ImZ += _X;
 			}
 		}
+		template<class _Iterator, class U = _Ty, typename enable_if_t<!is_arithmetic_v<U>, int> = 0>
+		constexpr Complex<_Ty> _EvalutePolynomial(_Iterator _First, _Iterator _Last)const noexcept {
+
+			// Evaluting polynomial using horner's method and FFT complex multiplication
+			// X = b(c-d), C1 = (a+b), C2 = (a-b), Real = c*c2 + x, Imag = d*c1 + x
+
+				  auto _ULast  = _Get_unwrapped(_Last) - 1;
+			const auto _UFirst = _Get_unwrapped(_First) - 1;
+
+			Complex<_Ty> _Result = *_ULast;
+			--_ULast;
+			if (this->_ReZ != _Zero) {
+				if (this->_ImZ != _Zero) {
+					_Ty _X;
+					const _Ty _C1 = _ReZ + _ImZ;
+					const _Ty _C2 = _ReZ - _ImZ;
+
+					for (; _ULast != _UFirst; --_ULast) {
+						///////////////////////////////////////
+						_X = _Result._ReZ;				///
+						_X -= _Result._ImZ;				///
+						_X *= _ImZ;						///
+														///
+						_Result._ReZ *= _C2;			///||||-> _Result *= *this; (FFT complex multiplication)
+						_Result._ReZ += _X;				///		  _Result += *_ULast;
+						_Result._ImZ *= _C1;			///
+						_Result._ImZ += _X;				///
+						///////////////////////////////////////
+						_Result *= *_ULast;
+					} return _Result;
+				} else {
+					for (; _ULast != _UFirst; --_ULast) {
+						_Result *= this->_ReZ;
+						_Result += *_ULast;
+					} return _Result;
+				}
+			} else {
+				if (this->_ImZ != _Zero) {
+					__debugbreak(); // write code
+					return Complex();
+				} else return *(_UFirst + 1);
+			}
+		}
 		template<class _Iterator>
 		constexpr void _DivtoContainer(_Iterator _First, _Iterator _Last)const noexcept {
 			auto _UFirst = _Get_unwrapped(_First);

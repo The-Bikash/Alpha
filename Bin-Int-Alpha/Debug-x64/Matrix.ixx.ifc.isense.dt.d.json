@@ -48,6 +48,10 @@
             {
                 "Name": "simd",
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\simd.ixx.ifc.dt"
+            },
+            {
+                "Name": "Polynomial",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Polynomial.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

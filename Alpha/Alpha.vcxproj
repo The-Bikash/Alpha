@@ -203,6 +203,7 @@
     <ClCompile Include="include\DataStructures\LinearContainer.ixx" />
     <ClCompile Include="include\DataStructures\list.ixx" />
     <ClCompile Include="include\DataStructures\code.ixx" />
+    <ClCompile Include="include\DataStructures\Memory.ixx" />
     <ClCompile Include="include\DataStructures\simd.ixx" />
     <ClCompile Include="include\DataStructures\stack.ixx" />
     <ClCompile Include="include\Engine\Core\Application.ixx" />

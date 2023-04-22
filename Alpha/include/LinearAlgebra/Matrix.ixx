@@ -12,6 +12,7 @@ import LinearContainer;
 import list;
 import algorithm;
 import simd;
+import Polynomial;
 
 
 #define __Matrix(_Pos) *(_Mat + _Pos)

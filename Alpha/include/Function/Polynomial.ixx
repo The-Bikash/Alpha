@@ -3,6 +3,8 @@ export module Polynomial;
 
 import core;
 import io;
+import typetraits;
+import utility;
 import Function;
 import LinearContainer;
 import string;
@@ -10,44 +12,63 @@ import list;
 import initializer;
 
 
-export namespace alpha {
-	template<class _Ty>
-	class Polynomial {
-	public:
-		inline constexpr Polynomial(const Array<_Ty>& _Coeff) :_Arr(_Coeff) {}
-		inline constexpr Polynomial(const initializer<_Ty>& _List) {
-			_Arr.reserve(_List.size());
-			for (const auto& _Coeff : _List)
-				_Arr.emplace_back(_Coeff);
-		}
-		inline constexpr Polynomial(const Polynomial& _Pol)noexcept {
-			_Arr = _Pol._Arr;
-		}
+//////////////////////////////////////////////////////////////////////
+#define WriteCodeForSearching(Method)								\
+template<typename, typename T>										\
+struct Has##Method {												\
+	static_assert(integral_constant<T, false>::value,				\
+	"Second template parameter needs to be of function type.");		\
+};																	\
+																	\
+template<typename ClassType, typename ReturnType, typename... Args>	\
+struct Has##Method<ClassType, ReturnType(Args...)> {				\
+private:															\
+	template<typename T>											\
+	static constexpr auto check(T*)									\
+		-> typename is_same<										\
+			ReturnType,												\
+			decltype(declval<T>().##Method(declval<Args>()...))		\
+		>::type;													\
+																	\
+	template<typename>												\
+	static constexpr false_type check(...);							\
+																	\
+	typedef decltype(check<ClassType>(0)) type;						\
+																	\
+public:																\
+	static constexpr bool value = type::value;						\
+};																	
+/////////////////////////////////////////////////////////////////////
 
-		inline constexpr Polynomial(Polynomial&& _Pol)noexcept {
-			_Arr = move(_Pol);
+export namespace alpha {
+	WriteCodeForSearching(_EvalutePolynomial)
+
+	template<class _Ty>
+	class Polynomial : public LinearContainer<_Ty> {
+	public:
+		using LinearContainer<_Ty>::LinearContainer;
+		constexpr _Ty operator()(const _Ty& x)const noexcept {
+			if constexpr (_debug) if (this->_Siz == 0) __debugbreak();
+			if (this->_Siz > 2) {
+				if constexpr (Has_EvalutePolynomial<_Ty, _Ty(_Ty*, _Ty*)>::value) {
+					return x._EvalutePolynomial(this->_Ptr, this->_Ptr + this->_Siz);
+				} else {
+					long long i = this->_Siz - 1;
+					auto _Result = this->_Ptr[i];
+					--i;
+					for (; i >= 0; --i) {
+						_Result *= x;
+						_Result += this->_Ptr[i];
+					} return _Result;
+				}
+			} else if (this->_Siz == 2) {
+				auto _Result = this->_Ptr[1] * x;
+				_Result += this->_Ptr[0];
+				return _Result;
+			} else return this->_Ptr[0];
 		}
-		
-		constexpr bool operator==(const Polynomial& _Pol)noexcept {
-			return _Arr == _Pol._Arr;
-		}
-		constexpr bool operator!=(const Polynomial& _Pol)noexcept {
-			return _Arr != _Pol._Arr;
-		}
-		constexpr Polynomial& operator+=(const Polynomial& _Pol)noexcept {
-			size_t _Siz;
-			auto* _Arra = _Arr.data();
-			const auto* _Arrb = _Pol._Arr.data();
-			if (_Arr.size() >= _Siz = _Pol._Arr.size()) {
-				for (size_t i = 0; i < _Siz; ++i)
-					_Arra[i] += _Arrb[i];
-			} else {
-				////////////// at first implement resize function in vector class
-			}
-		}
-	private:
-		Array<_Ty> _Arr;
 	};
+	
 }
 
 //export namespace alpha {

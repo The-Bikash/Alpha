@@ -8,6 +8,15 @@ import typetraits;
 import LinearContainer;
 namespace alpha {
 	
+	export template<class _Fn, class _Int>
+	[[nodiscard]] inline constexpr auto summation(_Int _LowerLimit, _Int _UpperLimit, _Fn _Func) {
+		auto _Sum = _Func(_LowerLimit);
+		++_LowerLimit;
+		for (; _LowerLimit <= _UpperLimit; ++_LowerLimit) {
+			_Sum += _Func(_LowerLimit);
+		}
+		return _Sum;
+	}
 
 	export template<class _InIt, class _Ty>
 	[[nodiscard]] inline constexpr _Ty accumulate(_InIt _First, _InIt _Last, _Ty _Val) {
