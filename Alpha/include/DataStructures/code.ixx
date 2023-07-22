@@ -47,6 +47,4 @@ export void FUN() {
 	}
 	time_end();
 	std::allocator<int> v;
-	
-	system("pause");
 }
