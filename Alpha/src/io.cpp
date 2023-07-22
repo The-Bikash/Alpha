@@ -636,35 +636,73 @@ namespace alpha {
     }
 
     unsigned short Len(const unsigned long long _Val)noexcept {
-        if (_Val >= 10000000000) {
-            if (_Val >= 100000000000000) {
-                if (_Val >= 10000000000000000) {
-                    if (_Val >= 1000000000000000000) return 19;
-                    if (_Val >= 100000000000000000) return 18; return 17;
+        if (_Val < 10000000000000000) {                                 /* 1 - 16*/
+            if (_Val < 100000000) {                                    /* 1 - 8 */
+                if (_Val < 10000) {                                     /* 1 - 4 */
+                    if (_Val < 100) {                                   /* 1 - 2 */
+                        return _Val < 10 ? 1 : 2;
+                    } else {                                              /* 3 -  4 */
+                        return _Val < 1000 ? 3 : 4;
+                    }
+                } else {                                                  /* 5 - 8 */
+                    if (_Val < 1000000) {                               /* 5 - 6 */
+                        return _Val < 100000 ? 5 : 6;
+                    } else {                                              /* 7 - 8 */
+                        return _Val < 10000000 ? 7 : 8;
+                    }
                 }
-                else { if (_Val >= 1000000000000000) return 16; return 15; }
+            } else {                                                       /* 9 - 16 */
+                if (_Val < 1000000000000) {                              /* 9 - 12 */
+                    if (_Val < 10000000000) {                           /* 9 - 10 */
+                        return _Val < 1000000000 ? 9 : 10;
+                    } else {                                               /* 11 - 12*/
+                        return _Val < 100000000000 ? 11 : 12;
+                    }
+                } else {                                                   /* 13 - 16 */
+                    if (_Val < 100000000000000) {                       /* 13 - 14 */
+                        return _Val < 10000000000000 ? 13 : 14;
+                    } else {                                               /* 15 - 16 */
+                        return _Val < 1000000000000000 ? 15 : 16;
+                    }
+                }
             }
-            else {
-                if (_Val >= 1000000000000) {
-                    if (_Val >= 10000000000000) return 14; return 13;
-                }
-                else { if (_Val >= 100000000000) return 12; return 11; }
+        } else { /* 17 - 20*/
+            if (_Val < 1000000000000000000) { /* 17 - 18 */
+                return _Val < 100000000000000000 ? 17 : 18;
+            } else { /* 18 - 20 */
+                return _Val < 10000000000000000000 ? 19 : 20;
             }
         }
-        else {
-            if (_Val >= 100000) {
-                if (_Val >= 10000000) {
-                    if (_Val >= 1000000000) return 10;
-                    if (_Val >= 100000000) return 9; return 8;
-                } if (_Val >= 1000000) return 7; return 6;
-            }
-            else {
-                if (_Val >= 1000) {
-                    if (_Val >= 10000) return 5; return 4;
-                }
-                else { if (_Val >= 100) return 3; if (_Val >= 10) return 2; return 1; }
-            }
-        }
+
+        //if (_Val >= 10000000000) {
+        //    if (_Val >= 100000000000000) {
+        //        if (_Val >= 10000000000000000) {
+        //            if (_Val >= 1000000000000000000) return 19;
+        //            if (_Val >= 100000000000000000) return 18; return 17;
+        //        }
+        //        else { if (_Val >= 1000000000000000) return 16; return 15; }
+        //    }
+        //    else {
+        //        if (_Val >= 1000000000000) {
+        //            if (_Val >= 10000000000000) return 14; return 13;
+        //        }
+        //        else { if (_Val >= 100000000000) return 12; return 11; }
+        //    }
+        //}
+        //else {
+        //    if (_Val >= 100000) {
+        //        if (_Val >= 10000000) {
+        //            if (_Val >= 1000000000) return 10;
+        //            if (_Val >= 100000000) return 9; return 8;
+        //        } if (_Val >= 1000000) return 7; return 6;
+        //    }
+        //    else {
+        //        if (_Val >= 1000) {
+        //            if (_Val >= 10000) return 5; return 4;
+        //        }
+        //        else { if (_Val >= 100) return 3; if (_Val >= 10) return 2; return 1; }
+        //    }
+        //}
     }
 
     void Itos(unsigned int _Val, char* _Buffer)noexcept {

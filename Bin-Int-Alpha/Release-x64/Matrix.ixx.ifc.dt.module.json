@@ -14,7 +14,8 @@
             "LinearContainer",
             "list",
             "algorithm",
-            "simd"
+            "simd",
+            "Polynomial"
         ],
         "ImportedHeaderUnits": []
     }

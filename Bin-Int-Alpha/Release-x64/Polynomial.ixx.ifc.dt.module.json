@@ -6,6 +6,8 @@
         "ImportedModules": [
             "core",
             "io",
+            "typetraits",
+            "utility",
             "Function",
             "LinearContainer",
             "string",

@@ -4,7 +4,24 @@
         "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\complexanalysis\\complex.ixx",
         "ProvidedModule": "Complex",
         "Includes": [],
-        "ImportedModules": [],
+        "ImportedModules": [
+            {
+                "Name": "core",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
+            },
+            {
+                "Name": "io",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\io.ixx.ifc.dt"
+            },
+            {
+                "Name": "typetraits",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\typetraits.ixx.ifc.dt"
+            },
+            {
+                "Name": "utility",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\utility.ixx.ifc.dt"
+            }
+        ],
         "ImportedHeaderUnits": []
     }
 }

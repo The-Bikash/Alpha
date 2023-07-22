@@ -1,17 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\projects\\alpha\\alpha\\include\\numbertheory\\int.ixx",
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\numbertheory\\int.ixx",
         "ProvidedModule": "Int",
         "Includes": [],
         "ImportedModules": [
             {
                 "Name": "core",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\core.ixx.ifc.dt"
             },
             {
                 "Name": "initializer",
-                "BMI": "D:\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc.dt"
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

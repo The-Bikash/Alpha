@@ -13,7 +13,8 @@
             "Rational",
             "Complex",
             "string",
-            "Polynomial"
+            "Polynomial",
+            "Memory"
         ],
         "ImportedHeaderUnits": []
     }

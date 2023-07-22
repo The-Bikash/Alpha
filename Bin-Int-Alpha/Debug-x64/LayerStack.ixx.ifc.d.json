@@ -26,8 +26,8 @@
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Event.ixx.ifc"
             },
             {
-                "Name": "initializer",
-                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\initializer.ixx.ifc"
+                "Name": "Memory",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Memory.ixx.ifc"
             },
             {
                 "Name": "core",
@@ -36,6 +36,10 @@
             {
                 "Name": "typetraits",
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\typetraits.ixx.ifc"
+            },
+            {
+                "Name": "initializer",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\initializer.ixx.ifc"
             },
             {
                 "Name": "utility",

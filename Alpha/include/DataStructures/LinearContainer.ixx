@@ -1,23 +1,14 @@
 module;
+#include<new>
 export module LinearContainer;
 
 import core;
 import initializer;
 import typetraits;
 import io;
+import Memory;
 
 typedef unsigned long long size_t;
-
-extern "C++" {
-	inline void* __cdecl operator new(size_t _Size, void* _Where) noexcept {
-		(void)_Size;
-		return _Where;
-	}
-
-	inline void __cdecl operator delete(void*, void*) noexcept {
-		return;
-	}
-}
 
 export namespace alpha {
 	template<class LinearContainer>
@@ -159,61 +150,56 @@ export namespace alpha {
 		}
 	};
 
-	template<class _Ty>
+	template<class _Ty, class Allocator = alpha::allocator<_Ty>>
 	class LinearContainer {
 	public:
 		using ArgType = _Ty;
 		using Iterator = LinearContainerIterator<LinearContainer<_Ty>>;
 		using ConstIterator= ConstLinearContainerIterator<LinearContainer<_Ty>>;
+		using Pointer = _Ty*;
+		using Reference = _Ty&;
+		using ConstPointer = const _Ty*;
+		using ValueType = _Ty;
+		using SizeType = size_t;
 
-		constexpr LinearContainer()noexcept {
-			_Siz = 0;
-			_AllocateExactly(2);
+		explicit constexpr LinearContainer(const Allocator& allocator = Allocator())noexcept : _Siz(0), _Cap(0), _Ptr(nullptr), _Allocator(allocator) {}
+
+		constexpr LinearContainer(const SizeType _Size, const _Ty& _Val, const Allocator& allocator = Allocator())noexcept : _Siz(_Size), _Allocator(allocator) {
+			_Allocate(_Size);
+			_Memset(_Ptr, _Ptr + _Siz, _Val);
 		}
 
-		constexpr LinearContainer(const size_t _Size, const _Ty& _Val)noexcept {
-			_AllocateExactly(_Size);
-			_Siz = _Size;
-			_Memset(_Val);
+		explicit constexpr LinearContainer(const SizeType _Size, const Allocator& allocator = Allocator())noexcept : _Siz(0), _Allocator(allocator) {
+			_Allocate(_Size);
 		}
 
-		explicit constexpr LinearContainer(const size_t _Size)noexcept : LinearContainer(_Size, _Ty()) {}
-
-		constexpr LinearContainer(const initializer<_Ty>& list)noexcept {
-			_Siz = list.size();
-			_AllocateExactly(_Siz);
-			size_t _idx = 0;
-			for (const auto& _Val : list) {
-				new(_Ptr + _idx) _Ty(_Val);
-				++_idx;
-			}
+		constexpr LinearContainer(const initializer<_Ty>& list)noexcept : _Siz(list.size()) {
+			_Allocate(_Siz);
+			Pointer _pointer = _Ptr;
+			for (const auto& _Val : list)
+				new(_pointer++) _Ty(_Val);
 		}
 
-		constexpr LinearContainer(const LinearContainer& _That)noexcept {
-			_AllocateExactly(_That._Siz);
+		constexpr LinearContainer(const LinearContainer& _That)noexcept : _Allocator(_That._Allocator) {
+			_Allocate(_That._Siz);
 			_ConstructCopy(_That);
 		}
 
 		constexpr LinearContainer(LinearContainer&& _That)noexcept {
-			_Ptr = _That._Ptr;
-			_Siz = _That._Siz;
-			_Cap = _That._Cap;
-			_That._Ptr = nullptr;
-			_That._Siz = 0;
-			_That._Cap = 0;
+			_Move(_That);
 		}
-
+		
 		constexpr ~LinearContainer()noexcept {
 			if (_Ptr != nullptr)
 				_Free();
 		}
 
-		constexpr LinearContainer& operator=(size_t _Size)noexcept = delete;
+		constexpr LinearContainer& operator=(const SizeType _Size)noexcept = delete;
 
 		constexpr LinearContainer& operator=(const LinearContainer& _That)noexcept {
 			if (this != &_That) {
 				if (_Cap < _That._Siz)
-					_ReallocateExactly(_That._Siz);
+					_Reallocate(_That._Siz);
 				_Siz = _That._Siz;
 				_Copy(_That);
 			}
@@ -224,17 +210,12 @@ export namespace alpha {
 
 		constexpr LinearContainer& operator=(LinearContainer&& _Val)noexcept {
 			if (this != &_Val) {
-				if constexpr (!is_trivially_destructible_v<_Ty>)
-					for (size_t _idx = 0; _idx < _Cap; ++_idx)
+				if constexpr (!is_trivially_destructible_v<_Ty>) {
+					for (SizeType _idx = 0; _idx < _Cap; ++_idx)
 						_Ptr[_idx].~_Ty();
-				free(_Ptr);
-
-				_Ptr = _Val._Ptr;
-				_Siz = _Val._Siz;
-				_Cap = _Val._Cap;
-				_Val._Ptr = nullptr;
-				_Val._Siz = 0;
-				_Val._Cap = 0;
+				}
+				_Allocator.deallocate(_Ptr, _Cap);
+				_Move(_Val);
 			}
 			return *this;
 		}
@@ -243,9 +224,8 @@ export namespace alpha {
 			if (_Siz != _That._Siz) return false;
 			if constexpr (is_arithmetic_v<_Ty>) {
 				return memcmp(_Ptr, _That._Ptr, _Siz * sizeof(_Ty)) == 0;
-			}
-			else {
-				for (size_t i = 0; i < _Siz; ++i) {
+			} else {
+				for (SizeType i = 0; i < _Siz; ++i) {
 					if (_Ptr[i] != _That._Ptr[i]) return false;
 				}
 				return true;
@@ -256,16 +236,18 @@ export namespace alpha {
 			return !(*this == _That);
 		}
 
-		constexpr const _Ty& operator[](const size_t _Idx)const {
+		constexpr const _Ty& operator[](const SizeType _Idx)const {
 			if constexpr (_debug) {
-				if(_Idx >= _Siz) __debugbreak();
+				if(_Idx >= _Siz)
+					__debugbreak();
 			}
 			return _Ptr[_Idx];
 		}
 
-		constexpr _Ty& operator[](const size_t _Idx) {
+		constexpr _Ty& operator[](const SizeType _Idx) {
 			if constexpr (_debug) {
-				if(_Idx >= _Siz) __debugbreak();
+				if(_Idx >= _Siz)
+					__debugbreak();
 			}
 			return _Ptr[_Idx];
 		}
@@ -318,14 +300,14 @@ export namespace alpha {
 
 		constexpr void print()const noexcept {
 			_print("\n[");
-			for (size_t i = 0; i < _Siz; ++i) {
+			for (SizeType i = 0; i < _Siz; ++i) {
 				_print(' ');
 				_print(_Ptr[i]);
 			}
 			_print(" ]");
 		}
 
-		[[nodiscard]] constexpr size_t size()const {
+		[[nodiscard]] constexpr SizeType size()const {
 			return _Siz;
 		}
 
@@ -336,7 +318,8 @@ export namespace alpha {
 		[[nodiscard]] constexpr const _Ty* data() const noexcept {
 			return _Ptr;
 		}
-		[[nodiscard]] constexpr size_t capacity()const {
+
+		[[nodiscard]] constexpr SizeType capacity()const {
 			return _Cap;
 		}
 
@@ -356,16 +339,16 @@ export namespace alpha {
 			return ConstIterator(_Ptr + _Siz);
 		}
 
-		constexpr void reserve(const size_t _Siz) {
+		constexpr void reserve(const SizeType _Siz) {
 			if (_Siz > _Cap)
-				_ReallocateExactly(_Siz);
+				_Reallocate(_Siz);
 		}
-
-		constexpr void shrink_to_fit()noexcept {
-			if (_Siz != _Cap)
-				_ReallocateExactly(_Siz);
+		constexpr void resize(const SizeType _Size, const _Ty& _Val = _Ty()) {
+			_Reallocate(_Size);
+			if (_Size > _Siz)
+				_Memset(_Ptr + _Siz, _Ptr + _Size, _Val);
+			_Siz = _Size;
 		}
-
 		constexpr void swap(LinearContainer& _Arg3)noexcept {
 			if (this != &_Arg3) {
 				_Ty*   Tmp_ptr = _Ptr;
@@ -382,7 +365,7 @@ export namespace alpha {
 			}
 		}
 
-		constexpr void erase(const size_t _Pos)noexcept {
+		constexpr void erase(const SizeType _Pos)noexcept {
 			_LeftShift(_Pos, 1);
 		}
 
@@ -391,78 +374,56 @@ export namespace alpha {
 		}
 
 	private:
-		inline constexpr size_t _RecommendCap(const size_t _Siz)const noexcept {
-			size_t Tmp = 2;
-			while (Tmp <= _Siz)
-				Tmp <<= 1;
-			return (size_t)Tmp;
-		}
-
-		inline constexpr auto _Reallocate(const size_t _Size)noexcept {
-			if (_Size < _Siz)
-				_Siz = _Size;
-			_Cap = _RecommendCap(_Size);
-			_Ptr = static_cast<_Ty*>(realloc(_Ptr, _Cap * sizeof(_Ty)));
-			if constexpr (_debug)
-				if (_Ptr == 0) __debugbreak();
-		}
-
-		inline constexpr auto _ReallocateExactly(const size_t _Size)noexcept {
-			if (_Size < _Siz)
-				_Siz = _Size;
-			_Cap = _Size;
-			_Ptr = static_cast<_Ty*>(realloc(_Ptr, _Size * sizeof(_Ty)));
-			if constexpr (_debug)
-				if (_Ptr == 0) __debugbreak();
-		}
-
-		inline constexpr auto _Allocate(size_t _Size)noexcept {
-			_Cap = _RecommendCap(_Size);
-			_Ptr = static_cast<_Ty*>(malloc(_Cap * sizeof(_Ty)));
-			if constexpr (_debug)
-				if (_Ptr == 0) __debugbreak();
-		}
-
-		inline constexpr auto _AllocateExactly(const size_t _Siz)noexcept {
-			_Cap = _Siz;
-			_Ptr = static_cast<_Ty*>(malloc(_Siz * sizeof(_Ty)));
-			if constexpr (_debug)
-				if (_Ptr == 0) __debugbreak();
-		}
-
-		inline constexpr auto _Free()noexcept {
-			if constexpr (!is_trivially_destructible_v<_Ty>) {
-				auto _Start = _Ptr;
-				auto _End = _Ptr + _Siz;
-				while (_Start != _End) {
-					_Start->~_Ty();
-					++_Start;
-				}
+		inline constexpr SizeType _RecomendCapacity(const SizeType _Size)noexcept {
+			SizeType size = 8;
+			while (size <= _Size) {
+				size <<= 1;
 			}
-			free(_Ptr);
+			return size;
+		}
+		inline constexpr auto _Allocate(const SizeType _Size)noexcept {
+			_Cap = _RecomendCapacity(_Size);
+			_Ptr = _Allocator.allocate(_Cap);
+		}
+
+		inline constexpr auto _Reallocate(SizeType _Size)noexcept {
+			if (_Size < _Siz) {
+				if constexpr (!is_trivially_destructible_v<_Ty>)
+					_DestroyRange(_Ptr + _Size, _Ptr + _Siz);
+				_Siz = _Size;
+			}
+				
+			auto  _NewCap = _RecomendCapacity(_Size);
+			auto* _NewPtr = _Allocator.allocate(_NewCap);
+			memcpy(_NewPtr, _Ptr, _Siz * sizeof(_Ty));
+			_Allocator.deallocate(_Ptr, _Cap);
+			_Ptr = _NewPtr;
+			_Cap = _NewCap;
+		}
+		inline constexpr auto _Free()noexcept {
+			if constexpr (!is_trivially_destructible_v<_Ty>)
+				_DestroyRange(_Ptr, _Ptr + _Siz);
+			_Allocator.deallocate(_Ptr, _Cap);
 			_Ptr = nullptr;
 			_Siz = 0;
 			_Cap = 0;
 		}
 
-		inline constexpr auto _Memset(const _Ty& _Val)noexcept {
+		inline constexpr auto _Memset(Pointer _Start, Pointer _End, const _Ty& _Val)noexcept {
 			if constexpr (is_fundamental_v<_Ty>) {
 				if constexpr (is_same_v<_Ty, char>) {
-					memset(_Ptr, _Val, _Siz);
+					memset(_Start, _Val, _End - _Start);
 				} else {
 					if (_Val != 0) {
-						for (size_t _idx = 0; _idx < _Siz; ++_idx) {
-							_Ptr[_idx] = _Val;
-						}
-					} else { memset(_Ptr, 0, _Siz * sizeof(_Ty));  }
+						while (_Start != _End)
+							*(_Start++) = _Val;
+					} else { memset(_Start, 0, (_End  - _Start) * sizeof(_Ty));  }
 				}
 			} else {
-				for (size_t _idx = 0; _idx < _Siz; ++_idx) {
-					new(_Ptr + _idx) _Ty(_Val);
-				}
+				while(_Start != _End)
+					new(_Start++) _Ty(_Val);
 			}
 		}
-
 		inline constexpr auto _ConstructCopy(const LinearContainer& _That)noexcept {
 			_Siz = _That._Siz;
 			if constexpr (is_fundamental_v<_Ty> || is_pointer_v<_Ty>) {
@@ -472,6 +433,22 @@ export namespace alpha {
 					new(_Ptr + _idx) _Ty(_That._Ptr[_idx]);
 				}
 			}
+		}
+		inline constexpr auto _DestroyRange(Pointer _Start, Pointer _End)noexcept {
+			while (_Start != _End) {
+				_Start->~_Ty();
+				++_Start;
+			}
+		}
+		inline constexpr void _Move(LinearContainer& _That)noexcept {
+			_Ptr = _That._Ptr;
+			_Siz = _That._Siz;
+			_Cap = _That._Cap;
+			_Allocator = _That._Allocator;
+
+			_That._Ptr = nullptr;
+			_That._Siz = 0;
+			_That._Cap = 0;
 		}
 
 		inline constexpr auto _Copy(const LinearContainer& _That)noexcept {
@@ -518,17 +495,19 @@ export namespace alpha {
 		}
 
 	protected:
-		size_t  _Siz;
-		size_t  _Cap;
-		_Ty* _Ptr;
+		Pointer	 _Ptr;
+		SizeType _Siz;
+		SizeType _Cap;
+		Allocator _Allocator;
 	};
 	
-	template<class _Ty>
-	inline constexpr void _print(const LinearContainer<_Ty>& _Obj)noexcept {
+	template<class _Ty, class _Allocator>
+	inline constexpr void _print(const LinearContainer<_Ty, _Allocator>& _Obj)noexcept {
 		_Obj.print();
 	}
 
-	template<class _Ty> using Array = LinearContainer<_Ty>;
+	template<class _Ty, class _Allocator = alpha::allocator<_Ty>> using Array = LinearContainer<_Ty, _Allocator>;
+	//template<class _Ty> using Array = std::vector<_Ty>;
 }
 
 

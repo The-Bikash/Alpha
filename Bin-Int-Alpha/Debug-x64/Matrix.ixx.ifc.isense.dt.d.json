@@ -52,6 +52,10 @@
             {
                 "Name": "Polynomial",
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Polynomial.ixx.ifc.dt"
+            },
+            {
+                "Name": "Memory",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Debug-x64\\Memory.ixx.ifc.dt"
             }
         ],
         "ImportedHeaderUnits": []

@@ -46,7 +46,8 @@ export namespace alpha {
 	template<class _Ty>
 	class Polynomial : public LinearContainer<_Ty> {
 	public:
-		using LinearContainer<_Ty>::LinearContainer;
+		using LinearContainer<_Ty>::LinearContainer; // Take all constructors from base class
+
 		constexpr _Ty operator()(const _Ty& x)const noexcept {
 			if constexpr (_debug) if (this->_Siz == 0) __debugbreak();
 			if (this->_Siz > 2) {
@@ -67,8 +68,57 @@ export namespace alpha {
 				return _Result;
 			} else return this->_Ptr[0];
 		}
-	};
+	private:
+		inline constexpr void _RemoveTrailingZeros()noexcept {
+			while (this->_Ptr[this->_Siz - 1] == static_cast<_Ty>(0))
+				--(this->_Siz);
+		}
+		inline constexpr void _FFT_COEFF_TO_VALUE_TRANSFORM(_Ty*)noexcept {
+			
+		}
+		inline constexpr void _MULTIPLY_USING_VALUE_REPRESENTATION()noexcept {
+
+		}
+		inline constexpr void _FFT_POLYNOMIAL_MUL()noexcept {
+
+		}
+	public:
+		constexpr Polynomial& operator+=(const Polynomial& _Pol)noexcept {
+			auto _Size = (this->_Siz >= _Pol._Siz) ? (_Pol._Siz) : (this->_Siz);
 	
+			for (size_t _idx = 0; _idx < _Size; ++_idx) {
+				this->_Ptr[_idx] += _Pol._Ptr[_idx];
+			}
+			for (size_t _idx = _Size; _idx < _Pol._Siz; ++_idx) {
+				this->emplace_back(_Pol._Ptr[_idx]);
+			}
+			this->_RemoveTrailingZeros();
+			return *this;
+		}
+
+		constexpr Polynomial& operator-=(const Polynomial& _Pol)noexcept {
+			auto _Size = (this->_Siz >= _Pol._Siz) ? (_Pol._Siz) : (this->_Siz);
+	
+			for (size_t _idx = 0; _idx < _Size; ++_idx) {
+				this->_Ptr[_idx] -= _Pol._Ptr[_idx];
+			}
+			for (size_t _idx = _Size; _idx < _Pol._Siz; ++_idx) {
+				this->emplace_back(-_Pol._Ptr[_idx]);
+			}
+			this->_RemoveTrailingZeros();
+			return *this;
+		}
+
+		constexpr Polynomial& operator*=(const Polynomial& _Pol)noexcept {
+
+		}
+
+	};
+
+	template<class _Ty>
+	void _print(const Polynomial<_Ty>& _Pol)noexcept {
+		_Pol.print();
+	}
 }
 
 //export namespace alpha {

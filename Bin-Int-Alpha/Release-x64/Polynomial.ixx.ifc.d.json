@@ -40,6 +40,10 @@
             {
                 "Name": "initializer",
                 "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\initializer.ixx.ifc"
+            },
+            {
+                "Name": "Memory",
+                "BMI": "D:\\C++20\\Projects\\Alpha\\Bin-Int-Alpha\\Release-x64\\Memory.ixx.ifc"
             }
         ],
         "ImportedHeaderUnits": []

@@ -1,0 +1,11 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\c++20\\projects\\alpha\\alpha\\include\\datastructures\\memory.ixx",
+        "ProvidedModule": "Memory",
+        "ImportedModules": [
+            "core"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}

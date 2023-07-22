@@ -903,7 +903,6 @@ export namespace alpha{
 		constexpr void display()const noexcept {
 			for (_Int i = 0; i < _Row; ++i) {
 				_print("\n(");
-				
 				for (_Int j = 0; j < _Row; ++j)
 					alpha::print(_Mat[i][j], ' ');
 				_print(')');
@@ -1293,7 +1292,7 @@ export namespace alpha{
 			return *this;
 		}
 
-		constexpr void rref()noexcept {
+		constexpr auto& rref()noexcept {
 			_Int _Cpivot = 0, _Rpivot = 0;
 			for (_Cpivot = 0; _Cpivot < _Row; ++_Cpivot) {
 				if (_Mat[_Rpivot][_Cpivot] == _Zero) {
@@ -1312,6 +1311,7 @@ export namespace alpha{
 					++_Rpivot;
 				}
 			}
+			return *this;
 		}
 
 		constexpr bool Inverse()noexcept {

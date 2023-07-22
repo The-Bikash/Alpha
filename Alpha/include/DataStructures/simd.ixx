@@ -251,4 +251,26 @@ export namespace alpha {
 #endif
     }
 
+    void avx_sadd_vecf(float* a, float* b, size_t size) {
+#ifdef NOSIMD
+        for (size_t i = 0; i < size; ++i) {
+            a[i] += b[i];
+        }
+#else
+        const size_t simdSize = 8;  // Number of elements processed in parallel with AVX2
+
+        for (size_t i = 0; i < size; i += simdSize) {
+            // Load eight single-precision floating-point values from memory
+            __m256 a_vec = _mm256_loadu_ps(&a[i]);
+            __m256 b_vec = _mm256_loadu_ps(&b[i]);
+
+            // Perform SIMD addition
+            __m256 result_vec = _mm256_add_ps(a_vec, b_vec);
+
+            // Store the result back to memory
+            _mm256_storeu_ps(&a[i], result_vec);
+        }
+#endif
+    }
+
 }       
